@@ -31,7 +31,7 @@ class WelcomeScreen extends StatelessWidget {
                 padding: EdgeInsets.all(20.0),
                 textColor: kBackgroundColor,
                 color: kTextColor,
-                minWidth: double.infinity,
+                minWidth : double.infinity,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                 child: Text(
                   'Start',

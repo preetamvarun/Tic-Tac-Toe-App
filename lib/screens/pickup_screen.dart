@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/widgets/container_widget.dart';
 import 'package:tic_tac_toe/constants.dart';
 
-class PickUpScreen extends StatelessWidget {
+class PickUpScreen extends StatefulWidget {
+
+  @override
+  _PickUpScreenState createState() => _PickUpScreenState();
+}
+
+class _PickUpScreenState extends State<PickUpScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +33,14 @@ class PickUpScreen extends StatelessWidget {
               ),
             ),
             ContainerWidget(
-              color: kBackgroundColor,
+              color: kTextColor,
               text: "X",
-              textColor: kTextColor,
+              textColor: kBackgroundColor,
             ),
             ContainerWidget(
-              color: kTextColor,
+              color: kBackgroundColor,
               text: "O",
-              textColor: kBackgroundColor,
+              textColor: kTextColor,
             ),
           ],
         ),
