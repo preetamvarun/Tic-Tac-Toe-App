@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
+import 'package:tic_tac_toe/screens/winning_screen.dart';
 
 bool letterXReference = true,letterOReference = false;
 
@@ -49,7 +50,9 @@ class _WrappingContainerState extends State<WrappingContainer> {
            });
          }
 
-         print(game.checkWinningCondition());
+         if(game.checkWinningCondition() == "you win"){
+           Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
+         }
 
         },
 
