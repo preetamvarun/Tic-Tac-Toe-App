@@ -4,6 +4,7 @@ import 'package:tic_tac_toe/screens/pickup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
+
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

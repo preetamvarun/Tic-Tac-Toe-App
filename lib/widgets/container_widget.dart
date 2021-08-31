@@ -3,6 +3,7 @@ import 'package:tic_tac_toe/screens/game_screen.dart';
 
 class ContainerWidget extends StatelessWidget {
   final color, text, textColor;
+
   ContainerWidget({this.color, this.text, this.textColor});
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/widgets/container_widget.dart';
 import 'package:tic_tac_toe/constants.dart';
 
+
 class PickUpScreen extends StatefulWidget {
 
   @override
@@ -32,15 +33,19 @@ class _PickUpScreenState extends State<PickUpScreen> {
                 ),
               ),
             ),
-            ContainerWidget(
-              color: kTextColor,
-              text: "X",
-              textColor: kBackgroundColor,
+            GestureDetector(
+              child: ContainerWidget(
+                color: kTextColor,
+                text: "X",
+                textColor: kBackgroundColor,
+              ),
             ),
-            ContainerWidget(
-              color: kBackgroundColor,
-              text: "O",
-              textColor: kTextColor,
+            GestureDetector(
+              child: ContainerWidget(
+                color: kBackgroundColor,
+                text: "O",
+                textColor: kTextColor,
+              ),
             ),
           ],
         ),

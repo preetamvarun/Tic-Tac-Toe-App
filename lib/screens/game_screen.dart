@@ -5,6 +5,8 @@ import 'package:tic_tac_toe/constants.dart';
 
 class GameScreen extends StatelessWidget {
 
+  int m = 0,n = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +41,15 @@ class GameScreen extends StatelessWidget {
                     alignment: WrapAlignment.center,
                     runAlignment: WrapAlignment.center,
                     children: [
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
-                      GestureDetector(onTap : (){},child: WrappingContainer()),
+                      WrappingContainer(rowNo: 0,colNo: 0,),
+                      WrappingContainer(rowNo: 1,colNo: 0,),
+                      WrappingContainer(rowNo: 2,colNo: 0,),
+                      WrappingContainer(rowNo: 0,colNo: 1,),
+                      WrappingContainer(rowNo: 1,colNo: 1,),
+                      WrappingContainer(rowNo: 2,colNo: 1,),
+                      WrappingContainer(rowNo: 0,colNo: 2,),
+                      WrappingContainer(rowNo: 1,colNo: 2,),
+                      WrappingContainer(rowNo: 2,colNo: 2,),
                     ],
                   ),
                 ),
