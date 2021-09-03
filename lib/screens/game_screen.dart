@@ -31,26 +31,29 @@ class GameScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 35.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: kGameScreenContainerColor,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Wrap(
-                    direction: Axis.vertical,
-                    alignment: WrapAlignment.center,
-                    runAlignment: WrapAlignment.center,
-                    children: [
-                      WrappingContainer(rowNo: 0,colNo: 0,),
-                      WrappingContainer(rowNo: 1,colNo: 0,),
-                      WrappingContainer(rowNo: 2,colNo: 0,),
-                      WrappingContainer(rowNo: 0,colNo: 1,),
-                      WrappingContainer(rowNo: 1,colNo: 1,),
-                      WrappingContainer(rowNo: 2,colNo: 1,),
-                      WrappingContainer(rowNo: 0,colNo: 2,),
-                      WrappingContainer(rowNo: 1,colNo: 2,),
-                      WrappingContainer(rowNo: 2,colNo: 2,),
-                    ],
+                child: Visibility(
+                  visible: true,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: kGameScreenContainerColor,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Wrap(
+                      direction: Axis.vertical,
+                      alignment: WrapAlignment.center,
+                      runAlignment: WrapAlignment.center,
+                      children: [
+                        WrappingContainer(rowNo: 0,colNo: 0,),
+                        WrappingContainer(rowNo: 1,colNo: 0,),
+                        WrappingContainer(rowNo: 2,colNo: 0,),
+                        WrappingContainer(rowNo: 0,colNo: 1,),
+                        WrappingContainer(rowNo: 1,colNo: 1,),
+                        WrappingContainer(rowNo: 2,colNo: 1,),
+                        WrappingContainer(rowNo: 0,colNo: 2,),
+                        WrappingContainer(rowNo: 1,colNo: 2,),
+                        WrappingContainer(rowNo: 2,colNo: 2,),
+                      ],
+                    ),
                   ),
                 ),
               ),

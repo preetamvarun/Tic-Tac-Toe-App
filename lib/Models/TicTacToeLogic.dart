@@ -2,6 +2,7 @@ class TicTacToe{
 
     String ans = "";
 
+
     var mat = [["","",""],["","",""],["","",""]];
 
     void insertIntoCell(int rowIndex,int columnIndex,String val){
@@ -34,6 +35,37 @@ class TicTacToe{
       }
 
       return ans;
+    }
+
+    String checkDrawCondition(){
+
+      bool isDraw = true;
+
+      for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+          if(mat[i][j] == ""){
+            isDraw = false;
+            break;
+          }
+        }
+
+        if(isDraw){
+          continue;
+        }
+        else{
+          break;
+        }
+      }
+
+      if(isDraw){
+        ans = "Draw";
+      }
+      else{
+        ans = "";
+      }
+
+      return ans;
+
     }
 
 }

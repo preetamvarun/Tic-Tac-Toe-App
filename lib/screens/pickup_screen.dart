@@ -11,6 +11,29 @@ class PickUpScreen extends StatefulWidget {
 
 class _PickUpScreenState extends State<PickUpScreen> {
 
+  Color xCardColor = kTextColor, oCardColor = kBackgroundColor;
+  Color xTextColor = kBackgroundColor, oTextColor = kTextColor;
+
+  // if colorNo == 1 X is pressed ; colorNo == 2 O is pressed;
+  void updateColor(int colorNo){
+    if(colorNo == 2){
+      if(oCardColor == kBackgroundColor && oTextColor == kTextColor){
+        oCardColor = kTextColor;
+        oTextColor = kBackgroundColor;
+        xCardColor = kBackgroundColor;
+        xTextColor = kTextColor;
+      }
+    }
+    if(colorNo == 1){
+      if(xCardColor == kBackgroundColor && xTextColor == kTextColor){
+        oCardColor = kBackgroundColor;
+        oTextColor = kTextColor;
+        xCardColor = kTextColor;
+        xTextColor = kBackgroundColor;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,17 +57,27 @@ class _PickUpScreenState extends State<PickUpScreen> {
               ),
             ),
             GestureDetector(
+              onTap: (){
+                setState(() {
+                  updateColor(1);
+                });
+              },
               child: ContainerWidget(
-                color: kTextColor,
+                color: xCardColor,
                 text: "X",
-                textColor: kBackgroundColor,
+                textColor: xTextColor,
               ),
             ),
             GestureDetector(
+              onTap: (){
+                setState(() {
+                  updateColor(2);
+                });
+              },
               child: ContainerWidget(
-                color: kBackgroundColor,
+                color: oCardColor,
                 text: "O",
-                textColor: kTextColor,
+                textColor: oTextColor,
               ),
             ),
           ],

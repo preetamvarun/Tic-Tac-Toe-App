@@ -3,7 +3,8 @@ import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/screens/winning_screen.dart';
 
-bool letterXReference = true,letterOReference = false;
+bool letterXReference = true, letterOReference = false;
+
 
 TicTacToe game = TicTacToe();
 
@@ -29,13 +30,13 @@ class _WrappingContainerState extends State<WrappingContainer> {
       child: GestureDetector(
 
         onTap: (){
-
          if(letterXReference){
            setState(() {
              if(widget.letter == ""){
                game.insertIntoCell(widget.rowNo, widget.colNo, "X");
                widget.letter = "X";
-               letterXReference = false; letterOReference = true;
+               letterXReference = false;
+               letterOReference = true;
              }
            });
          }
@@ -45,13 +46,18 @@ class _WrappingContainerState extends State<WrappingContainer> {
              if(widget.letter == ""){
                game.insertIntoCell(widget.rowNo, widget.colNo, "O");
                widget.letter = "O";
-               letterXReference = true; letterOReference = false;
+               letterXReference = true;
+               letterOReference = false;
              }
            });
          }
 
          if(game.checkWinningCondition() == "you win"){
-           Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
+           Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(result: "You Win",)));
+         }
+
+         else if(game.checkDrawCondition() == "Draw"){
+           Navigator.push(context, MaterialPageRoute(builder : (context) => WinningScreen(result: "It's a Draw",)));
          }
 
         },
@@ -77,7 +83,3 @@ class _WrappingContainerState extends State<WrappingContainer> {
     );
   }
 }
-
-
-// #EB1751 - red
-// #FFD032 - yellow
