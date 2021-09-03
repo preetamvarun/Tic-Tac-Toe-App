@@ -4,9 +4,9 @@ import 'package:tic_tac_toe/constants.dart';
 // ignore: must_be_immutable
 class ProfileContainer extends StatelessWidget {
 
-  final profileName,imageName;
-  String letter = '';
-  ProfileContainer({this.profileName, required this.letter,this.imageName});
+  final profileName,imageName,letter;
+  // String letter = '';
+  ProfileContainer({this.profileName,this.letter,this.imageName});
 
   @override
   Widget build(BuildContext context) {
