@@ -1,90 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
-import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
-import 'package:tic_tac_toe/screens/winning_screen.dart';
 
-late bool letterX,letterO;
 
-TicTacToe game = TicTacToe();
+class WrappingContainer extends StatelessWidget{
 
-class WrappingContainer extends StatefulWidget {
+  final rowNo, colNo, letter, onTap;
 
-  final rowNo, colNo, chosenLetter; String letter = "";
-
-  WrappingContainer({this.rowNo,this.colNo, this.chosenLetter});
-
-  @override
-  _WrappingContainerState createState() => _WrappingContainerState();
-}
-
-class _WrappingContainerState extends State<WrappingContainer> {
-
-  @override
-  void initState() {
-    if(widget.chosenLetter != null){
-      if(widget.chosenLetter == "O"){
-        letterO = true;
-        letterX = false;
-      }
-      else{
-        letterX = true;
-        letterO = false;
-      }
-    }
-    super.initState();
-  }
+  WrappingContainer({this.onTap,this.letter,this.rowNo,this.colNo});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: GestureDetector(
-        onTap: (){
-         if(letterX){
-           setState(() {
-             if(widget.letter == ""){
-               game.insertIntoCell(widget.rowNo, widget.colNo, "X");
-               widget.letter = "X";
-               letterX = false;
-               letterO = true;
-             }
-           });
-         }
-         else if(letterO){
-           setState(() {
-             if(widget.letter == ""){
-               game.insertIntoCell(widget.rowNo, widget.colNo, "O");
-               widget.letter = "O";
-               letterX = true;
-               letterO = false;
-             }
-           });
-         }
-         if(game.checkWinningCondition() != ""){
-           Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(result: game.checkWinningCondition())));
-         }
-         else if(game.checkDrawCondition() == "Draw"){
-           Navigator.push(context, MaterialPageRoute(builder : (context) => WinningScreen(result: "It's a Draw",)));
-         }
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: kProfileContainerColor,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Text(
-            widget.letter,
-            style: TextStyle(
-              fontFamily: 'Carter',
-              fontSize: 80.0,
-              color: widget.letter == "X" ? kLetterXColor : kLetterOColor,
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: kProfileContainerColor,
+              borderRadius: BorderRadius.circular(10.0),
             ),
-            textAlign : TextAlign.center,
+            child: Text(
+              letter,
+              style: TextStyle(
+                fontFamily: 'Carter',
+                fontSize: 80.0,
+                color: letter == "X" ? kLetterXColor : kLetterOColor,
+              ),
+              textAlign : TextAlign.center,
+            ),
+            height: 110.0,
+            width: 110.0,
           ),
-          height: 110.0,
-          width: 110.0,
         ),
-      ),
     );
   }
 }
