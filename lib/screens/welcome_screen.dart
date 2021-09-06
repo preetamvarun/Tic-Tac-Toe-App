@@ -3,11 +3,11 @@ import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/pickup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: kProfileContainerColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -21,7 +21,6 @@ class WelcomeScreen extends StatelessWidget {
                     color: kTextColor,
                     fontFamily: 'Carter',
                     fontSize: 40.0,
-
                   ),
                 ),
               ),

@@ -3,7 +3,7 @@ import 'package:tic_tac_toe/widgets/container_widget.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
 
-String side = "";
+String side = "X";
 
 class PickUpScreen extends StatefulWidget {
 
@@ -16,29 +16,26 @@ enum letter{
   cardO
 }
 
+
 class _PickUpScreenState extends State<PickUpScreen> {
 
-  Color xCardColor = kTextColor, oCardColor = kBackgroundColor;
-  Color xTextColor = kBackgroundColor, oTextColor = kTextColor;
+  Color xCardColor = kProfileContainerColor, oCardColor = kGameScreenBackgroundColor;
+  Color xTextColor = Colors.white, oTextColor = kTextColor;
 
   // if colorNo == 1 X is pressed ; colorNo == 2 O is pressed;
   void updateColor(letter selectedLetter){
 
     if(selectedLetter == letter.cardO){
-      if(oCardColor == kBackgroundColor && oTextColor == kTextColor){
-        oCardColor = kTextColor;
-        oTextColor = kBackgroundColor;
-        xCardColor = kBackgroundColor;
-        xTextColor = kTextColor;
+      if(oCardColor == kGameScreenBackgroundColor && oTextColor == kTextColor){
+        oCardColor = kProfileContainerColor;oTextColor = Colors.white;
+        xCardColor = kGameScreenBackgroundColor;xTextColor = kTextColor;
       }
     }
 
     if(selectedLetter == letter.cardX){
-      if(xCardColor == kBackgroundColor && xTextColor == kTextColor){
-        oCardColor = kBackgroundColor;
-        oTextColor = kTextColor;
-        xCardColor = kTextColor;
-        xTextColor = kBackgroundColor;
+      if(xCardColor == kGameScreenBackgroundColor && xTextColor == kTextColor){
+        oCardColor = kGameScreenBackgroundColor;oTextColor = kTextColor;
+        xCardColor = kProfileContainerColor;xTextColor = Colors.white;
       }
     }
   }
@@ -46,7 +43,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -100,13 +97,13 @@ class _PickUpScreenState extends State<PickUpScreen> {
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10.0),
               child: MaterialButton(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 0.0),
-                textColor: kBackgroundColor,
+                textColor: kGameScreenBackgroundColor,
                 color: kTextColor,
                 minWidth : double.infinity,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                 child: Text(
                   'Start',
-                  style: TextStyle(fontFamily: 'Paytone', fontSize: 35.0),
+                  style: TextStyle(fontFamily: 'Paytone', fontSize: 35.0, color: kBackgroundColor, fontWeight: FontWeight.w500),
                 ),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));

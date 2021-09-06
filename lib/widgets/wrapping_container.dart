@@ -3,17 +3,15 @@ import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/screens/winning_screen.dart';
 
-late bool letterX , letterO;
+late bool letterX,letterO;
 
 TicTacToe game = TicTacToe();
 
 class WrappingContainer extends StatefulWidget {
 
-  final rowNo, colNo, chosenLetter;
+  final rowNo, colNo, chosenLetter; String letter = "";
 
   WrappingContainer({this.rowNo,this.colNo, this.chosenLetter});
-
-  String letter = "";
 
   @override
   _WrappingContainerState createState() => _WrappingContainerState();
@@ -32,8 +30,6 @@ class _WrappingContainerState extends State<WrappingContainer> {
         letterX = true;
         letterO = false;
       }
-      print(letterX);
-      print(letterO);
     }
     super.initState();
   }

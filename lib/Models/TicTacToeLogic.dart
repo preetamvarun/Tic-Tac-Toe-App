@@ -1,6 +1,7 @@
+
 class TicTacToe{
 
-    String ans = "", ansLetter = "";
+    String ans = "",ansLetter = "";
 
     var mat = [["","",""],["","",""],["","",""]];
 

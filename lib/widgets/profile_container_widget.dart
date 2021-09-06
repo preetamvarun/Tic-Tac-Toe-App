@@ -5,7 +5,7 @@ import 'package:tic_tac_toe/constants.dart';
 class ProfileContainer extends StatelessWidget {
 
   final profileName,imageName,letter;
-  // String letter = '';
+
   ProfileContainer({this.profileName,this.letter,this.imageName});
 
   @override
