@@ -3,6 +3,7 @@ import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
+import 'dart:async';
 
 TicTacToe game = TicTacToe();
 
@@ -11,6 +12,8 @@ List<String>chars = ["","","","","","","","",""];
 String a = "Your Turn", b = "", finalResult = "";
 late bool letterX,letterO;
 bool isGameWinOrDraw = false;
+
+var colorMap = {};
 
 
 class GameScreen extends StatefulWidget{
@@ -37,6 +40,9 @@ class _GameScreenState extends State<GameScreen> {
         letterO = false;
       }
     }
+    for(int i = 0; i < 9; i++){
+      colorMap[i] = "kProfileContainerColor";
+    }
     super.initState();
   }
 
@@ -50,9 +56,72 @@ class _GameScreenState extends State<GameScreen> {
       });
     }
 
+    void cr(){
+      setState(() {
+        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[0][1] && game.mat[0][1] == game.mat[0][2]) {
+          colorMap[0] = 'GreenColor';
+          colorMap[3] = 'GreenColor';
+          colorMap[6] = 'GreenColor';
+        }
+        if(game.mat[1][0] != "" && game.mat[1][0] == game.mat[1][1] && game.mat[1][1] == game.mat[1][2]) {
+          colorMap[1] = 'GreenColor';
+          colorMap[4] = 'GreenColor';
+          colorMap[7] = 'GreenColor';
+        }
+        if(game.mat[2][0] != "" && game.mat[2][0] == game.mat[2][1] && game.mat[2][1] == game.mat[2][2]) {
+          colorMap[2] = 'GreenColor';
+          colorMap[5] = 'GreenColor';
+          colorMap[8] = 'GreenColor';
+        }
+      });
+    }
+
+    void cc(){
+      setState(() {
+        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[1][0] && game.mat[1][0] == game.mat[2][0]) {
+          colorMap[0] = 'GreenColor';
+          colorMap[1] = 'GreenColor';
+          colorMap[2] = 'GreenColor';
+        }
+        if(game.mat[0][1] != "" && game.mat[0][1] == game.mat[1][1] && game.mat[1][1] == game.mat[2][1]) {
+          colorMap[3] = 'GreenColor';
+          colorMap[4] = 'GreenColor';
+          colorMap[5] = 'GreenColor';
+          }
+        if (game.mat[0][2] != "" && game.mat[0][2] == game.mat[1][2] && game.mat[1][2] == game.mat[2][2]) {
+          colorMap[6] = 'GreenColor';
+          colorMap[7] = 'GreenColor';
+          colorMap[8] = 'GreenColor';
+        }
+      });
+    }
+
+    void cld(){
+      setState(() {
+      if(game.mat[0][0] == game.mat[1][1] && game.mat[1][1] == game.mat[2][2]){
+        colorMap[0] = 'GreenColor';
+        colorMap[4] = 'GreenColor';
+        colorMap[8] = 'GreenColor';
+        }
+      });
+    }
+
+    void crd(){
+      setState(() {
+      if(game.mat[2][0] == game.mat[1][1] && game.mat[1][1] == game.mat[0][2]){
+        colorMap[2] = 'GreenColor';
+        colorMap[4] = 'GreenColor';
+        colorMap[6] = 'GreenColor';
+         }
+      });
+    }
+
     void changeWinningLetterColors(){
       String toBeChecked = game.winningDirection;
-
+      if(toBeChecked == "checkRows") cr();
+      else if(toBeChecked == "checkColumns") cc();
+      else if(toBeChecked == "checkLeftDiagnol") cld();
+      else if(toBeChecked == "checkRightDiagnol") crd();
     }
 
     void updateMatrix(int row, int col, String val){
@@ -84,16 +153,14 @@ class _GameScreenState extends State<GameScreen> {
       if(game.checkWinningCondition() == "Win"){
         finalResult = "Win";
         isGameWinOrDraw = true;
+        vanishYourTurn();
         changeWinningLetterColors();
       }
 
       else if(game.checkDrawCondition() == "Draw"){
         finalResult = "Draw";
-        isGameWinOrDraw = true;
-      }
-
-      if(finalResult != ""){
         vanishYourTurn();
+        isGameWinOrDraw = true;
       }
 
     }
@@ -133,7 +200,7 @@ class _GameScreenState extends State<GameScreen> {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 25.0),
-                child: isGameWinOrDraw == false ? Container(
+                child: finalResult == "" ? Container(
                   decoration: BoxDecoration(
                     color: kGameScreenContainerColor,
                     borderRadius: BorderRadius.circular(20.0),

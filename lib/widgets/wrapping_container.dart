@@ -15,8 +15,11 @@ class WrappingContainer extends StatelessWidget{
       child: Padding(
         padding: EdgeInsets.all(8.0),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: finalResult != "Win" ? BoxDecoration(
               color: kProfileContainerColor,
+              borderRadius: BorderRadius.circular(10.0),
+            ) : BoxDecoration(
+              color: colorMap[containerNo] == 'GreenColor' ? Colors.lightGreen : kProfileContainerColor,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Text(
