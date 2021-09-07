@@ -23,6 +23,8 @@ flutter:
   assets:
     - images/mine.jpg
     - images/satoru.jpg
+    - images/Win.png
+    - images/Draw.png
 
   fonts:
     - family: Paytone

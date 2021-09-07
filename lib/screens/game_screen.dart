@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
-import 'package:tic_tac_toe/screens/winning_screen.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 
 TicTacToe game = TicTacToe();
 
 List<bool>isSelected = [false,false,false,false,false,false,false,false,false];
 List<String>chars = ["","","","","","","","",""];
-String a = "Your Turn", b = "";
+String a = "Your Turn", b = "", finalResult = "";
 late bool letterX,letterO;
+bool isGameWinOrDraw = false;
 
 
 class GameScreen extends StatefulWidget{
@@ -70,11 +70,13 @@ class _GameScreenState extends State<GameScreen> {
       }
 
       if(game.checkWinningCondition() != ""){
-        print('game won');
+        finalResult = "Win";
+        isGameWinOrDraw = true;
       }
 
       else if(game.checkDrawCondition() == "Draw"){
-        print('game drawn');
+        finalResult = "Draw";
+        isGameWinOrDraw = true;
       }
 
     }
@@ -114,7 +116,7 @@ class _GameScreenState extends State<GameScreen> {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 25.0),
-                child: Container(
+                child: isGameWinOrDraw == false ? Container(
                   decoration: BoxDecoration(
                     color: kGameScreenContainerColor,
                     borderRadius: BorderRadius.circular(20.0),
@@ -135,6 +137,8 @@ class _GameScreenState extends State<GameScreen> {
                       WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ? widget.letter : "",containerNo: 8,),
                     ],
                   ),
+                ) : Image(
+                  image: AssetImage("images/$finalResult.jpg"),
                 ),
               ),
             ),
