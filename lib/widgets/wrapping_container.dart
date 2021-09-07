@@ -28,8 +28,8 @@ class WrappingContainer extends StatelessWidget{
               ),
               textAlign : TextAlign.center,
             ),
-            height: 110.0,
-            width: 110.0,
+            height: 108.0,
+            width: 108.0,
           ),
         ),
     );

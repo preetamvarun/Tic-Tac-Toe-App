@@ -43,6 +43,18 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
 
+    void vanishYourTurn(){
+      setState(() {
+        a = "";
+        b = "";
+      });
+    }
+
+    void changeWinningLetterColors(){
+      String toBeChecked = game.winningDirection;
+
+    }
+
     void updateMatrix(int row, int col, String val){
       game.insertIntoCell(row, col, val);
     }
@@ -55,28 +67,33 @@ class _GameScreenState extends State<GameScreen> {
         setState(() {
             widget.letter = "X";
             letterX = false; letterO = true;
-            chars[containerNo] = widget.letter;
-            updateMatrix(r, c, widget.letter);
         });
+        chars[containerNo] = widget.letter;
+        updateMatrix(r, c, widget.letter);
       }
 
       else if(letterO && game.mat[r][c] == ""){
         setState(() {
             widget.letter = "O";
             letterX = true; letterO = false;
-            chars[containerNo] = widget.letter;
-            updateMatrix(r, c, widget.letter);
         });
+        chars[containerNo] = widget.letter;
+        updateMatrix(r, c, widget.letter);
       }
 
-      if(game.checkWinningCondition() != ""){
+      if(game.checkWinningCondition() == "Win"){
         finalResult = "Win";
         isGameWinOrDraw = true;
+        changeWinningLetterColors();
       }
 
       else if(game.checkDrawCondition() == "Draw"){
         finalResult = "Draw";
         isGameWinOrDraw = true;
+      }
+
+      if(finalResult != ""){
+        vanishYourTurn();
       }
 
     }
@@ -94,9 +111,9 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : "X",imageName: 'satoru',),
+                    child: ProfileContainer(profileName: "Player 1", letter : "X",imageName: 'satoru'),
                   ),
-                  ProfileContainer(profileName: "Player 2", letter : "O",imageName: 'mine',),
+                  ProfileContainer(profileName: "Player 2", letter : "O",imageName: 'mine'),
                 ],
               ),
             ),
@@ -138,10 +155,17 @@ class _GameScreenState extends State<GameScreen> {
                     ],
                   ),
                 ) : Image(
-                  image: AssetImage("images/$finalResult.jpg"),
+                  image: AssetImage("images/$finalResult.png"),
                 ),
               ),
             ),
+            finalResult != ""? Center(
+              child: Container(
+                child: finalResult == "Win" ? Text(
+                  "${game.ansLetter} wins the match", style: kResultText,
+                ) : Text("It's a draw", style: kResultText),
+              ),
+            ) : Text(""),
           ],
         ),
       ),
