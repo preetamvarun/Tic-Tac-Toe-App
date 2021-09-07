@@ -7,9 +7,14 @@ import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 
 TicTacToe game = TicTacToe();
 
-late bool letterX,letterO;
+List<bool>isSelected = [false,false,false,false,false,false,false,false,false];
 
-List<bool>isSelected = [];
+List<String>chars = ["","","","","","","","",""];
+
+String a = "Your Turn", b = "";
+
+
+late bool letterX,letterO;
 
 class GameScreen extends StatefulWidget{
 
@@ -41,9 +46,13 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
 
-    void fun(int r,int c){
+    void fun(int r,int c, int containerNo){
 
-      if(letterX){
+      widget.letter = "";
+
+      isSelected[containerNo] = true;
+
+      if(letterX && isSelected[containerNo]){
         setState(() {
           if(widget.letter == ""){
             widget.letter = "X";
@@ -51,9 +60,10 @@ class _GameScreenState extends State<GameScreen> {
             letterO = true;
           }
         });
+        chars[containerNo] = widget.letter;
       }
 
-      else if(letterO){
+      else if(letterO && isSelected[containerNo]){
         setState(() {
           if(widget.letter == ""){
             widget.letter = "O";
@@ -61,7 +71,10 @@ class _GameScreenState extends State<GameScreen> {
             letterO = false;
           }
         });
+        chars[containerNo] = widget.letter;
       }
+
+      if(isSelected[containerNo]) game.insertIntoCell(r, c, widget.letter);
 
       if(game.checkWinningCondition() != ""){
         Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(result: game.checkWinningCondition())));
@@ -69,8 +82,9 @@ class _GameScreenState extends State<GameScreen> {
       else if(game.checkDrawCondition() == "Draw"){
         Navigator.push(context, MaterialPageRoute(builder : (context) => WinningScreen(result: "It's a Draw",)));
       }
-      game.insertIntoCell(r, c, widget.letter);
+
     }
+
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(
@@ -90,6 +104,19 @@ class _GameScreenState extends State<GameScreen> {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  letterX ? a : b,
+                  style: kYourTurnText,
+                ),
+                Text(
+                  letterO ? a : b,
+                  style: kYourTurnText,
+                ),
+              ],
+            ),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 25.0),
@@ -103,15 +130,15 @@ class _GameScreenState extends State<GameScreen> {
                     alignment: WrapAlignment.center,
                     runAlignment: WrapAlignment.center,
                     children: [
-                      WrappingContainer(onTap: (){fun(0,0);}, letter: widget.letter,rowNo: 0,colNo: 0),
-                      WrappingContainer(onTap: (){fun(1,0);}, letter: widget.letter,rowNo: 1,colNo: 0),
-                      WrappingContainer(onTap: (){fun(2,0);}, letter: widget.letter,rowNo: 2,colNo: 0),
-                      WrappingContainer(onTap: (){fun(0,1);}, letter: widget.letter,rowNo: 0,colNo: 1),
-                      WrappingContainer(onTap: (){fun(1,1);}, letter: widget.letter,rowNo: 1,colNo: 1),
-                      WrappingContainer(onTap: (){fun(2,1);}, letter: widget.letter,rowNo: 2,colNo: 1),
-                      WrappingContainer(onTap: (){fun(0,2);}, letter: widget.letter,rowNo: 0,colNo: 2),
-                      WrappingContainer(onTap: (){fun(1,2);}, letter: widget.letter,rowNo: 1,colNo: 2),
-                      WrappingContainer(onTap: (){fun(2,2);}, letter: widget.letter,rowNo: 2,colNo: 2),
+                      WrappingContainer(onTap: (){fun(0,0,0);}, letter: isSelected[0] ? widget.letter : "",containerNo: 0,),
+                      WrappingContainer(onTap: (){fun(1,0,1);}, letter: isSelected[1] ? widget.letter : "",containerNo: 1,),
+                      WrappingContainer(onTap: (){fun(2,0,2);}, letter: isSelected[2] ? widget.letter : "",containerNo: 2,),
+                      WrappingContainer(onTap: (){fun(0,1,3);}, letter: isSelected[3] ? widget.letter : "",containerNo: 3,),
+                      WrappingContainer(onTap: (){fun(1,1,4);}, letter: isSelected[4] ? widget.letter : "",containerNo: 4,),
+                      WrappingContainer(onTap: (){fun(2,1,5);}, letter: isSelected[5] ? widget.letter : "",containerNo: 5,),
+                      WrappingContainer(onTap: (){fun(0,2,6);}, letter: isSelected[6] ? widget.letter : "",containerNo: 6,),
+                      WrappingContainer(onTap: (){fun(1,2,7);}, letter: isSelected[7] ? widget.letter : "",containerNo: 7,),
+                      WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ? widget.letter : "",containerNo: 8,),
                     ],
                   ),
                 ),

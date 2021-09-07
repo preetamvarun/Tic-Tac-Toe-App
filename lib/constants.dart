@@ -7,5 +7,5 @@ const kGameScreenContainerColor = Color(0XFF6649C4);
 const kLetterXColor = Color(0XFFEB1751);
 const kLetterOColor = Color(0XFFFFD032);
 const kProfileContainerColor = Color(0XFF27175D);
-const kYourTurnText = Text("Your Turn", style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600));
+const kYourTurnText = TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
 

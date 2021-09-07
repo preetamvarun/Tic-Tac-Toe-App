@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
-
+import 'package:tic_tac_toe/screens/game_screen.dart';
 
 class WrappingContainer extends StatelessWidget{
 
-  final rowNo, colNo, letter, onTap;
+  final onTap,containerNo; String letter = "";
 
-  WrappingContainer({this.onTap,this.letter,this.rowNo,this.colNo});
+  WrappingContainer({this.onTap,required this.letter, this.containerNo});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,11 @@ class WrappingContainer extends StatelessWidget{
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Text(
-              letter,
+              chars[containerNo] == "" ? letter : chars[containerNo],
               style: TextStyle(
-                fontFamily: 'Carter',
+                fontFamily: chars[containerNo] == "X" ? 'Carter' : "Paytone",
                 fontSize: 80.0,
-                color: letter == "X" ? kLetterXColor : kLetterOColor,
+                color: chars[containerNo] == "X" ? kLetterXColor : kLetterOColor,
               ),
               textAlign : TextAlign.center,
             ),
