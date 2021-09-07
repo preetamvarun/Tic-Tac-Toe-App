@@ -200,7 +200,7 @@ class _GameScreenState extends State<GameScreen> {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 25.0),
-                child: finalResult == "" ? Container(
+                child: Container(
                   decoration: BoxDecoration(
                     color: kGameScreenContainerColor,
                     borderRadius: BorderRadius.circular(20.0),
@@ -221,18 +221,9 @@ class _GameScreenState extends State<GameScreen> {
                       WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ? widget.letter : "",containerNo: 8,),
                     ],
                   ),
-                ) : Image(
-                  image: AssetImage("images/$finalResult.png"),
                 ),
               ),
             ),
-            finalResult != ""? Center(
-              child: Container(
-                child: finalResult == "Win" ? Text(
-                  "${game.ansLetter} wins the match", style: kResultText,
-                ) : Text("It's a draw", style: kResultText),
-              ),
-            ) : Text(""),
           ],
         ),
       ),
