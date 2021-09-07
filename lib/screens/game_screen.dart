@@ -8,13 +8,10 @@ import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 TicTacToe game = TicTacToe();
 
 List<bool>isSelected = [false,false,false,false,false,false,false,false,false];
-
 List<String>chars = ["","","","","","","","",""];
-
 String a = "Your Turn", b = "";
-
-
 late bool letterX,letterO;
+
 
 class GameScreen extends StatefulWidget{
 
@@ -46,41 +43,38 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
 
-    void fun(int r,int c, int containerNo){
+    void updateMatrix(int row, int col, String val){
+      game.insertIntoCell(row, col, val);
+    }
 
-      widget.letter = "";
+    void fun(int r,int c, int containerNo){
 
       isSelected[containerNo] = true;
 
-      if(letterX && isSelected[containerNo]){
+      if(letterX && game.mat[r][c] == ""){
         setState(() {
-          if(widget.letter == ""){
             widget.letter = "X";
-            letterX = false;
-            letterO = true;
-          }
+            letterX = false; letterO = true;
+            chars[containerNo] = widget.letter;
+            updateMatrix(r, c, widget.letter);
         });
-        chars[containerNo] = widget.letter;
       }
 
-      else if(letterO && isSelected[containerNo]){
+      else if(letterO && game.mat[r][c] == ""){
         setState(() {
-          if(widget.letter == ""){
             widget.letter = "O";
-            letterX = true;
-            letterO = false;
-          }
+            letterX = true; letterO = false;
+            chars[containerNo] = widget.letter;
+            updateMatrix(r, c, widget.letter);
         });
-        chars[containerNo] = widget.letter;
       }
-
-      if(isSelected[containerNo]) game.insertIntoCell(r, c, widget.letter);
 
       if(game.checkWinningCondition() != ""){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(result: game.checkWinningCondition())));
+        print('game won');
       }
+
       else if(game.checkDrawCondition() == "Draw"){
-        Navigator.push(context, MaterialPageRoute(builder : (context) => WinningScreen(result: "It's a Draw",)));
+        print('game drawn');
       }
 
     }
