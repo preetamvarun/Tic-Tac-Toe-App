@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/screens/winning_screen.dart';
 import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
@@ -116,12 +117,15 @@ class _GameScreenState extends State<GameScreen> {
       });
     }
 
-    void changeWinningLetterColors(){
+    void changeWinningLetterColors(String ansLetter){
       String toBeChecked = game.winningDirection;
       if(toBeChecked == "checkRows") cr();
       else if(toBeChecked == "checkColumns") cc();
       else if(toBeChecked == "checkLeftDiagnol") cld();
       else if(toBeChecked == "checkRightDiagnol") crd();
+      Future.delayed(Duration(milliseconds: 1000), (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: ansLetter,)));
+      });
     }
 
     void updateMatrix(int row, int col, String val){
@@ -152,15 +156,13 @@ class _GameScreenState extends State<GameScreen> {
 
       if(game.checkWinningCondition() == "Win"){
         finalResult = "Win";
-        isGameWinOrDraw = true;
         vanishYourTurn();
-        changeWinningLetterColors();
+        changeWinningLetterColors(game.ansLetter);
       }
 
       else if(game.checkDrawCondition() == "Draw"){
         finalResult = "Draw";
         vanishYourTurn();
-        isGameWinOrDraw = true;
       }
 
     }
