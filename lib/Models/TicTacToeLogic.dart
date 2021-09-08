@@ -42,7 +42,6 @@ class TicTacToe{
     }
 
     String checkDrawCondition(){
-
       bool isDraw = true;
       for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
@@ -51,20 +50,10 @@ class TicTacToe{
             break;
           }
         }
-        if(isDraw){
-          continue;
-        }
-        else{
-          break;
-        }
+        if(isDraw) continue;
+        else break;
       }
-      if(isDraw){
-        ans = "Draw";
-      }
-      else{
-        ans = "";
-      }
-
+      isDraw ? ans = "Draw" : ans = "";
       return ans;
     }
 }

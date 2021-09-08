@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/widgets/container_widget.dart';
 import 'package:tic_tac_toe/constants.dart';
+import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
+
 
 String side = "X";
 
@@ -93,26 +95,12 @@ class _PickUpScreenState extends State<PickUpScreen> {
               ),
             ),
             // Button Code
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10.0),
-              child: MaterialButton(
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 0.0),
-                textColor: kGameScreenBackgroundColor,
-                color: kTextColor,
-                minWidth : double.infinity,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                child: Text(
-                  'Start',
-                  style: TextStyle(fontFamily: 'Paytone', fontSize: 35.0, color: kBackgroundColor, fontWeight: FontWeight.w500),
-                ),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));
-                },
-              ),
-            ),
+            ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));},),
           ],
         ),
       ),
     );
   }
 }
+
+

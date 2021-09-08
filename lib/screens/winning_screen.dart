@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
 import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
-import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 
 class WinningScreen extends StatelessWidget {
 
   final winningLetter;
-
   WinningScreen({this.winningLetter});
 
   @override
@@ -26,12 +24,9 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1",
-                        letter: "X",
-                        imageName: 'satoru'),
+                    child: ProfileContainer(profileName: "Player 1", letter: "X", imageName: 'satoru'),
                   ),
-                  ProfileContainer(
-                      profileName: "Player 2", letter: "O", imageName: 'mine'),
+                  ProfileContainer(profileName: "Player 2", letter: "O", imageName: 'mine'),
                 ],
               ),
             ),
@@ -48,7 +43,7 @@ class WinningScreen extends StatelessWidget {
             ),
             finalResult == "Win" ? Center(
               child: Text(
-                "$winningLetter has won the game",
+                winningLetter == "X" ? "Player1 Wins" : "Player2 Wins",
                 style: kResultText,
               ),
             ): Center(

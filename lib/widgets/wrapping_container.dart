@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
 
+var containerWidth;
+
+var bw;
+
 class WrappingContainer extends StatelessWidget{
 
   final onTap,containerNo; String letter = "";
@@ -10,6 +14,11 @@ class WrappingContainer extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+
+    containerWidth = MediaQuery.of(context).size.width - 40;
+
+    bw = containerWidth / 3;
+
     return GestureDetector(
       onTap: onTap,
       child: Padding(
@@ -31,8 +40,8 @@ class WrappingContainer extends StatelessWidget{
               ),
               textAlign : TextAlign.center,
             ),
-            height: 108.0,
-            width: 108.0,
+            height: bw - 16,
+            width: bw - 16,
           ),
         ),
     );

@@ -12,7 +12,10 @@ List<bool>isSelected = [false,false,false,false,false,false,false,false,false];
 List<String>chars = ["","","","","","","","",""];
 String a = "Your Turn", b = "", finalResult = "";
 late bool letterX,letterO;
+
 bool isGameWinOrDraw = false;
+
+late double deviceW,deviceH;
 
 var colorMap = {};
 
@@ -51,10 +54,7 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
 
     void vanishYourTurn(){
-      setState(() {
-        a = "";
-        b = "";
-      });
+      setState(() {a = "";b = "";});
     }
 
     void cr(){
@@ -163,9 +163,13 @@ class _GameScreenState extends State<GameScreen> {
       else if(game.checkDrawCondition() == "Draw"){
         finalResult = "Draw";
         vanishYourTurn();
+        Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
       }
 
     }
+
+    deviceW = MediaQuery.of(context).size.width;
+    deviceH = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
@@ -199,30 +203,30 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ],
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: kGameScreenContainerColor,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Wrap(
-                    direction: Axis.vertical,
-                    alignment: WrapAlignment.center,
-                    runAlignment: WrapAlignment.center,
-                    children: [
-                      WrappingContainer(onTap: (){fun(0,0,0);}, letter: isSelected[0] ? widget.letter : "",containerNo: 0,),
-                      WrappingContainer(onTap: (){fun(1,0,1);}, letter: isSelected[1] ? widget.letter : "",containerNo: 1,),
-                      WrappingContainer(onTap: (){fun(2,0,2);}, letter: isSelected[2] ? widget.letter : "",containerNo: 2,),
-                      WrappingContainer(onTap: (){fun(0,1,3);}, letter: isSelected[3] ? widget.letter : "",containerNo: 3,),
-                      WrappingContainer(onTap: (){fun(1,1,4);}, letter: isSelected[4] ? widget.letter : "",containerNo: 4,),
-                      WrappingContainer(onTap: (){fun(2,1,5);}, letter: isSelected[5] ? widget.letter : "",containerNo: 5,),
-                      WrappingContainer(onTap: (){fun(0,2,6);}, letter: isSelected[6] ? widget.letter : "",containerNo: 6,),
-                      WrappingContainer(onTap: (){fun(1,2,7);}, letter: isSelected[7] ? widget.letter : "",containerNo: 7,),
-                      WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ? widget.letter : "",containerNo: 8,),
-                    ],
-                  ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Container(
+                width: deviceW - 40,
+                height: deviceH - 40,
+                decoration: BoxDecoration(
+                  color: kGameScreenContainerColor,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Wrap(
+                  direction: Axis.vertical,
+                  alignment: WrapAlignment.center,
+                  runAlignment: WrapAlignment.center,
+                  children: [
+                    WrappingContainer(onTap: (){fun(0,0,0);}, letter: isSelected[0] ? widget.letter : "",containerNo: 0,),
+                    WrappingContainer(onTap: (){fun(1,0,1);}, letter: isSelected[1] ? widget.letter : "",containerNo: 1,),
+                    WrappingContainer(onTap: (){fun(2,0,2);}, letter: isSelected[2] ? widget.letter : "",containerNo: 2,),
+                    WrappingContainer(onTap: (){fun(0,1,3);}, letter: isSelected[3] ? widget.letter : "",containerNo: 3,),
+                    WrappingContainer(onTap: (){fun(1,1,4);}, letter: isSelected[4] ? widget.letter : "",containerNo: 4,),
+                    WrappingContainer(onTap: (){fun(2,1,5);}, letter: isSelected[5] ? widget.letter : "",containerNo: 5,),
+                    WrappingContainer(onTap: (){fun(0,2,6);}, letter: isSelected[6] ? widget.letter : "",containerNo: 6,),
+                    WrappingContainer(onTap: (){fun(1,2,7);}, letter: isSelected[7] ? widget.letter : "",containerNo: 7,),
+                    WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ? widget.letter : "",containerNo: 8,),
+                  ],
                 ),
               ),
             ),
