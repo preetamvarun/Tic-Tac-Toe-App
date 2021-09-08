@@ -1,5 +1,9 @@
 import 'package:tic_tac_toe/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
+
+TicTacToe game = TicTacToe();
+
 
 enum letter { cardX, cardO }
 String side = "X";
@@ -9,6 +13,9 @@ String a = "Your Turn", b = "", finalResult = "";
 late bool letterX,letterO;
 late double deviceW;
 var colorMap = {};
+var containerWidth;
+var bw;
+
 
 
 class UI{
@@ -34,5 +41,10 @@ class UI{
     }
   }
 
+  void initializeColorMap(){
+    for(int i = 0; i < 9; i++){
+      colorMap[i] = "kProfileContainerColor";
+    }
+  }
 
 }

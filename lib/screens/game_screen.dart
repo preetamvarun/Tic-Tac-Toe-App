@@ -10,7 +10,6 @@ import 'package:tic_tac_toe/Models/UiLogic.dart';
 TicTacToe game = TicTacToe();
 UI ui = UI();
 
-
 class GameScreen extends StatefulWidget{
 
   final chosenLetter;
@@ -36,10 +35,9 @@ class _GameScreenState extends State<GameScreen> {
         letterO = false;
       }
     }
-    for(int i = 0; i < 9; i++){
-      colorMap[i] = "kProfileContainerColor";
-    }
+    ui.initializeColorMap();
     super.initState();
+
   }
 
   @override
@@ -51,46 +49,29 @@ class _GameScreenState extends State<GameScreen> {
 
     void cr(){
       setState(() {
-        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[0][1] && game.mat[0][1] == game.mat[0][2]) {
-          colorMap[0] = colorMap[3] = colorMap[6] = 'GreenColor';
-        }
-        if(game.mat[1][0] != "" && game.mat[1][0] == game.mat[1][1] && game.mat[1][1] == game.mat[1][2]) {
-          colorMap[1] = colorMap[4] = colorMap[7] = 'GreenColor';
-        }
-        if(game.mat[2][0] != "" && game.mat[2][0] == game.mat[2][1] && game.mat[2][1] == game.mat[2][2]) {
-          colorMap[2] = colorMap[5] = colorMap[8] = 'GreenColor';
-        }
+        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[0][1] && game.mat[0][1] == game.mat[0][2]) colorMap[0] = colorMap[3] = colorMap[6] = kG;
+        if(game.mat[1][0] != "" && game.mat[1][0] == game.mat[1][1] && game.mat[1][1] == game.mat[1][2]) colorMap[1] = colorMap[4] = colorMap[7] = kG;
+        if(game.mat[2][0] != "" && game.mat[2][0] == game.mat[2][1] && game.mat[2][1] == game.mat[2][2]) colorMap[2] = colorMap[5] = colorMap[8] = kG;
       });
     }
 
-
     void cc(){
       setState(() {
-        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[1][0] && game.mat[1][0] == game.mat[2][0]) {
-          colorMap[0] = colorMap[1] = colorMap[2] = 'GreenColor';
-        }
-        if(game.mat[0][1] != "" && game.mat[0][1] == game.mat[1][1] && game.mat[1][1] == game.mat[2][1]) {
-          colorMap[3] = colorMap[4] = colorMap[5] = 'GreenColor';
-          }
-        if (game.mat[0][2] != "" && game.mat[0][2] == game.mat[1][2] && game.mat[1][2] == game.mat[2][2]) {
-          colorMap[6] = colorMap[7] = colorMap[8] = 'GreenColor';
-        }
+        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[1][0] && game.mat[1][0] == game.mat[2][0]) colorMap[0] = colorMap[1] = colorMap[2] = kG;
+        if(game.mat[0][1] != "" && game.mat[0][1] == game.mat[1][1] && game.mat[1][1] == game.mat[2][1]) colorMap[3] = colorMap[4] = colorMap[5] = kG;
+        if(game.mat[0][2] != "" && game.mat[0][2] == game.mat[1][2] && game.mat[1][2] == game.mat[2][2]) colorMap[6] = colorMap[7] = colorMap[8] = kG;
       });
     }
 
     void cld(){
       setState(() {
-      if(game.mat[0][0] == game.mat[1][1] && game.mat[1][1] == game.mat[2][2]){
-        colorMap[0] = colorMap[4] = colorMap[8] = 'GreenColor';
-        }
+      if(game.mat[0][0] == game.mat[1][1] && game.mat[1][1] == game.mat[2][2]) colorMap[0] = colorMap[4] = colorMap[8] = kG;
       });
     }
 
     void crd(){
       setState(() {
-      if(game.mat[2][0] == game.mat[1][1] && game.mat[1][1] == game.mat[0][2]){
-        colorMap[2] = colorMap[4] = colorMap[6] = 'GreenColor';
-        }
+      if(game.mat[2][0] == game.mat[1][1] && game.mat[1][1] == game.mat[0][2]) colorMap[2] = colorMap[4] = colorMap[6] = kG;
       });
     }
 
@@ -110,26 +91,21 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     void fun(int r,int c, int containerNo){
-
       isSelected[containerNo] = true;
-
       if(letterX && game.mat[r][c] == ""){
         setState(() {
             UI.character = "X";
             letterX = false; letterO = true;
         });
-        chars[containerNo] = UI.character;
-        updateMatrix(r, c, UI.character);
       }
-
       else if(letterO && game.mat[r][c] == ""){
         setState(() {
             UI.character = "O";
             letterX = true; letterO = false;
         });
-        chars[containerNo] = UI.character;
-        updateMatrix(r, c, UI.character);
       }
+      chars[containerNo] = UI.character;
+      updateMatrix(r, c, UI.character);
 
       if(game.checkWinningCondition() == "Win"){
         finalResult = "Win";
@@ -142,11 +118,9 @@ class _GameScreenState extends State<GameScreen> {
         vanishYourTurn();
         Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
       }
-
     }
 
     deviceW = MediaQuery.of(context).size.width;
-
 
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
@@ -170,14 +144,8 @@ class _GameScreenState extends State<GameScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
-                  letterX ? a : b,
-                  style: kYourTurnText,
-                ),
-                Text(
-                  letterO ? a : b,
-                  style: kYourTurnText,
-                ),
+                Text( letterX ? a : b, style: kYourTurnText,),
+                Text( letterO ? a : b, style: kYourTurnText,),
               ],
             ),
             Padding(

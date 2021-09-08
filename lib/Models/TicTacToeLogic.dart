@@ -1,8 +1,6 @@
-
 class TicTacToe{
 
     String ans = "",ansLetter = "", winningDirection = "";
-
     var mat = [["","",""],["","",""],["","",""]];
 
     void insertIntoCell(int rowIndex,int columnIndex,String val){
