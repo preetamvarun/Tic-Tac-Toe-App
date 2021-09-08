@@ -3,9 +3,9 @@ import 'package:tic_tac_toe/widgets/container_widget.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
+import 'package:tic_tac_toe/Models/UiLogic.dart';
 
-
-String side = "X";
+UI ui = UI();
 
 class PickUpScreen extends StatefulWidget {
 
@@ -13,34 +13,9 @@ class PickUpScreen extends StatefulWidget {
   _PickUpScreenState createState() => _PickUpScreenState();
 }
 
-enum letter{
-  cardX,
-  cardO
-}
-
-
 class _PickUpScreenState extends State<PickUpScreen> {
 
-  Color xCardColor = kProfileContainerColor, oCardColor = kGameScreenBackgroundColor;
-  Color xTextColor = Colors.white, oTextColor = kTextColor;
-
-  // if colorNo == 1 X is pressed ; colorNo == 2 O is pressed;
-  void updateColor(letter selectedLetter){
-
-    if(selectedLetter == letter.cardO){
-      if(oCardColor == kGameScreenBackgroundColor && oTextColor == kTextColor){
-        oCardColor = kProfileContainerColor;oTextColor = Colors.white;
-        xCardColor = kGameScreenBackgroundColor;xTextColor = kTextColor;
-      }
-    }
-
-    if(selectedLetter == letter.cardX){
-      if(xCardColor == kGameScreenBackgroundColor && xTextColor == kTextColor){
-        oCardColor = kGameScreenBackgroundColor;oTextColor = kTextColor;
-        xCardColor = kProfileContainerColor;xTextColor = Colors.white;
-      }
-    }
-  }
+  void updateColor(letter selectedLetter) {ui.updateColor(selectedLetter);}
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +48,8 @@ class _PickUpScreenState extends State<PickUpScreen> {
                   });
                 },
                 child: ContainerWidget(
-                  color: xCardColor,
-                  text: "X",
-                  textColor: xTextColor,
+                  color: ui.xCardColor, text: "X",
+                  textColor: ui.xTextColor,
                 ),
               ),
             ),
@@ -88,14 +62,13 @@ class _PickUpScreenState extends State<PickUpScreen> {
                   });
                 },
                 child: ContainerWidget(
-                  color: oCardColor,
-                  text: "O",
-                  textColor: oTextColor,
+                  color: ui.oCardColor, text: "O",
+                  textColor: ui.oTextColor,
                 ),
               ),
             ),
             // Button Code
-            ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));},),
+            ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));}, text: "Start",),
           ],
         ),
       ),
