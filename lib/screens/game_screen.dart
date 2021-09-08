@@ -5,19 +5,9 @@ import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'dart:async';
+import 'package:tic_tac_toe/Models/UiLogic.dart';
 
 TicTacToe game = TicTacToe();
-
-List<bool>isSelected = [false,false,false,false,false,false,false,false,false];
-List<String>chars = ["","","","","","","","",""];
-String a = "Your Turn", b = "", finalResult = "";
-late bool letterX,letterO;
-
-bool isGameWinOrDraw = false;
-
-late double deviceW,deviceH;
-
-var colorMap = {};
 
 
 class GameScreen extends StatefulWidget{
@@ -34,6 +24,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
+
     if(widget.chosenLetter != null){
       if(widget.chosenLetter == "O"){
         letterO = true;
@@ -169,7 +160,7 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     deviceW = MediaQuery.of(context).size.width;
-    deviceH = MediaQuery.of(context).size.width;
+
 
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
@@ -207,7 +198,7 @@ class _GameScreenState extends State<GameScreen> {
               padding: EdgeInsets.all(20.0),
               child: Container(
                 width: deviceW - 40,
-                height: deviceH - 40,
+                height: deviceW - 40,
                 decoration: BoxDecoration(
                   color: kGameScreenContainerColor,
                   borderRadius: BorderRadius.circular(20.0),

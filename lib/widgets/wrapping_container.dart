@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
-import 'package:tic_tac_toe/screens/game_screen.dart';
+import 'package:tic_tac_toe/Models/UiLogic.dart';
 
 var containerWidth;
 

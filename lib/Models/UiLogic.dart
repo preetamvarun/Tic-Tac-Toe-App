@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 
 enum letter { cardX, cardO }
 String side = "X";
+List<bool>isSelected = [false,false,false,false,false,false,false,false,false];
+List<String>chars = ["","","","","","","","",""];
+String a = "Your Turn", b = "", finalResult = "";
+late bool letterX,letterO;
+late double deviceW;
+var colorMap = {};
+
 
 class UI{
 

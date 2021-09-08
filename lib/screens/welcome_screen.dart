@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
-import 'package:tic_tac_toe/widgets/welcome_screen_text_widget.dart';
+import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
 

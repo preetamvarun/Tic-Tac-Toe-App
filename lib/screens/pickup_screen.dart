@@ -4,6 +4,7 @@ import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
+import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 
 UI ui = UI();
 
@@ -15,7 +16,9 @@ class PickUpScreen extends StatefulWidget {
 
 class _PickUpScreenState extends State<PickUpScreen> {
 
-  void updateColor(letter selectedLetter) {ui.updateColor(selectedLetter);}
+  void updateColor(letter selectedLetter) {
+    ui.updateColor(selectedLetter);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +31,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
             Center(
               child: Padding(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
-                  'Choose a side',
-                  style: TextStyle(
-                    color: kTextColor,
-                    fontSize: 35.0,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Carter',
-                  ),
-                ),
+                child: TextWidget(text: 'Choose a side',fontSize: 35.0,fontWeight: FontWeight.w500,)
               ),
             ),
             Expanded(
@@ -75,5 +70,3 @@ class _PickUpScreenState extends State<PickUpScreen> {
     );
   }
 }
-
-

@@ -3,8 +3,8 @@ import 'package:tic_tac_toe/constants.dart';
 
 class TextWidget extends StatelessWidget {
 
-  TextWidget({this.text,this.fontSize});
-  final text,fontSize;
+  TextWidget({this.text,this.fontSize,this.fontWeight});
+  final text,fontSize,fontWeight;
 
   @override
   Widget build(BuildContext context) {
