@@ -6,8 +6,6 @@ import 'package:tic_tac_toe/screens/game_screen.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 
-UI ui = UI();
-
 class PickUpScreen extends StatefulWidget {
 
   @override
@@ -43,8 +41,8 @@ class _PickUpScreenState extends State<PickUpScreen> {
                   });
                 },
                 child: ContainerWidget(
-                  color: ui.xCardColor, text: "X",
-                  textColor: ui.xTextColor,
+                  color: UI.xCardColor, text: "X",
+                  textColor: UI.xTextColor,
                 ),
               ),
             ),
@@ -57,8 +55,8 @@ class _PickUpScreenState extends State<PickUpScreen> {
                   });
                 },
                 child: ContainerWidget(
-                  color: ui.oCardColor, text: "O",
-                  textColor: ui.oTextColor,
+                  color: UI.oCardColor, text: "O",
+                  textColor: UI.oTextColor,
                 ),
               ),
             ),

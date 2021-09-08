@@ -8,11 +8,12 @@ import 'dart:async';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 
 TicTacToe game = TicTacToe();
+UI ui = UI();
 
 
 class GameScreen extends StatefulWidget{
 
-  final chosenLetter; String letter = "";
+  final chosenLetter;
 
   GameScreen({this.chosenLetter});
 
@@ -51,39 +52,28 @@ class _GameScreenState extends State<GameScreen> {
     void cr(){
       setState(() {
         if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[0][1] && game.mat[0][1] == game.mat[0][2]) {
-          colorMap[0] = 'GreenColor';
-          colorMap[3] = 'GreenColor';
-          colorMap[6] = 'GreenColor';
+          colorMap[0] = colorMap[3] = colorMap[6] = 'GreenColor';
         }
         if(game.mat[1][0] != "" && game.mat[1][0] == game.mat[1][1] && game.mat[1][1] == game.mat[1][2]) {
-          colorMap[1] = 'GreenColor';
-          colorMap[4] = 'GreenColor';
-          colorMap[7] = 'GreenColor';
+          colorMap[1] = colorMap[4] = colorMap[7] = 'GreenColor';
         }
         if(game.mat[2][0] != "" && game.mat[2][0] == game.mat[2][1] && game.mat[2][1] == game.mat[2][2]) {
-          colorMap[2] = 'GreenColor';
-          colorMap[5] = 'GreenColor';
-          colorMap[8] = 'GreenColor';
+          colorMap[2] = colorMap[5] = colorMap[8] = 'GreenColor';
         }
       });
     }
 
+
     void cc(){
       setState(() {
         if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[1][0] && game.mat[1][0] == game.mat[2][0]) {
-          colorMap[0] = 'GreenColor';
-          colorMap[1] = 'GreenColor';
-          colorMap[2] = 'GreenColor';
+          colorMap[0] = colorMap[1] = colorMap[2] = 'GreenColor';
         }
         if(game.mat[0][1] != "" && game.mat[0][1] == game.mat[1][1] && game.mat[1][1] == game.mat[2][1]) {
-          colorMap[3] = 'GreenColor';
-          colorMap[4] = 'GreenColor';
-          colorMap[5] = 'GreenColor';
+          colorMap[3] = colorMap[4] = colorMap[5] = 'GreenColor';
           }
         if (game.mat[0][2] != "" && game.mat[0][2] == game.mat[1][2] && game.mat[1][2] == game.mat[2][2]) {
-          colorMap[6] = 'GreenColor';
-          colorMap[7] = 'GreenColor';
-          colorMap[8] = 'GreenColor';
+          colorMap[6] = colorMap[7] = colorMap[8] = 'GreenColor';
         }
       });
     }
@@ -91,9 +81,7 @@ class _GameScreenState extends State<GameScreen> {
     void cld(){
       setState(() {
       if(game.mat[0][0] == game.mat[1][1] && game.mat[1][1] == game.mat[2][2]){
-        colorMap[0] = 'GreenColor';
-        colorMap[4] = 'GreenColor';
-        colorMap[8] = 'GreenColor';
+        colorMap[0] = colorMap[4] = colorMap[8] = 'GreenColor';
         }
       });
     }
@@ -101,10 +89,8 @@ class _GameScreenState extends State<GameScreen> {
     void crd(){
       setState(() {
       if(game.mat[2][0] == game.mat[1][1] && game.mat[1][1] == game.mat[0][2]){
-        colorMap[2] = 'GreenColor';
-        colorMap[4] = 'GreenColor';
-        colorMap[6] = 'GreenColor';
-         }
+        colorMap[2] = colorMap[4] = colorMap[6] = 'GreenColor';
+        }
       });
     }
 
@@ -129,20 +115,20 @@ class _GameScreenState extends State<GameScreen> {
 
       if(letterX && game.mat[r][c] == ""){
         setState(() {
-            widget.letter = "X";
+            UI.character = "X";
             letterX = false; letterO = true;
         });
-        chars[containerNo] = widget.letter;
-        updateMatrix(r, c, widget.letter);
+        chars[containerNo] = UI.character;
+        updateMatrix(r, c, UI.character);
       }
 
       else if(letterO && game.mat[r][c] == ""){
         setState(() {
-            widget.letter = "O";
+            UI.character = "O";
             letterX = true; letterO = false;
         });
-        chars[containerNo] = widget.letter;
-        updateMatrix(r, c, widget.letter);
+        chars[containerNo] = UI.character;
+        updateMatrix(r, c, UI.character);
       }
 
       if(game.checkWinningCondition() == "Win"){
@@ -208,15 +194,15 @@ class _GameScreenState extends State<GameScreen> {
                   alignment: WrapAlignment.center,
                   runAlignment: WrapAlignment.center,
                   children: [
-                    WrappingContainer(onTap: (){fun(0,0,0);}, letter: isSelected[0] ? widget.letter : "",containerNo: 0,),
-                    WrappingContainer(onTap: (){fun(1,0,1);}, letter: isSelected[1] ? widget.letter : "",containerNo: 1,),
-                    WrappingContainer(onTap: (){fun(2,0,2);}, letter: isSelected[2] ? widget.letter : "",containerNo: 2,),
-                    WrappingContainer(onTap: (){fun(0,1,3);}, letter: isSelected[3] ? widget.letter : "",containerNo: 3,),
-                    WrappingContainer(onTap: (){fun(1,1,4);}, letter: isSelected[4] ? widget.letter : "",containerNo: 4,),
-                    WrappingContainer(onTap: (){fun(2,1,5);}, letter: isSelected[5] ? widget.letter : "",containerNo: 5,),
-                    WrappingContainer(onTap: (){fun(0,2,6);}, letter: isSelected[6] ? widget.letter : "",containerNo: 6,),
-                    WrappingContainer(onTap: (){fun(1,2,7);}, letter: isSelected[7] ? widget.letter : "",containerNo: 7,),
-                    WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ? widget.letter : "",containerNo: 8,),
+                    WrappingContainer(onTap: (){fun(0,0,0);}, letter: isSelected[0] ?  UI.character: "",containerNo: 0,),
+                    WrappingContainer(onTap: (){fun(1,0,1);}, letter: isSelected[1] ?  UI.character: "",containerNo: 1,),
+                    WrappingContainer(onTap: (){fun(2,0,2);}, letter: isSelected[2] ?  UI.character: "",containerNo: 2,),
+                    WrappingContainer(onTap: (){fun(0,1,3);}, letter: isSelected[3] ?  UI.character: "",containerNo: 3,),
+                    WrappingContainer(onTap: (){fun(1,1,4);}, letter: isSelected[4] ?  UI.character: "",containerNo: 4,),
+                    WrappingContainer(onTap: (){fun(2,1,5);}, letter: isSelected[5] ?  UI.character: "",containerNo: 5,),
+                    WrappingContainer(onTap: (){fun(0,2,6);}, letter: isSelected[6] ?  UI.character: "",containerNo: 6,),
+                    WrappingContainer(onTap: (){fun(1,2,7);}, letter: isSelected[7] ?  UI.character: "",containerNo: 7,),
+                    WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ?  UI.character: "",containerNo: 8,),
                   ],
                 ),
               ),

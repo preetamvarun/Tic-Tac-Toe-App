@@ -13,10 +13,13 @@ var colorMap = {};
 
 class UI{
 
-  Color xCardColor = kProfileContainerColor, oCardColor = kGameScreenBackgroundColor;
-  Color xTextColor = Colors.white, oTextColor = kTextColor;
+  static Color xCardColor = kProfileContainerColor; static Color oCardColor = kGameScreenBackgroundColor;
+  static Color xTextColor = Colors.white; static Color oTextColor = kTextColor;
+
+  static String character = "";
 
   void updateColor(letter selectedLetter){
+
     if(selectedLetter == letter.cardO){
       if(oCardColor == kGameScreenBackgroundColor && oTextColor == kTextColor){
         oCardColor = kProfileContainerColor; oTextColor = Colors.white;
@@ -30,5 +33,6 @@ class UI{
       }
     }
   }
+
 
 }
