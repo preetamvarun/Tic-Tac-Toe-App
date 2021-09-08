@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
+import 'package:tic_tac_toe/widgets/reusable_button.dart';
 
 class WinningScreen extends StatelessWidget {
 
@@ -52,6 +53,9 @@ class WinningScreen extends StatelessWidget {
                 style: kResultText,
               ),
             ),
+            ReusableButton(text: 'Restart', onTap: (){
+              
+            },)
           ],
         ),
       ),
