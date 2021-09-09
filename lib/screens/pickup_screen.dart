@@ -20,7 +20,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
 
   @override
   void initState() {
-    u.initVariables();
+    u.colorsAndSide();
     super.initState();
   }
 
@@ -71,7 +71,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
               ),
             ),
             // Button Code
-            ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));}, text: "Start",),
+            ReusableButton(onTap: () {u.remainingVars(); Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));}, text: "Start",),
           ],
         ),
       ),

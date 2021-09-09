@@ -17,14 +17,18 @@ class UI{
   static late Color xTextColor; static late Color oTextColor;
   static late String character;
 
-  void initVariables(){
-    side = "X";a = "Your Turn"; b = ""; finalResult = "";character = "";
+  void colorsAndSide(){
+    xCardColor = kProfileContainerColor;oTextColor = kTextColor;
+    oCardColor = kGameScreenBackgroundColor;xTextColor = Colors.white;
+    side = "X";
+  }
+
+  void remainingVars(){
+   finalResult = "";character = "";
     isSelected = [false,false,false,false,false,false,false,false,false];
     chars = ["","","","","","","","",""];
     ans = ""; ansLetter = ""; winningDirection = "";
     colorMap={};
-    xCardColor = kProfileContainerColor;oTextColor = kTextColor;
-    oCardColor = kGameScreenBackgroundColor;xTextColor = Colors.white;
     mat = [["","",""],["","",""],["","",""]];
   }
 
