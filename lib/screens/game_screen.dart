@@ -87,32 +87,41 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     void fun(int r,int c, int containerNo){
-      isSelected[containerNo] = true;
-      if(letterX && mat[r][c] == ""){
-        setState(() {
+
+      if(finalResult != "Win") {
+
+        isSelected[containerNo] = true;
+        if (letterX && mat[r][c] == "") {
+          setState(() {
             UI.character = "X";
-            letterX = false; letterO = true;
-        });
-      }
-      else if(letterO && mat[r][c] == ""){
-        setState(() {
+            letterX = false;
+            letterO = true;
+          });
+        }
+        else if (letterO && mat[r][c] == "") {
+          setState(() {
             UI.character = "O";
-            letterX = true; letterO = false;
-        });
+            letterX = true;
+            letterO = false;
+          });
+        }
+
+        chars[containerNo] = UI.character;
+        updateMatrix(r, c, UI.character);
+
+        if (game.checkWinningCondition() == "Win") {
+          finalResult = "Win";
+          changeWinningLetterColors(ansLetter);
+        }
+
+        else if (game.checkDrawCondition() == "Draw") {
+          finalResult = "Draw";
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => WinningScreen()));
+        }
+
       }
 
-      chars[containerNo] = UI.character;
-      updateMatrix(r, c, UI.character);
-
-      if(game.checkWinningCondition() == "Win"){
-        finalResult = "Win";
-        changeWinningLetterColors(ansLetter);
-      }
-
-      else if(game.checkDrawCondition() == "Draw"){
-        finalResult = "Draw";
-        Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
-      }
     }
 
     deviceW = MediaQuery.of(context).size.width;
