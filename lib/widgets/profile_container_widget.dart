@@ -6,7 +6,6 @@ import 'package:tic_tac_toe/constants.dart';
 class ProfileContainer extends StatelessWidget {
 
   final profileName,imageName,letter,bckColor;
-
   ProfileContainer({this.profileName,this.letter,this.imageName,this.bckColor});
 
   @override
@@ -44,13 +43,13 @@ class ProfileContainer extends StatelessWidget {
             style: finalResult != "Win" ? TextStyle(
               fontSize: 35.0,
               fontFamily: "carter",
-              color: letterO ? letter == "O" ? Colors.white : kLetterOColor
-                  : letter == "X" ? Colors.white : kLetterXColor
+              color: letterO ? letter == "O" ? Colors.white : kLetterXColor
+                  : letter == "X" ? Colors.white : kLetterOColor
             ) : TextStyle(
               fontSize: 35.0,
               fontFamily: "carter",
-              color: letterX == false ? letter == "X" ? Colors.white : kLetterXColor
-                  : letter == "O" ? Colors.white : kLetterOColor,
+              color: letterX == false ? letter == "X" ? Colors.white : kLetterOColor
+                  : letter == "O" ? Colors.white : kLetterXColor,
             ),
           ),
         ],
