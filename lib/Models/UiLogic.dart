@@ -1,11 +1,5 @@
 import 'package:tic_tac_toe/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
-
-TicTacToe game = TicTacToe();
-
-
-bool isTheGameRestarted = false;
 
 enum letter { cardX, cardO }
 late String side,a,b,finalResult,ans,ansLetter,winningDirection;
@@ -15,28 +9,22 @@ late bool letterX,letterO;
 late double deviceW;
 var colorMap = {};
 var containerWidth;
-var bw;
-var mat;
+var bw,mat;
 
 class UI{
 
   static late Color xCardColor; static late Color oCardColor;
   static late Color xTextColor; static late Color oTextColor;
-
   static late String character;
 
   void initVariables(){
-    side = "X";
+    side = "X";a = "Your Turn"; b = ""; finalResult = "";character = "";
     isSelected = [false,false,false,false,false,false,false,false,false];
     chars = ["","","","","","","","",""];
-    a = "Your Turn"; b = ""; finalResult = "";
     ans = ""; ansLetter = ""; winningDirection = "";
     colorMap={};
-    xCardColor = kProfileContainerColor;
-    oCardColor = kGameScreenBackgroundColor;
-    xTextColor = Colors.white;
-    oTextColor = kTextColor;
-    character = "";
+    xCardColor = kProfileContainerColor;oTextColor = kTextColor;
+    oCardColor = kGameScreenBackgroundColor;xTextColor = Colors.white;
     mat = [["","",""],["","",""],["","",""]];
   }
 
@@ -60,6 +48,62 @@ class UI{
     for(int i = 0; i < 9; i++){
       colorMap[i] = "kProfileContainerColor";
     }
+  }
+
+  bool checkR1(){
+    if(mat[0][0] != "" && mat[0][0] == mat[0][1] && mat[0][1] == mat[0][2]){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkR2(){
+    if(mat[1][0] != "" && mat[1][0] == mat[1][1] && mat[1][1] == mat[1][2]){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkR3(){
+    if(mat[2][0] != "" && mat[2][0] == mat[2][1] && mat[2][1] == mat[2][2]){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkC1(){
+    if(mat[0][0] != "" && mat[0][0] == mat[1][0] && mat[1][0] == mat[2][0]){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkC2(){
+    if(mat[0][1] != "" && mat[0][1] == mat[1][1] && mat[1][1] == mat[2][1]){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkC3(){
+    if(mat[0][2] != "" && mat[0][2] == mat[1][2] && mat[1][2] == mat[2][2]){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkLeftDiagnol(){
+    if(mat[0][0] == mat[1][1] && mat[1][1] == mat[2][2]){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkRightDiagnol(){
+    if(mat[2][0] == mat[1][1] && mat[1][1] == mat[0][2]){
+      return true;
+    }
+    return false;
   }
 
 }

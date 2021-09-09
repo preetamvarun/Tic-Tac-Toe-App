@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/screens/winning_screen.dart';
 import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/widgets/wrapping_container.dart';
@@ -7,11 +8,11 @@ import 'dart:async';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 
 UI ui = UI();
+TicTacToe game = TicTacToe();
 
 class GameScreen extends StatefulWidget{
 
   final chosenLetter;
-
   GameScreen({this.chosenLetter});
 
   @override
@@ -35,7 +36,6 @@ class _GameScreenState extends State<GameScreen> {
     }
     ui.initializeColorMap();
     super.initState();
-
   }
 
   @override
@@ -45,40 +45,40 @@ class _GameScreenState extends State<GameScreen> {
       setState(() {a = "";b = "";});
     }
 
-    void cr(){
+    void checkRows(){
       setState(() {
-        if(mat[0][0] != "" && mat[0][0] == mat[0][1] && mat[0][1] == mat[0][2]) colorMap[0] = colorMap[3] = colorMap[6] = kG;
-        if(mat[1][0] != "" && mat[1][0] == mat[1][1] && mat[1][1] == mat[1][2]) colorMap[1] = colorMap[4] = colorMap[7] = kG;
-        if(mat[2][0] != "" && mat[2][0] == mat[2][1] && mat[2][1] == mat[2][2]) colorMap[2] = colorMap[5] = colorMap[8] = kG;
+        if(ui.checkR1()) colorMap[0] = colorMap[3] = colorMap[6] = kG;
+        if(ui.checkR2()) colorMap[1] = colorMap[4] = colorMap[7] = kG;
+        if(ui.checkR3()) colorMap[2] = colorMap[5] = colorMap[8] = kG;
       });
     }
 
-    void cc(){
+    void checkColumns(){
       setState(() {
-        if(mat[0][0] != "" && mat[0][0] == mat[1][0] && mat[1][0] == mat[2][0]) colorMap[0] = colorMap[1] = colorMap[2] = kG;
-        if(mat[0][1] != "" && mat[0][1] == mat[1][1] && mat[1][1] == mat[2][1]) colorMap[3] = colorMap[4] = colorMap[5] = kG;
-        if(mat[0][2] != "" && mat[0][2] == mat[1][2] && mat[1][2] == mat[2][2]) colorMap[6] = colorMap[7] = colorMap[8] = kG;
+        if(ui.checkC1()) colorMap[0] = colorMap[1] = colorMap[2] = kG;
+        if(ui.checkC2()) colorMap[3] = colorMap[4] = colorMap[5] = kG;
+        if(ui.checkC3()) colorMap[6] = colorMap[7] = colorMap[8] = kG;
       });
     }
 
-    void cld(){
+    void checkLeftDiagnol(){
       setState(() {
-      if(mat[0][0] == mat[1][1] && mat[1][1] == mat[2][2]) colorMap[0] = colorMap[4] = colorMap[8] = kG;
+      if(ui.checkLeftDiagnol()) colorMap[0] = colorMap[4] = colorMap[8] = kG;
       });
     }
 
-    void crd(){
+    void checkRightDiagnol(){
       setState(() {
-      if(mat[2][0] == mat[1][1] && mat[1][1] == mat[0][2]) colorMap[2] = colorMap[4] = colorMap[6] = kG;
+      if(ui.checkRightDiagnol()) colorMap[2] = colorMap[4] = colorMap[6] = kG;
       });
     }
 
     void changeWinningLetterColors(String ansLetter){
       String toBeChecked = winningDirection;
-      if(toBeChecked == "checkRows") cr();
-      else if(toBeChecked == "checkColumns") cc();
-      else if(toBeChecked == "checkLeftDiagnol") cld();
-      else if(toBeChecked == "checkRightDiagnol") crd();
+      if(toBeChecked == "checkRows") checkRows();
+      else if(toBeChecked == "checkColumns") checkColumns();
+      else if(toBeChecked == "checkLeftDiagnol") checkLeftDiagnol();
+      else if(toBeChecked == "checkRightDiagnol") checkRightDiagnol();
       Future.delayed(Duration(milliseconds: 1000), (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: ansLetter,)));
       });
@@ -102,6 +102,7 @@ class _GameScreenState extends State<GameScreen> {
             letterX = true; letterO = false;
         });
       }
+
       chars[containerNo] = UI.character;
       updateMatrix(r, c, UI.character);
 
