@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/constants.dart';
 
 // ignore: must_be_immutable
 class ProfileContainer extends StatelessWidget {
 
-  final profileName,imageName,letter;
+  final profileName,imageName,letter,bckColor;
 
-  ProfileContainer({this.profileName,this.letter,this.imageName});
+  ProfileContainer({this.profileName,this.letter,this.imageName,this.bckColor});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: kProfileContainerColor,
+      decoration: finalResult != "Win" ? BoxDecoration(
+        color: letterO ? letter == "O" ? Colors.green : kProfileContainerColor
+        :  letter == "X" ? Colors.green : kProfileContainerColor ,
         borderRadius: BorderRadius.circular(20.0),
+      ) : BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: letterX == false ? letter == "X" ? Colors.green : kProfileContainerColor
+            : letter == "O" ? Colors.green : kProfileContainerColor,
       ),
       height: 170.0,
       width: 120.0,

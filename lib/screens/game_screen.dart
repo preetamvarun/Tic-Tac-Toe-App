@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 
 UI ui = UI();
+
 TicTacToe game = TicTacToe();
 
 class GameScreen extends StatefulWidget{
@@ -39,11 +40,8 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
 
-    void vanishYourTurn(){
-      setState(() {a = "";b = "";});
-    }
+  Widget build(BuildContext context) {
 
     void checkRows(){
       setState(() {
@@ -108,13 +106,11 @@ class _GameScreenState extends State<GameScreen> {
 
       if(game.checkWinningCondition() == "Win"){
         finalResult = "Win";
-        vanishYourTurn();
         changeWinningLetterColors(ansLetter);
       }
 
       else if(game.checkDrawCondition() == "Draw"){
         finalResult = "Draw";
-        vanishYourTurn();
         Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
       }
     }
@@ -134,18 +130,11 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : "X",imageName: 'satoru'),
+                    child: ProfileContainer(profileName: "Player 1", letter : side == "X" ? "X" : "O" ,imageName: 'satoru'),
                   ),
-                  ProfileContainer(profileName: "Player 2", letter : "O",imageName: 'mine'),
+                  ProfileContainer(profileName: "Player 2", letter : side == "X" ? "O" : "X",imageName: 'mine'),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text( letterX ? a : b, style: kYourTurnText,),
-                Text( letterO ? a : b, style: kYourTurnText,),
-              ],
             ),
             Padding(
               padding: EdgeInsets.all(20.0),
