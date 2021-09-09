@@ -11,6 +11,7 @@ class ProfileContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: finalResult != "Win" ? BoxDecoration(
         color: letterO ? letter == "O" ? Colors.green : kProfileContainerColor
