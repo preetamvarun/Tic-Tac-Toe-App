@@ -44,7 +44,8 @@ class ProfileContainer extends StatelessWidget {
             style: TextStyle(
               fontSize: 35.0,
               fontFamily: "carter",
-              color: letter == "X" ? kLetterXColor : kLetterOColor,
+              color: letterO ? letter == "O" ? Colors.white : kLetterOColor
+                  : letter == "X" ? Colors.white : kLetterXColor
             ),
           ),
         ],
