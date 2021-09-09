@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/widgets/container_widget.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
+
+TicTacToe g = TicTacToe();
+UI u = UI();
 
 class PickUpScreen extends StatefulWidget {
 
@@ -13,6 +17,12 @@ class PickUpScreen extends StatefulWidget {
 }
 
 class _PickUpScreenState extends State<PickUpScreen> {
+
+  @override
+  void initState() {
+    u.initVariables();
+    super.initState();
+  }
 
   void updateColor(letter selectedLetter) {
     ui.updateColor(selectedLetter);

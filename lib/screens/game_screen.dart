@@ -3,11 +3,9 @@ import 'package:tic_tac_toe/screens/winning_screen.dart';
 import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
-import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'dart:async';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 
-TicTacToe game = TicTacToe();
 UI ui = UI();
 
 class GameScreen extends StatefulWidget{
@@ -49,34 +47,34 @@ class _GameScreenState extends State<GameScreen> {
 
     void cr(){
       setState(() {
-        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[0][1] && game.mat[0][1] == game.mat[0][2]) colorMap[0] = colorMap[3] = colorMap[6] = kG;
-        if(game.mat[1][0] != "" && game.mat[1][0] == game.mat[1][1] && game.mat[1][1] == game.mat[1][2]) colorMap[1] = colorMap[4] = colorMap[7] = kG;
-        if(game.mat[2][0] != "" && game.mat[2][0] == game.mat[2][1] && game.mat[2][1] == game.mat[2][2]) colorMap[2] = colorMap[5] = colorMap[8] = kG;
+        if(mat[0][0] != "" && mat[0][0] == mat[0][1] && mat[0][1] == mat[0][2]) colorMap[0] = colorMap[3] = colorMap[6] = kG;
+        if(mat[1][0] != "" && mat[1][0] == mat[1][1] && mat[1][1] == mat[1][2]) colorMap[1] = colorMap[4] = colorMap[7] = kG;
+        if(mat[2][0] != "" && mat[2][0] == mat[2][1] && mat[2][1] == mat[2][2]) colorMap[2] = colorMap[5] = colorMap[8] = kG;
       });
     }
 
     void cc(){
       setState(() {
-        if(game.mat[0][0] != "" && game.mat[0][0] == game.mat[1][0] && game.mat[1][0] == game.mat[2][0]) colorMap[0] = colorMap[1] = colorMap[2] = kG;
-        if(game.mat[0][1] != "" && game.mat[0][1] == game.mat[1][1] && game.mat[1][1] == game.mat[2][1]) colorMap[3] = colorMap[4] = colorMap[5] = kG;
-        if(game.mat[0][2] != "" && game.mat[0][2] == game.mat[1][2] && game.mat[1][2] == game.mat[2][2]) colorMap[6] = colorMap[7] = colorMap[8] = kG;
+        if(mat[0][0] != "" && mat[0][0] == mat[1][0] && mat[1][0] == mat[2][0]) colorMap[0] = colorMap[1] = colorMap[2] = kG;
+        if(mat[0][1] != "" && mat[0][1] == mat[1][1] && mat[1][1] == mat[2][1]) colorMap[3] = colorMap[4] = colorMap[5] = kG;
+        if(mat[0][2] != "" && mat[0][2] == mat[1][2] && mat[1][2] == mat[2][2]) colorMap[6] = colorMap[7] = colorMap[8] = kG;
       });
     }
 
     void cld(){
       setState(() {
-      if(game.mat[0][0] == game.mat[1][1] && game.mat[1][1] == game.mat[2][2]) colorMap[0] = colorMap[4] = colorMap[8] = kG;
+      if(mat[0][0] == mat[1][1] && mat[1][1] == mat[2][2]) colorMap[0] = colorMap[4] = colorMap[8] = kG;
       });
     }
 
     void crd(){
       setState(() {
-      if(game.mat[2][0] == game.mat[1][1] && game.mat[1][1] == game.mat[0][2]) colorMap[2] = colorMap[4] = colorMap[6] = kG;
+      if(mat[2][0] == mat[1][1] && mat[1][1] == mat[0][2]) colorMap[2] = colorMap[4] = colorMap[6] = kG;
       });
     }
 
     void changeWinningLetterColors(String ansLetter){
-      String toBeChecked = game.winningDirection;
+      String toBeChecked = winningDirection;
       if(toBeChecked == "checkRows") cr();
       else if(toBeChecked == "checkColumns") cc();
       else if(toBeChecked == "checkLeftDiagnol") cld();
@@ -92,13 +90,13 @@ class _GameScreenState extends State<GameScreen> {
 
     void fun(int r,int c, int containerNo){
       isSelected[containerNo] = true;
-      if(letterX && game.mat[r][c] == ""){
+      if(letterX && mat[r][c] == ""){
         setState(() {
             UI.character = "X";
             letterX = false; letterO = true;
         });
       }
-      else if(letterO && game.mat[r][c] == ""){
+      else if(letterO && mat[r][c] == ""){
         setState(() {
             UI.character = "O";
             letterX = true; letterO = false;
@@ -110,7 +108,7 @@ class _GameScreenState extends State<GameScreen> {
       if(game.checkWinningCondition() == "Win"){
         finalResult = "Win";
         vanishYourTurn();
-        changeWinningLetterColors(game.ansLetter);
+        changeWinningLetterColors(ansLetter);
       }
 
       else if(game.checkDrawCondition() == "Draw"){

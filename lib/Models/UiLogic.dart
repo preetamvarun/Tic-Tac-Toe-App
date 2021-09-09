@@ -5,25 +5,40 @@ import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 TicTacToe game = TicTacToe();
 
 
+bool isTheGameRestarted = false;
+
 enum letter { cardX, cardO }
-String side = "X";
-List<bool>isSelected = [false,false,false,false,false,false,false,false,false];
-List<String>chars = ["","","","","","","","",""];
-String a = "Your Turn", b = "", finalResult = "";
+late String side,a,b,finalResult,ans,ansLetter,winningDirection;
+late List<bool>isSelected;
+late List<String>chars;
 late bool letterX,letterO;
 late double deviceW;
 var colorMap = {};
 var containerWidth;
 var bw;
-
-
+var mat;
 
 class UI{
 
-  static Color xCardColor = kProfileContainerColor; static Color oCardColor = kGameScreenBackgroundColor;
-  static Color xTextColor = Colors.white; static Color oTextColor = kTextColor;
+  static late Color xCardColor; static late Color oCardColor;
+  static late Color xTextColor; static late Color oTextColor;
 
-  static String character = "";
+  static late String character;
+
+  void initVariables(){
+    side = "X";
+    isSelected = [false,false,false,false,false,false,false,false,false];
+    chars = ["","","","","","","","",""];
+    a = "Your Turn"; b = ""; finalResult = "";
+    ans = ""; ansLetter = ""; winningDirection = "";
+    colorMap={};
+    xCardColor = kProfileContainerColor;
+    oCardColor = kGameScreenBackgroundColor;
+    xTextColor = Colors.white;
+    oTextColor = kTextColor;
+    character = "";
+    mat = [["","",""],["","",""],["","",""]];
+  }
 
   void updateColor(letter selectedLetter){
 

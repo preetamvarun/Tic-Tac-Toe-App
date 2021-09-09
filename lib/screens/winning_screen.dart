@@ -54,7 +54,9 @@ class WinningScreen extends StatelessWidget {
               ),
             ),
             ReusableButton(text: 'Restart', onTap: (){
-              
+              Navigator.pop(context);
+              Navigator.pop(context);
+              Navigator.pop(context);
             },)
           ],
         ),

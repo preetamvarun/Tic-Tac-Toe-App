@@ -1,12 +1,6 @@
+import 'package:tic_tac_toe/Models/UiLogic.dart';
+
 class TicTacToe{
-
-    String ans = "",ansLetter = "", winningDirection = "";
-    var mat = [["","",""],["","",""],["","",""]];
-
-    void initVars(){
-      ans = "";ansLetter = ""; winningDirection = "";
-      mat = [["","",""],["","",""],["","",""]];
-    }
 
     void insertIntoCell(int rowIndex,int columnIndex,String val){
       mat[rowIndex][columnIndex] = val;
