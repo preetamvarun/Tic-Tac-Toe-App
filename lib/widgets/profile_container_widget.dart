@@ -40,16 +40,10 @@ class ProfileContainer extends StatelessWidget {
           ),
           Text(
             letter,
-            style: finalResult != "Win" ? TextStyle(
+            style: TextStyle(
               fontSize: 35.0,
-              fontFamily: "carter",
-              color: letterO ? letter == "O" ? Colors.white : kLetterXColor
-                  : letter == "X" ? Colors.white : kLetterOColor
-            ) : TextStyle(
-              fontSize: 35.0,
-              fontFamily: "carter",
-              color: letterX == false ? letter == "X" ? Colors.white : kLetterOColor
-                  : letter == "O" ? Colors.white : kLetterXColor,
+              fontFamily: 'Carter',
+              color: letter == "X" ? kLetterXColor : kLetterOColor,
             ),
           ),
         ],
@@ -57,3 +51,16 @@ class ProfileContainer extends StatelessWidget {
     );
   }
 }
+
+
+// finalResult != "Win" ? TextStyle(
+// fontSize: 35.0,
+// fontFamily: "carter",
+// color: letterO ? letter == "O" ? Colors.white : kLetterXColor
+//     : letter == "X" ? Colors.white : kLetterOColor
+// ) : TextStyle(
+// fontSize: 35.0,
+// fontFamily: "carter",
+// color: letterX == false ? letter == "X" ? Colors.white : kLetterOColor
+//     : letter == "O" ? Colors.white : kLetterXColor,
+// ),
