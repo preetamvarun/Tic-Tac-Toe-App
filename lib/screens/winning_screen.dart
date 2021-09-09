@@ -44,7 +44,7 @@ class WinningScreen extends StatelessWidget {
             ),
             finalResult == "Win" ? Center(
               child: Text(
-                "${UI.character} Wins",
+                "${playerMap[UI.character]} Wins",
                 style: kResultText,
               ),
             ): Center(

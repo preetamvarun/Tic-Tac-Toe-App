@@ -29,10 +29,14 @@ class _GameScreenState extends State<GameScreen> {
       if(widget.chosenLetter == "O"){
         letterO = true;
         letterX = false;
+        playerMap['O'] = 'player 1';
+        playerMap['X'] = 'player 2';
       }
       else{
         letterX = true;
         letterO = false;
+        playerMap['X'] = 'player 1';
+        playerMap['O'] = 'player 2';
       }
     }
     ui.initializeColorMap();

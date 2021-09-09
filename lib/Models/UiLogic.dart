@@ -8,6 +8,7 @@ late List<String>chars;
 late bool letterX,letterO;
 late double deviceW;
 var colorMap = {};
+var playerMap = {};
 var containerWidth;
 var bw,mat;
 
