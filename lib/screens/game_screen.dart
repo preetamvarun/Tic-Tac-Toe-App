@@ -75,19 +75,11 @@ class _GameScreenState extends State<GameScreen> {
         UI.isSelected[containerNo] = true;
 
         if (UI.letterX && UI.mat[r][c] == "") {
-          setState(() {
-            UI.character = "X";
-            UI.letterX = false;
-            UI.letterO = true;
-          });
+          setState(() {ui.letterXTurn();} );
         }
         
         else if (UI.letterO && UI.mat[r][c] == "") {
-          setState(() {
-            UI.character = "O";
-            UI.letterX = true;
-            UI.letterO = false;
-          });
+          setState(() {ui.letterOTurn();} );
         }
 
         UI.chars[containerNo] = UI.character;

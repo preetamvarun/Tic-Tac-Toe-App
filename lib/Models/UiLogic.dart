@@ -50,11 +50,15 @@ class UI{
   }
 
   void letterXTurn(){
-
+    UI.character = "X";
+    UI.letterX = false;
+    UI.letterO = true;
   }
 
   void letterOTurn(){
-
+    UI.character = "O";
+    UI.letterX = true;
+    UI.letterO = false;
   }
 
   void setRow1() {UI.colorMap[0] = UI.colorMap[3] = UI.colorMap[6] = kG;}
