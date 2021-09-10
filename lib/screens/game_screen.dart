@@ -9,7 +9,6 @@ import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 UI ui = UI();
-
 TicTacToe game = TicTacToe();
 
 class GameScreen extends StatefulWidget{
@@ -25,10 +24,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
-    if(widget.chosenLetter != null){
-      if(widget.chosenLetter == "O") ui.startLetterX();
-      else ui.startLetterO();
-    }
+    if(widget.chosenLetter != null){widget.chosenLetter == "O"? ui.startLetterX() : ui.startLetterO();}
     ui.initializeColorMap();
     super.initState();
   }
@@ -42,52 +38,35 @@ class _GameScreenState extends State<GameScreen> {
     void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
 
     void changeWinningLetterColors(String ansLetter){
-      String toBeChecked = UI.winningDirection;
-      if(toBeChecked == "checkRows") checkRows();
-      else if(toBeChecked == "checkColumns") checkColumns();
-      else if(toBeChecked == "checkLeftDiagnol") checkLeftDiagnol();
-      else if(toBeChecked == "checkRightDiagnol") checkRightDiagnol();
-      Future.delayed(Duration(milliseconds: 1000), (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: ansLetter,)));
-      });
-    }
-
-    void updateMatrix(int row, int col, String val){
-      game.insertIntoCell(row, col, val);
+      UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection == "checkColumns" ? checkColumns()
+      : UI.winningDirection == "checkLeftDiagnol" ? checkLeftDiagnol() : checkRightDiagnol();
+      Future.delayed(Duration(milliseconds: 1000), (){Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: ansLetter,)));});
     }
 
     void fun(int r,int c, int containerNo){
-
       if(UI.finalResult != "Win") {
 
         UI.isSelected[containerNo] = true;
-
-        if(UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
+        if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
         else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
-
         UI.chars[containerNo] = UI.character;
-        updateMatrix(r, c, UI.character);
-
-
+        ui.updateMatrix(r, c, UI.character);
         if (game.checkWinningCondition() == "Win") {
           AudioCache().play('winner.wav');
           UI.finalResult = "Win";
           changeWinningLetterColors(UI.ansLetter);
         }
-
         else if (game.checkDrawCondition() == "Draw") {
           UI.finalResult = "Draw";
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => WinningScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
         }
-
         AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
 
       }
     }
-
+    
     UI.deviceW = MediaQuery.of(context).size.width;
-
+    
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(

@@ -1,7 +1,10 @@
+import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:flutter/material.dart';
 
 enum letter { cardX, cardO }
+
+TicTacToe game = TicTacToe();
 
 class UI{
 
@@ -9,9 +12,8 @@ class UI{
   static late Color xTextColor; static late Color oTextColor;
   static late String character; static late List<String>chars;
   static late String side,a,b,finalResult,ans,ansLetter,winningDirection;
-  static late List<bool>isSelected;
+  static late List<bool>isSelected; static var colorMap = {},playerMap = {};
   static late bool letterX,letterO; static late double deviceW;
-  static var colorMap = {}; static var playerMap = {};
   static var containerWidth,bw,mat;
 
   void colorsAndSide(){
@@ -28,6 +30,10 @@ class UI{
   }
 
   void initializeColorMap() {for(int i = 0; i < 9; i++){colorMap[i] = "kProfileContainerColor";}}
+
+  void updateMatrix(int row, int col, String val) {
+    game.insertIntoCell(row, col, val);
+  }
 
 
   void updateColor(letter selectedLetter){
