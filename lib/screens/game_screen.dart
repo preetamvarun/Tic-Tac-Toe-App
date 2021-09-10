@@ -81,7 +81,7 @@ class _GameScreenState extends State<GameScreen> {
       else if(toBeChecked == "checkColumns") checkColumns();
       else if(toBeChecked == "checkLeftDiagnol") checkLeftDiagnol();
       else if(toBeChecked == "checkRightDiagnol") checkRightDiagnol();
-      Future.delayed(Duration(milliseconds: 3000), (){
+      Future.delayed(Duration(milliseconds: 1000), (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: ansLetter,)));
       });
     }
