@@ -25,33 +25,21 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
-
     if(widget.chosenLetter != null){
-      if(widget.chosenLetter == "O"){
-        UI.letterO = true;
-        UI.letterX = false;
-        UI.playerMap['O'] = 'player 1';
-        UI.playerMap['X'] = 'player 2';
-      }
-      else{
-        UI.letterX = true;
-        UI.letterO = false;
-        UI.playerMap['X'] = 'player 1';
-        UI.playerMap['O'] = 'player 2';
-      }
+      if(widget.chosenLetter == "O") ui.startLetterX();
+      else ui.startLetterO();
     }
     ui.initializeColorMap();
     super.initState();
   }
 
   @override
-
   Widget build(BuildContext context) {
 
-    /* Set stating row */ void checkRows() {setState(() {if(ui.checkR1()) ui.setRow1(); if(ui.checkR2()) ui.setRow2(); if(ui.checkR3()) ui.setRow3();});}
-    /* Set stating a column */ void checkColumns() {setState(() {if(ui.checkC1()) ui.setCol1(); if(ui.checkC2()) ui.setCol2(); if(ui.checkC3()) ui.setCol3();});}
-    /* Set stating left diagnol*/ void checkLeftDiagnol()  {setState(() {if(ui.checkLeftDiagnol()) ui.setLeftDiagnol();});}
-    /* Set stating right diagnol*/ void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
+    void checkRows() {setState(() {if(ui.checkR1()) ui.setRow1(); if(ui.checkR2()) ui.setRow2(); if(ui.checkR3()) ui.setRow3();});}
+    void checkColumns() {setState(() {if(ui.checkC1()) ui.setCol1(); if(ui.checkC2()) ui.setCol2(); if(ui.checkC3()) ui.setCol3();});}
+    void checkLeftDiagnol()  {setState(() {if(ui.checkLeftDiagnol()) ui.setLeftDiagnol();});}
+    void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
 
     void changeWinningLetterColors(String ansLetter){
       String toBeChecked = UI.winningDirection;
@@ -75,7 +63,6 @@ class _GameScreenState extends State<GameScreen> {
         UI.isSelected[containerNo] = true;
 
         if(UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
-        
         else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
 
         UI.chars[containerNo] = UI.character;

@@ -46,9 +46,11 @@ class UI{
     }
   }
 
-  void letterXTurn(){UI.character = "X"; UI.letterX = false; UI.letterO = true;}
+  void startLetterX() {UI.letterO = true; UI.letterX = false;UI.playerMap['O'] = 'player 1'; UI.playerMap['X'] = 'player 2';}
+  void startLetterO() {UI.letterX = true; UI.letterO = false; UI.playerMap['X'] = 'player 1'; UI.playerMap['O'] = 'player 2'; }
 
-  void letterOTurn(){UI.character = "O";UI.letterX = true;UI.letterO = false;}
+  void letterXTurn() {UI.character = "X"; UI.letterX = false; UI.letterO = true;}
+  void letterOTurn() {UI.character = "O";UI.letterX = true;UI.letterO = false;}
 
   void setRow1() {UI.colorMap[0] = UI.colorMap[3] = UI.colorMap[6] = kG;}
   void setRow2() {UI.colorMap[1] = UI.colorMap[4] = UI.colorMap[7] = kG;}
@@ -71,7 +73,6 @@ class UI{
   bool checkC3(){if(mat[0][2] != "" && mat[0][2] == mat[1][2] && mat[1][2] == mat[2][2]){return true;}return false;}
 
   bool checkLeftDiagnol(){if(mat[0][0] == mat[1][1] && mat[1][1] == mat[2][2]){return true;}return false;}
-
   bool checkRightDiagnol(){if(mat[2][0] == mat[1][1] && mat[1][1] == mat[0][2]){return true;}return false;}
 
 }
