@@ -60,7 +60,8 @@ class WinningScreen extends StatelessWidget {
              Navigator.pop(context);
              Navigator.pop(context);
              Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
-            },),ReusableButton(text: 'Restart', onTap: (){
+            },),
+            ReusableButton(text: 'Restart', onTap: (){
               ui.colorsAndSide();
               ui.remainingVars();
              Navigator.pop(context);
