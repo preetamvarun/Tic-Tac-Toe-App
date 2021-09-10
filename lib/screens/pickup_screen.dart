@@ -6,8 +6,6 @@ import 'package:tic_tac_toe/screens/game_screen.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 
-UI ui = UI();
-
 class PickUpScreen extends StatefulWidget {
 
   @override
@@ -45,7 +43,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
                 onTap: (){
                   setState(() {
                     updateColor(letter.cardX);
-                    side = "X";
+                    UI.side = "X";
                   });
                 },
                 child: ContainerWidget(
@@ -59,7 +57,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
                 onTap: (){
                   setState(() {
                     updateColor(letter.cardO);
-                    side = "O";
+                    UI.side = "O";
                   });
                 },
                 child: ContainerWidget(
@@ -69,7 +67,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
               ),
             ),
             // Button Code
-            ReusableButton(onTap: () {ui.remainingVars(); Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: side,)));}, text: "Start",),
+            ReusableButton(onTap: () {ui.remainingVars(); Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: UI.side,)));}, text: "Start",),
           ],
         ),
       ),

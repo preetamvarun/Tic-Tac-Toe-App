@@ -28,16 +28,16 @@ class _GameScreenState extends State<GameScreen> {
 
     if(widget.chosenLetter != null){
       if(widget.chosenLetter == "O"){
-        letterO = true;
-        letterX = false;
-        playerMap['O'] = 'player 1';
-        playerMap['X'] = 'player 2';
+        UI.letterO = true;
+        UI.letterX = false;
+        UI.playerMap['O'] = 'player 1';
+        UI.playerMap['X'] = 'player 2';
       }
       else{
-        letterX = true;
-        letterO = false;
-        playerMap['X'] = 'player 1';
-        playerMap['O'] = 'player 2';
+        UI.letterX = true;
+        UI.letterO = false;
+        UI.playerMap['X'] = 'player 1';
+        UI.playerMap['O'] = 'player 2';
       }
     }
     ui.initializeColorMap();
@@ -50,34 +50,34 @@ class _GameScreenState extends State<GameScreen> {
 
     void checkRows(){
       setState(() {
-        if(ui.checkR1()) colorMap[0] = colorMap[3] = colorMap[6] = kG;
-        if(ui.checkR2()) colorMap[1] = colorMap[4] = colorMap[7] = kG;
-        if(ui.checkR3()) colorMap[2] = colorMap[5] = colorMap[8] = kG;
+        if(ui.checkR1()) UI.colorMap[0] = UI.colorMap[3] = UI.colorMap[6] = kG;
+        if(ui.checkR2()) UI.colorMap[1] = UI.colorMap[4] = UI.colorMap[7] = kG;
+        if(ui.checkR3()) UI.colorMap[2] = UI.colorMap[5] = UI.colorMap[8] = kG;
       });
     }
 
     void checkColumns(){
       setState(() {
-        if(ui.checkC1()) colorMap[0] = colorMap[1] = colorMap[2] = kG;
-        if(ui.checkC2()) colorMap[3] = colorMap[4] = colorMap[5] = kG;
-        if(ui.checkC3()) colorMap[6] = colorMap[7] = colorMap[8] = kG;
+        if(ui.checkC1()) UI.colorMap[0] = UI.colorMap[1] = UI.colorMap[2] = kG;
+        if(ui.checkC2()) UI.colorMap[3] = UI.colorMap[4] = UI.colorMap[5] = kG;
+        if(ui.checkC3()) UI.colorMap[6] = UI.colorMap[7] = UI.colorMap[8] = kG;
       });
     }
 
     void checkLeftDiagnol(){
       setState(() {
-      if(ui.checkLeftDiagnol()) colorMap[0] = colorMap[4] = colorMap[8] = kG;
+      if(ui.checkLeftDiagnol()) UI.colorMap[0] = UI.colorMap[4] = UI.colorMap[8] = kG;
       });
     }
 
     void checkRightDiagnol(){
       setState(() {
-      if(ui.checkRightDiagnol()) colorMap[2] = colorMap[4] = colorMap[6] = kG;
+      if(ui.checkRightDiagnol()) UI.colorMap[2] = UI.colorMap[4] = UI.colorMap[6] = kG;
       });
     }
 
     void changeWinningLetterColors(String ansLetter){
-      String toBeChecked = winningDirection;
+      String toBeChecked = UI.winningDirection;
       if(toBeChecked == "checkRows") checkRows();
       else if(toBeChecked == "checkColumns") checkColumns();
       else if(toBeChecked == "checkLeftDiagnol") checkLeftDiagnol();
@@ -93,37 +93,37 @@ class _GameScreenState extends State<GameScreen> {
 
     void fun(int r,int c, int containerNo){
 
-      if(finalResult != "Win") {
+      if(UI.finalResult != "Win") {
 
-        isSelected[containerNo] = true;
-        if (letterX && mat[r][c] == "") {
+        UI.isSelected[containerNo] = true;
+        if (UI.letterX && UI.mat[r][c] == "") {
           setState(() {
             UI.character = "X";
-            letterX = false;
-            letterO = true;
+            UI.letterX = false;
+            UI.letterO = true;
           });
         }
         
-        else if (letterO && mat[r][c] == "") {
+        else if (UI.letterO && UI.mat[r][c] == "") {
           setState(() {
             UI.character = "O";
-            letterX = true;
-            letterO = false;
+            UI.letterX = true;
+            UI.letterO = false;
           });
         }
 
-        chars[containerNo] = UI.character;
+        UI.chars[containerNo] = UI.character;
         updateMatrix(r, c, UI.character);
 
 
         if (game.checkWinningCondition() == "Win") {
           AudioCache().play('winner.wav');
-          finalResult = "Win";
-          changeWinningLetterColors(ansLetter);
+          UI.finalResult = "Win";
+          changeWinningLetterColors(UI.ansLetter);
         }
 
         else if (game.checkDrawCondition() == "Draw") {
-          finalResult = "Draw";
+          UI.finalResult = "Draw";
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => WinningScreen()));
         }
@@ -133,7 +133,7 @@ class _GameScreenState extends State<GameScreen> {
       }
     }
 
-    deviceW = MediaQuery.of(context).size.width;
+    UI.deviceW = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
@@ -149,17 +149,17 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : side == "X" ? "X" : "O" ,imageName: 'satoru'),
+                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" ,imageName: 'satoru'),
                   ),
-                  ProfileContainer(profileName: "Player 2", letter : side == "X" ? "O" : "X",imageName: 'mine'),
+                  ProfileContainer(profileName: "Player 2", letter : UI.side == "X" ? "O" : "X",imageName: 'mine'),
                 ],
               ),
             ),
             Padding(
               padding: EdgeInsets.all(20.0),
               child: Container(
-                width: deviceW - 40,
-                height: deviceW - 40,
+                width: UI.deviceW - 40,
+                height: UI.deviceW - 40,
                 decoration: BoxDecoration(
                   color: kGameScreenContainerColor,
                   borderRadius: BorderRadius.circular(20.0),
@@ -169,15 +169,15 @@ class _GameScreenState extends State<GameScreen> {
                   alignment: WrapAlignment.center,
                   runAlignment: WrapAlignment.center,
                   children: [
-                    WrappingContainer(onTap: (){fun(0,0,0);}, letter: isSelected[0] ?  UI.character: "",containerNo: 0,),
-                    WrappingContainer(onTap: (){fun(1,0,1);}, letter: isSelected[1] ?  UI.character: "",containerNo: 1,),
-                    WrappingContainer(onTap: (){fun(2,0,2);}, letter: isSelected[2] ?  UI.character: "",containerNo: 2,),
-                    WrappingContainer(onTap: (){fun(0,1,3);}, letter: isSelected[3] ?  UI.character: "",containerNo: 3,),
-                    WrappingContainer(onTap: (){fun(1,1,4);}, letter: isSelected[4] ?  UI.character: "",containerNo: 4,),
-                    WrappingContainer(onTap: (){fun(2,1,5);}, letter: isSelected[5] ?  UI.character: "",containerNo: 5,),
-                    WrappingContainer(onTap: (){fun(0,2,6);}, letter: isSelected[6] ?  UI.character: "",containerNo: 6,),
-                    WrappingContainer(onTap: (){fun(1,2,7);}, letter: isSelected[7] ?  UI.character: "",containerNo: 7,),
-                    WrappingContainer(onTap: (){fun(2,2,8);}, letter: isSelected[8] ?  UI.character: "",containerNo: 8,),
+                    WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
+                    WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),
+                    WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,),
+                    WrappingContainer(onTap: (){fun(0,1,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,),
+                    WrappingContainer(onTap: (){fun(1,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,),
+                    WrappingContainer(onTap: (){fun(2,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,),
+                    WrappingContainer(onTap: (){fun(0,2,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,),
+                    WrappingContainer(onTap: (){fun(1,2,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,),
+                    WrappingContainer(onTap: (){fun(2,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,),
                   ],
                 ),
               ),

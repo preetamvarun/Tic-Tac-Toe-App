@@ -3,46 +3,46 @@ import 'package:tic_tac_toe/Models/UiLogic.dart';
 class TicTacToe{
 
     void insertIntoCell(int rowIndex,int columnIndex,String val){
-      mat[rowIndex][columnIndex] = val;
-      ansLetter = val;
+      UI.mat[rowIndex][columnIndex] = val;
+      UI.ansLetter = val;
     }
 
     String checkWinningCondition(){
 
       for(int i=0;i<3;i++){
-        if((mat[i][0] != "") && (mat[i][0] == mat[i][1]) && (mat[i][1] == mat[i][2])){
-          ans = "Win";
-          winningDirection = "checkRows";
+        if((UI.mat[i][0] != "") && (UI.mat[i][0] == UI.mat[i][1]) && (UI.mat[i][1] == UI.mat[i][2])){
+          UI.ans = "Win";
+          UI.winningDirection = "checkRows";
           break;
         }
       }
 
       for(int i=0;i<3;i++){
-        if((ans != "you win") && (mat[0][i] != "") && (mat[0][i] == mat[1][i]) && (mat[1][i] == mat[2][i])){
-          ans = "Win";
-          winningDirection = "checkColumns";
+        if((UI.ans != "you win") && (UI.mat[0][i] != "") && (UI.mat[0][i] == UI.mat[1][i]) && (UI.mat[1][i] == UI.mat[2][i])){
+          UI.ans = "Win";
+          UI.winningDirection = "checkColumns";
           break;
         }
       }
 
-      if((ans != "you win") &&(mat[0][0] != "") && (mat[0][0] == mat[1][1]) && (mat[1][1] == mat[2][2])){
-        ans = "Win";
-        winningDirection = "checkLeftDiagnol";
+      if((UI.ans != "you win") &&(UI.mat[0][0] != "") && (UI.mat[0][0] == UI.mat[1][1]) && (UI.mat[1][1] == UI.mat[2][2])){
+        UI.ans = "Win";
+        UI.winningDirection = "checkLeftDiagnol";
       }
 
-      if( (ans != "you win") && (mat[2][0] != "") && (mat[2][0] == mat[1][1]) && (mat[1][1] == mat[0][2])){
-        ans = "Win";
-        winningDirection = "checkRightDiagnol";
+      if( (UI.ans != "you win") && (UI.mat[2][0] != "") && (UI.mat[2][0] == UI.mat[1][1]) && (UI.mat[1][1] == UI.mat[0][2])){
+        UI.ans = "Win";
+        UI.winningDirection = "checkRightDiagnol";
       }
 
-      return ans;
+      return UI.ans;
     }
 
     String checkDrawCondition(){
       bool isDraw = true;
       for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
-          if(mat[i][j] == ""){
+          if(UI.mat[i][j] == ""){
             isDraw = false;
             break;
           }
@@ -50,7 +50,7 @@ class TicTacToe{
         if(isDraw) continue;
         else break;
       }
-      isDraw ? ans = "Draw" : ans = "";
-      return ans;
+      isDraw ? UI.ans = "Draw" : UI.ans = "";
+      return UI.ans;
     }
 }

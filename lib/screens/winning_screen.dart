@@ -1,6 +1,8 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
+import 'package:tic_tac_toe/screens/game_screen.dart';
+import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
@@ -25,9 +27,9 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : side == "X" ? "X" : "O" , imageName: 'satoru'),
+                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" , imageName: 'satoru'),
                   ),
-                  ProfileContainer(profileName: "Player 2",  letter : side == "X" ? "O" : "X" , imageName: 'mine'),
+                  ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" , imageName: 'mine'),
                 ],
               ),
             ),
@@ -37,14 +39,14 @@ class WinningScreen extends StatelessWidget {
                 child: DelayedDisplay(
                   delay: Duration(milliseconds: 300),
                   child: Image(
-                    image: AssetImage('images/$finalResult.png'),
+                    image: AssetImage('images/${UI.finalResult}.png'),
                   ),
                 ),
               ),
             ),
-            finalResult == "Win" ? Center(
+            UI.finalResult == "Win" ? Center(
               child: Text(
-                "${playerMap[UI.character]} Wins",
+                "${UI.playerMap[UI.character]} Wins",
                 style: kResultText,
               ),
             ): Center(
@@ -53,11 +55,19 @@ class WinningScreen extends StatelessWidget {
                 style: kResultText,
               ),
             ),
-            ReusableButton(text: 'Restart', onTap: (){
-              Navigator.pop(context);
-              Navigator.pop(context);
-              Navigator.pop(context);
-            },)
+            ReusableButton(text: 'Play Again', onTap: (){
+              ui.colorsAndSide();
+              ui.remainingVars();
+             Navigator.pop(context);
+             Navigator.pop(context);
+             Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
+            },),ReusableButton(text: 'Restart', onTap: (){
+              ui.colorsAndSide();
+              ui.remainingVars();
+             Navigator.pop(context);
+             Navigator.pop(context);
+             Navigator.pop(context);
+            },),
           ],
         ),
       ),

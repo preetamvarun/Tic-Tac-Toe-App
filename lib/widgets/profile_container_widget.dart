@@ -12,16 +12,16 @@ class ProfileContainer extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      decoration: finalResult == "" ? BoxDecoration(
-        color: letterO ? letter == "O" ? Colors.green : kProfileContainerColor
+      decoration: UI.finalResult == "" ? BoxDecoration(
+        color: UI.letterO ? letter == "O" ? Colors.green : kProfileContainerColor
         :  letter == "X" ? Colors.green : kProfileContainerColor ,
         borderRadius: BorderRadius.circular(20.0),
-      ) : finalResult != "Win" ? BoxDecoration(
+      ) : UI.finalResult != "Win" ? BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         color: kProfileContainerColor,
       ) : BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: letterX == false ? letter == "X" ? Colors.green : kProfileContainerColor
+        color: UI.letterX == false ? letter == "X" ? Colors.green : kProfileContainerColor
             : letter == "O" ? Colors.green : kProfileContainerColor,
       ),
       height: 170.0,

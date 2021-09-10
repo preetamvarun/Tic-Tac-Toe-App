@@ -2,21 +2,22 @@ import 'package:tic_tac_toe/constants.dart';
 import 'package:flutter/material.dart';
 
 enum letter { cardX, cardO }
-late String side,a,b,finalResult,ans,ansLetter,winningDirection;
-late List<bool>isSelected;
-late List<String>chars;
-late bool letterX,letterO;
-late double deviceW;
-var colorMap = {};
-var playerMap = {};
-var containerWidth;
-var bw,mat;
+
 
 class UI{
 
   static late Color xCardColor; static late Color oCardColor;
   static late Color xTextColor; static late Color oTextColor;
   static late String character;
+  static late String side,a,b,finalResult,ans,ansLetter,winningDirection;
+  static late List<bool>isSelected;
+  static late List<String>chars;
+  static late bool letterX,letterO;
+  static late double deviceW;
+  static var colorMap = {};
+  static var playerMap = {};
+  static var containerWidth;
+  static var bw,mat;
 
   void colorsAndSide(){
     xCardColor = kProfileContainerColor;oTextColor = kTextColor;
