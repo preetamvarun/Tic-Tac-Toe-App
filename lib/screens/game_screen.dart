@@ -6,6 +6,7 @@ import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'dart:async';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 UI ui = UI();
 
@@ -102,6 +103,7 @@ class _GameScreenState extends State<GameScreen> {
             letterO = true;
           });
         }
+        
         else if (letterO && mat[r][c] == "") {
           setState(() {
             UI.character = "O";
@@ -113,7 +115,9 @@ class _GameScreenState extends State<GameScreen> {
         chars[containerNo] = UI.character;
         updateMatrix(r, c, UI.character);
 
+
         if (game.checkWinningCondition() == "Win") {
+          AudioCache().play('winner.wav');
           finalResult = "Win";
           changeWinningLetterColors(ansLetter);
         }
@@ -124,8 +128,9 @@ class _GameScreenState extends State<GameScreen> {
               MaterialPageRoute(builder: (context) => WinningScreen()));
         }
 
-      }
+        AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
 
+      }
     }
 
     deviceW = MediaQuery.of(context).size.width;
@@ -182,3 +187,16 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 }
+
+
+/*
+import 'package:audioplayers/audioplayers.dart';
+
+    // add it to your class as a static member
+    static AudioCache player = AudioCache();
+    // or as a local variable
+    final player = AudioCache();
+
+    // call this method when desired
+    player.play('explosion.mp3');
+ */

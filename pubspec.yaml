@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   provider: ^6.0.0
   delayed_display: ^2.0.0
+  audioplayers: ^0.20.0
 
 
 dev_dependencies:
