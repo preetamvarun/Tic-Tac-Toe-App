@@ -48,33 +48,10 @@ class _GameScreenState extends State<GameScreen> {
 
   Widget build(BuildContext context) {
 
-    void checkRows(){
-      setState(() {
-        if(ui.checkR1()) UI.colorMap[0] = UI.colorMap[3] = UI.colorMap[6] = kG;
-        if(ui.checkR2()) UI.colorMap[1] = UI.colorMap[4] = UI.colorMap[7] = kG;
-        if(ui.checkR3()) UI.colorMap[2] = UI.colorMap[5] = UI.colorMap[8] = kG;
-      });
-    }
-
-    void checkColumns(){
-      setState(() {
-        if(ui.checkC1()) UI.colorMap[0] = UI.colorMap[1] = UI.colorMap[2] = kG;
-        if(ui.checkC2()) UI.colorMap[3] = UI.colorMap[4] = UI.colorMap[5] = kG;
-        if(ui.checkC3()) UI.colorMap[6] = UI.colorMap[7] = UI.colorMap[8] = kG;
-      });
-    }
-
-    void checkLeftDiagnol(){
-      setState(() {
-      if(ui.checkLeftDiagnol()) UI.colorMap[0] = UI.colorMap[4] = UI.colorMap[8] = kG;
-      });
-    }
-
-    void checkRightDiagnol(){
-      setState(() {
-      if(ui.checkRightDiagnol()) UI.colorMap[2] = UI.colorMap[4] = UI.colorMap[6] = kG;
-      });
-    }
+    /* Set stating row */ void checkRows() {setState(() {if(ui.checkR1()) ui.setRow1(); if(ui.checkR2()) ui.setRow2(); if(ui.checkR3()) ui.setRow3();});}
+    /* Set stating a column */ void checkColumns() {setState(() {if(ui.checkC1()) ui.setCol1(); if(ui.checkC2()) ui.setCol2(); if(ui.checkC3()) ui.setCol3();});}
+    /* Set stating left diagnol*/ void checkLeftDiagnol()  {setState(() {if(ui.checkLeftDiagnol()) ui.setLeftDiagnol();});}
+    /* Set stating right diagnol*/ void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
 
     void changeWinningLetterColors(String ansLetter){
       String toBeChecked = UI.winningDirection;
@@ -96,6 +73,7 @@ class _GameScreenState extends State<GameScreen> {
       if(UI.finalResult != "Win") {
 
         UI.isSelected[containerNo] = true;
+
         if (UI.letterX && UI.mat[r][c] == "") {
           setState(() {
             UI.character = "X";
@@ -188,16 +166,3 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 }
-
-
-/*
-import 'package:audioplayers/audioplayers.dart';
-
-    // add it to your class as a static member
-    static AudioCache player = AudioCache();
-    // or as a local variable
-    final player = AudioCache();
-
-    // call this method when desired
-    player.play('explosion.mp3');
- */

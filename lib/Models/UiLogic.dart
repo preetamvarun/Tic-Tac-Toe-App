@@ -26,10 +26,9 @@ class UI{
   }
 
   void remainingVars(){
-   finalResult = "";character = "";
+    finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
     isSelected = [false,false,false,false,false,false,false,false,false];
     chars = ["","","","","","","","",""];
-    ans = ""; ansLetter = ""; winningDirection = "";
     colorMap={};
     mat = [["","",""],["","",""],["","",""]];
   }
@@ -49,6 +48,24 @@ class UI{
       }
     }
   }
+
+  void letterXTurn(){
+
+  }
+
+  void letterOTurn(){
+
+  }
+
+  void setRow1() {UI.colorMap[0] = UI.colorMap[3] = UI.colorMap[6] = kG;}
+  void setRow2() {UI.colorMap[1] = UI.colorMap[4] = UI.colorMap[7] = kG;}
+  void setRow3() {UI.colorMap[2] = UI.colorMap[5] = UI.colorMap[8] = kG;}
+  void setCol1() {UI.colorMap[0] = UI.colorMap[1] = UI.colorMap[2] = kG;}
+  void setCol2() {UI.colorMap[3] = UI.colorMap[4] = UI.colorMap[5] = kG;}
+  void setCol3() {UI.colorMap[6] = UI.colorMap[7] = UI.colorMap[8] = kG;}
+  void setLeftDiagnol() { UI.colorMap[0] = UI.colorMap[4] = UI.colorMap[8] = kG;}
+  void setRightDiagnol() {UI.colorMap[2] = UI.colorMap[4] = UI.colorMap[6] = kG;}
+
 
   void initializeColorMap(){
     for(int i = 0; i < 9; i++){
