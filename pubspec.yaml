@@ -26,6 +26,7 @@ flutter:
     - images/satoru.jpg
     - images/Win.png
     - images/Draw.png
+    - assets/
 
   fonts:
     - family: Paytone
