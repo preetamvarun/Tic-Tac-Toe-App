@@ -140,6 +140,7 @@ class _GameScreenState extends State<GameScreen> {
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 0.0),
