@@ -80,7 +80,7 @@ class WinningScreen extends StatelessWidget {
                     Navigator.pop(context);
                     },
                   ),
-                  ReusableButton(text: 'Restart', onTap: (){
+                  ReusableButton(text: 'Home', onTap: (){
                     ui.colorsAndSide();
                     ui.remainingVars();
                     Navigator.pop(context);
