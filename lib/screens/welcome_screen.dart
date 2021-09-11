@@ -16,17 +16,15 @@ class WelcomeScreen extends StatelessWidget {
           SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
-              child: Center(
-                child: TextWidget(text: "TIC TAC TOE",fontSize: 40.0,),
-              ),
+              child: Center(child: TextWidget(text: "TIC TAC TOE",fontSize: 40.0,)),
             ),
           ),
-          Expanded(
-            child: Align(
-              alignment: Alignment.bottomCenter,
+          Align(
+            alignment: Alignment.center,
+            child: Expanded(
               child: TextWidget(text: "XO", fontSize: 200.0,),
               ),
-            ),
+          ),
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,

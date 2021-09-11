@@ -35,10 +35,16 @@ class WinningScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 25.0),
-                child: DelayedDisplay(
-                  delay: Duration(milliseconds: 300),
-                  child: Image(
-                    image: AssetImage('images/${UI.finalResult}.png'),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: kGameScreenContainerColor,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: DelayedDisplay(
+                    delay: Duration(milliseconds: 500),
+                    child: Image(
+                      image: AssetImage('images/${UI.finalResult}.png'),
+                    ),
                   ),
                 ),
               ),
@@ -50,7 +56,7 @@ class WinningScreen extends StatelessWidget {
               ),
             ): Center(
               child: Text(
-                "Game has been Drawn",
+                "Drawn",
                 style: kResultText,
               ),
             ),

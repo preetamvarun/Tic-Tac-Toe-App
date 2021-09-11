@@ -24,7 +24,7 @@ class ProfileContainer extends StatelessWidget {
         color: UI.letterX == false ? letter == "X" ? Colors.green : kProfileContainerColor
             : letter == "O" ? Colors.green : kProfileContainerColor,
       ),
-      height: 170.0,
+      height: 160.0,
       width: 120.0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -57,6 +57,7 @@ class _GameScreenState extends State<GameScreen> {
           changeWinningLetterColors(UI.ansLetter);
         }
         else if (game.checkDrawCondition() == "Draw") {
+          AudioCache().play('draw.mpeg');
           UI.finalResult = "Draw";
           Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
         }
