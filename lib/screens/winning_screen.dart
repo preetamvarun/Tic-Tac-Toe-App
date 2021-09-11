@@ -77,9 +77,6 @@ class WinningScreen extends StatelessWidget {
                     child: ReusableButton(text: 'Play Again', onTap: (){
                       ui.colorsAndSide();
                       ui.remainingVars();
-                      // Navigator.pop(context);
-                      // Navigator.pop(context);
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
                       Navigator.pop(context);
                       },
                       fontSize: 20.0,
@@ -92,8 +89,7 @@ class WinningScreen extends StatelessWidget {
                       Navigator.pop(context);
                       Navigator.pop(context);
                       Navigator.pop(context);
-                    },
-                      fontSize: 20.0,
+                    }, fontSize: 20.0,
                     ),
                   ),
                 ],

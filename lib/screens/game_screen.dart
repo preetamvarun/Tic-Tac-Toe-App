@@ -40,7 +40,9 @@ class _GameScreenState extends State<GameScreen> {
     void changeWinningLetterColors(String ansLetter){
       UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection == "checkColumns" ? checkColumns()
       : UI.winningDirection == "checkLeftDiagnol" ? checkLeftDiagnol() : checkRightDiagnol();
-      Future.delayed(Duration(milliseconds: 1000), (){Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: ansLetter,)));});
+      Future.delayed(Duration(milliseconds: 1000), (){
+        Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
+      });
     }
 
     void fun(int r,int c, int containerNo){
@@ -59,7 +61,7 @@ class _GameScreenState extends State<GameScreen> {
         else if (game.checkDrawCondition() == "Draw") {
           AudioCache().play('draw.mpeg');
           UI.finalResult = "Draw";
-          Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen()));
+          Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
         }
         AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
 
