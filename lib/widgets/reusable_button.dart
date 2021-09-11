@@ -3,8 +3,8 @@ import 'package:tic_tac_toe/constants.dart';
 
 class ReusableButton extends StatelessWidget {
 
-  final onTap,text;
-  ReusableButton({this.onTap,this.text});
+  final onTap,text,fontSize;
+  ReusableButton({this.onTap,this.text,this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ReusableButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Text(
           text,
-          style: TextStyle(fontFamily: 'Paytone', fontSize: 25.0, fontWeight: FontWeight.w500),
+          style: TextStyle(fontFamily: 'Paytone', fontSize: fontSize, fontWeight: FontWeight.w500),
         ),
         onPressed: onTap,
       ),

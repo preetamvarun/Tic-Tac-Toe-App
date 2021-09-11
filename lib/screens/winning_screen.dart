@@ -1,4 +1,5 @@
 import 'package:delayed_display/delayed_display.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/game_screen.dart';
@@ -26,58 +27,95 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" , imageName: 'satoru'),
+                    child: Flexible(child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" , imageName: 'satoru')),
                   ),
-                  ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" , imageName: 'mine'),
+                  Flexible(child: ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" , imageName: 'mine')),
                 ],
               ),
             ),
             Expanded(
+              flex: 3,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 25.0),
+                padding: EdgeInsets.only(left: 10.0,right: 10.0),
                 child: Container(
                   decoration: BoxDecoration(
                     color: kGameScreenContainerColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: DelayedDisplay(
-                    delay: Duration(milliseconds: 500),
-                    child: Image(
-                      image: AssetImage('images/${UI.finalResult}.png'),
-                    ),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: DelayedDisplay(
+                          delay: Duration(milliseconds: 500),
+                          child: Image(
+                            image: AssetImage('images/${UI.finalResult}.png'),
+                          ),
+                        ),
+                      ),
+                      UI.finalResult == "Win" ?
+                      Center(
+                        child: Text(
+                          "${UI.playerMap[UI.character]} Wins",
+                          style: kResultText,
+                        ),
+                      ): Center(
+                        child: Text(
+                          "Drawn",
+                          style: kResultText,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
-            UI.finalResult == "Win" ? Center(
-              child: Text(
-                "${UI.playerMap[UI.character]} Wins",
-                style: kResultText,
-              ),
-            ): Center(
-              child: Text(
-                "Drawn",
-                style: kResultText,
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ReusableButton(text: 'Play Again', onTap: (){
+                      ui.colorsAndSide();
+                      ui.remainingVars();
+                      // Navigator.pop(context);
+                      // Navigator.pop(context);
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
+                      Navigator.pop(context);
+                      },
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableButton(text: 'Restart', onTap: (){
+                      ui.colorsAndSide();
+                      ui.remainingVars();
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ],
               ),
             ),
-            ReusableButton(text: 'Play Again', onTap: (){
-              ui.colorsAndSide();
-              ui.remainingVars();
-             Navigator.pop(context);
-             Navigator.pop(context);
-             Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen()));
-            },),
-            ReusableButton(text: 'Restart', onTap: (){
-              ui.colorsAndSide();
-              ui.remainingVars();
-             Navigator.pop(context);
-             Navigator.pop(context);
-             Navigator.pop(context);
-            },),
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

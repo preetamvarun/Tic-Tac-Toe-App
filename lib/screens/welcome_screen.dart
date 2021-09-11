@@ -28,7 +28,7 @@ class WelcomeScreen extends StatelessWidget {
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PickUpScreen()));},
+              child: ReusableButton(fontSize : 30.0, onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PickUpScreen()));},
               text: "Pick A Side",
               ),
             ),
