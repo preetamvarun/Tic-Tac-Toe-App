@@ -18,8 +18,6 @@ class UI{
   static late bool letterX,letterO; static late double deviceW;
   static var containerWidth,bw,mat;
 
-
-
   void remainingVars(){
     finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
     isSelected = [false,false,false,false,false,false,false,false,false];
@@ -29,9 +27,7 @@ class UI{
 
   void initializeColorMap() {for(int i = 0; i < 9; i++){colorMap[i] = "kProfileContainerColor";}}
 
-  void updateMatrix(int row, int col, String val) {
-    game.insertIntoCell(row, col, val);
-  }
+  void updateMatrix(int row, int col, String val) {game.insertIntoCell(row, col, val);}
 
 
   void updateColor(letter selectedLetter){
@@ -57,9 +53,7 @@ class UI{
     xCardColor = kProfileContainerColor;oTextColor = kLetterOColor;
     oCardColor = kGameScreenBackgroundColor;xTextColor = kLetterXColor;
     isGameRestarted == false ? side = "X" : side = side == "X" ? "O" : "X";
-    if(isGameRestarted){
-      side == "X" ? startLetterO() : startLetterX();
-    }
+    if(isGameRestarted){ side == "X" ? startLetterO() : startLetterX(); }
   }
 
   void letterXTurn() {character = "X"; letterX = false; letterO = true;}
