@@ -8,6 +8,6 @@ const kLetterXColor = Color(0XFFEB1751);
 const kLetterOColor = Color(0XFFFFD032);
 const kProfileContainerColor = Color(0XFF27175D);
 const kYourTurnText = TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
-const kResultText = TextStyle(color: kLetterOColor, fontSize: 25.0, fontFamily: 'Carter', fontWeight: FontWeight.w300);
+const kResultText = TextStyle(color: Colors.white, fontSize: 35.0, fontFamily: 'Carter');
 const kReusableButton = "";
 const kG = "";

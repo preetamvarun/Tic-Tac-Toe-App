@@ -21,7 +21,7 @@ class WinningScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.0),
+              padding: EdgeInsets.symmetric(vertical: 60.0, horizontal: 0.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -34,7 +34,6 @@ class WinningScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 3,
               child: Padding(
                 padding: EdgeInsets.only(left: 10.0,right: 10.0),
                 child: Container(
@@ -43,13 +42,14 @@ class WinningScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: DelayedDisplay(
-                          delay: Duration(milliseconds: 500),
-                          child: Image(
-                            image: AssetImage('images/${UI.finalResult}.png'),
-                          ),
+                      DelayedDisplay(
+                        delay: Duration(milliseconds: 500),
+                        child: Image(
+                          height: 200.0,
+                          width: 200.0,
+                          image: AssetImage('images/${UI.finalResult}.png'),
                         ),
                       ),
                       UI.finalResult == "Win" ?
@@ -69,27 +69,22 @@ class WinningScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 2,
+            Padding(
+              padding: EdgeInsets.only(top: 30.0),
               child: Column(
                 children: [
-                  Expanded(
-                    child: ReusableButton(text: 'Play Again', onTap: (){
-                      UI.isGameRestarted = true;
-                      Navigator.pop(context);
-                      },
-                      fontSize: 20.0,
-                    ),
+                  ReusableButton(text: 'Play Again', onTap: (){
+                    UI.isGameRestarted = true;
+                    Navigator.pop(context);
+                    },
                   ),
-                  Expanded(
-                    child: ReusableButton(text: 'Restart', onTap: (){
-                      ui.colorsAndSide();
-                      ui.remainingVars();
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                    }, fontSize: 20.0,
-                    ),
+                  ReusableButton(text: 'Restart', onTap: (){
+                    ui.colorsAndSide();
+                    ui.remainingVars();
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
                   ),
                 ],
               ),

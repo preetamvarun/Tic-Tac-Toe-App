@@ -12,7 +12,7 @@ class TextWidget extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: kTextColor,
+        color: Colors.white,
         fontFamily: 'Carter',
         fontSize: fontSize,
       ),

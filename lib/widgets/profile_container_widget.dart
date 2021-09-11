@@ -27,13 +27,14 @@ class ProfileContainer extends StatelessWidget {
       height: 130.0,
       width: 110.0,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             profileName,
             style: TextStyle(
               fontSize: 20.0,
               color: Colors.white,
+              fontFamily: 'Carter',
             ),
             textAlign: TextAlign.center,
           ),

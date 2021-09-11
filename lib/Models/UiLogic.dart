@@ -18,8 +18,8 @@ class UI{
   static bool isGameRestarted = false;
 
   void colorsAndSide(){
-    xCardColor = kProfileContainerColor;oTextColor = kTextColor;
-    oCardColor = kGameScreenBackgroundColor;xTextColor = Colors.white;
+    xCardColor = kProfileContainerColor;oTextColor = kLetterOColor;
+    oCardColor = kGameScreenBackgroundColor;xTextColor = kLetterXColor;
     isGameRestarted == false ? side = "X" : side = side == "X" ? "O" : "X";
   }
 
@@ -40,15 +40,15 @@ class UI{
   void updateColor(letter selectedLetter){
 
     if(selectedLetter == letter.cardO){
-      if(oCardColor == kGameScreenBackgroundColor && oTextColor == kTextColor){
-        oCardColor = kProfileContainerColor; oTextColor = Colors.white;
-        xCardColor = kGameScreenBackgroundColor; xTextColor = kTextColor;
+      if(oCardColor == kGameScreenBackgroundColor && oTextColor == kLetterOColor){
+        oCardColor = kProfileContainerColor; oTextColor = kLetterXColor;
+        xCardColor = kGameScreenBackgroundColor; xTextColor = kLetterOColor;
       }
     }
     if(selectedLetter == letter.cardX){
-      if(xCardColor == kGameScreenBackgroundColor && xTextColor == kTextColor){
-        oCardColor = kGameScreenBackgroundColor; oTextColor = kTextColor;
-        xCardColor = kProfileContainerColor; xTextColor = Colors.white;
+      if(xCardColor == kGameScreenBackgroundColor && xTextColor == kLetterOColor){
+        oCardColor = kGameScreenBackgroundColor; oTextColor = kLetterOColor;
+        xCardColor = kProfileContainerColor; xTextColor = kLetterXColor;
       }
     }
   }

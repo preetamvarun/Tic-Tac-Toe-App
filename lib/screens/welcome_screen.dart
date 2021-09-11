@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/pickup_screen.dart';
@@ -9,7 +10,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kProfileContainerColor,
+      backgroundColor: kGameScreenBackgroundColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -19,18 +20,19 @@ class WelcomeScreen extends StatelessWidget {
               child: Center(child: TextWidget(text: "TIC TAC TOE",fontSize: 40.0,)),
             ),
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Expanded(
-              child: TextWidget(text: "XO", fontSize: 200.0,),
-              ),
-          ),
           Expanded(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: ReusableButton(fontSize : 30.0, onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PickUpScreen()));},
-              text: "Pick A Side",
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("X", style: TextStyle(color: kLetterXColor,fontSize: 200.0,fontFamily: 'Carter'),),
+                Text("O", style: TextStyle(color: kLetterOColor, fontSize: 200.0,fontFamily: 'Carter'),),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PickUpScreen()));},
+            text: "Pick A Side",
             ),
           ),
         ],
