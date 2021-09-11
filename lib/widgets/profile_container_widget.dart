@@ -6,6 +6,7 @@ import 'package:tic_tac_toe/constants.dart';
 class ProfileContainer extends StatelessWidget {
 
   final profileName,letter,bckColor;
+
   ProfileContainer({this.profileName,this.letter,this.bckColor});
 
   @override

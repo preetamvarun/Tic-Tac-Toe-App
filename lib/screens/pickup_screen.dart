@@ -20,9 +20,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
     super.initState();
   }
 
-  void updateColor(letter selectedLetter) {
-    ui.updateColor(selectedLetter);
-  }
+  void updateColor(letter selectedLetter) { ui.updateColor(selectedLetter); }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
           children: [
             Center(
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(20.0),
                 child: TextWidget(text: 'Choose a side',fontSize: 35.0,fontWeight: FontWeight.w500,)
               ),
             ),

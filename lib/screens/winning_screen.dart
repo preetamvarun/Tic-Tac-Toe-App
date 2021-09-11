@@ -74,7 +74,9 @@ class WinningScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ReusableButton(text: 'Play Again', onTap: (){
-                    UI.isGameRestarted = true;
+                    ui.colorsAndSide();
+                    ui.remainingVars();
+                    isGameRestarted = true;
                     Navigator.pop(context);
                     },
                   ),

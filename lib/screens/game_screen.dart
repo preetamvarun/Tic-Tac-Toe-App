@@ -24,7 +24,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
-    if(widget.chosenLetter != null){widget.chosenLetter == "O"? ui.startLetterX() : ui.startLetterO();}
+    if(widget.chosenLetter != null){ widget.chosenLetter == "O"? ui.startLetterX() : ui.startLetterO(); }
     ui.initializeColorMap();
     super.initState();
   }
@@ -46,14 +46,13 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     void fun(int r,int c, int containerNo){
+
       if(UI.finalResult != "Win") {
 
         UI.isSelected[containerNo] = true;
         if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
         else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
         UI.chars[containerNo] = UI.character;
-        print(UI.character);
-        print(UI.playerMap);
         ui.updateMatrix(r, c, UI.character);
         if (game.checkWinningCondition() == "Win") {
           AudioCache().play('winner.wav');
@@ -68,6 +67,7 @@ class _GameScreenState extends State<GameScreen> {
         AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
       }
     }
+
     
     UI.deviceW = MediaQuery.of(context).size.width;
     
