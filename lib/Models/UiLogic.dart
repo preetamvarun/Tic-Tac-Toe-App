@@ -15,11 +15,12 @@ class UI{
   static late List<bool>isSelected; static var colorMap = {},playerMap = {};
   static late bool letterX,letterO; static late double deviceW;
   static var containerWidth,bw,mat;
+  static bool isGameRestarted = false;
 
   void colorsAndSide(){
     xCardColor = kProfileContainerColor;oTextColor = kTextColor;
     oCardColor = kGameScreenBackgroundColor;xTextColor = Colors.white;
-    side = "X";
+    isGameRestarted == false ? side = "X" : side = side == "X" ? "O" : "X";
   }
 
   void remainingVars(){
@@ -52,23 +53,23 @@ class UI{
     }
   }
 
-  void startLetterX() {UI.letterO = true; UI.letterX = false;UI.playerMap['O'] = 'player 1'; UI.playerMap['X'] = 'player 2';}
-  void startLetterO() {UI.letterX = true; UI.letterO = false; UI.playerMap['X'] = 'player 1'; UI.playerMap['O'] = 'player 2'; }
+  void startLetterX() {letterO = true; letterX = false;playerMap['O'] = 'player 1'; playerMap['X'] = 'player 2';}
+  void startLetterO() {letterX = true; letterO = false;playerMap['X'] = 'player 1'; playerMap['O'] = 'player 2'; }
 
-  void letterXTurn() {UI.character = "X"; UI.letterX = false; UI.letterO = true;}
-  void letterOTurn() {UI.character = "O";UI.letterX = true;UI.letterO = false;}
+  void letterXTurn() {character = "X"; letterX = false; letterO = true;}
+  void letterOTurn() {character = "O";letterX = true;letterO = false;}
 
-  void setRow1() {UI.colorMap[0] = UI.colorMap[3] = UI.colorMap[6] = kG;}
-  void setRow2() {UI.colorMap[1] = UI.colorMap[4] = UI.colorMap[7] = kG;}
-  void setRow3() {UI.colorMap[2] = UI.colorMap[5] = UI.colorMap[8] = kG;}
+  void setRow1() {colorMap[0] = colorMap[3] = colorMap[6] = kG;}
+  void setRow2() {colorMap[1] = colorMap[4] = colorMap[7] = kG;}
+  void setRow3() {colorMap[2] = colorMap[5] = colorMap[8] = kG;}
 
-  void setCol1() {UI.colorMap[0] = UI.colorMap[1] = UI.colorMap[2] = kG;}
-  void setCol2() {UI.colorMap[3] = UI.colorMap[4] = UI.colorMap[5] = kG;}
-  void setCol3() {UI.colorMap[6] = UI.colorMap[7] = UI.colorMap[8] = kG;}
+  void setCol1() {colorMap[0] = colorMap[1] = colorMap[2] = kG;}
+  void setCol2() {colorMap[3] = colorMap[4] = colorMap[5] = kG;}
+  void setCol3() {colorMap[6] = colorMap[7] = colorMap[8] = kG;}
 
-  void setLeftDiagnol() {UI.colorMap[0] = UI.colorMap[4] = UI.colorMap[8] = kG;}
+  void setLeftDiagnol() {colorMap[0] = colorMap[4] = colorMap[8] = kG;}
 
-  void setRightDiagnol() {UI.colorMap[2] = UI.colorMap[4] = UI.colorMap[6] = kG;}
+  void setRightDiagnol() {colorMap[2] = colorMap[4] = colorMap[6] = kG;}
 
   bool checkR1(){if(mat[0][0] != "" && mat[0][0] == mat[0][1] && mat[0][1] == mat[0][2]){return true;}return false;}
   bool checkR2(){if(mat[1][0] != "" && mat[1][0] == mat[1][1] && mat[1][1] == mat[1][2]){return true;}return false;}

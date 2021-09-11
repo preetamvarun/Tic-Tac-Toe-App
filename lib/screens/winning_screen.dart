@@ -27,9 +27,9 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: Flexible(child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" , imageName: 'satoru')),
+                    child: Flexible(child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O")),
                   ),
-                  Flexible(child: ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" , imageName: 'mine')),
+                  Flexible(child: ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" ,)),
                 ],
               ),
             ),
@@ -75,8 +75,7 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ReusableButton(text: 'Play Again', onTap: (){
-                      ui.colorsAndSide();
-                      ui.remainingVars();
+                      UI.isGameRestarted = true;
                       Navigator.pop(context);
                       },
                       fontSize: 20.0,

@@ -52,6 +52,8 @@ class _GameScreenState extends State<GameScreen> {
         if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
         else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
         UI.chars[containerNo] = UI.character;
+        print(UI.character);
+        print(UI.playerMap);
         ui.updateMatrix(r, c, UI.character);
         if (game.checkWinningCondition() == "Win") {
           AudioCache().play('winner.wav');
@@ -64,7 +66,6 @@ class _GameScreenState extends State<GameScreen> {
           Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
         }
         AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
-
       }
     }
     
@@ -84,9 +85,9 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" ,imageName: 'satoru'),
+                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" ),
                   ),
-                  ProfileContainer(profileName: "Player 2", letter : UI.side == "X" ? "O" : "X",imageName: 'mine'),
+                  ProfileContainer(profileName: "Player 2", letter : UI.side == "X" ? "O" : "X"),
                 ],
               ),
             ),
