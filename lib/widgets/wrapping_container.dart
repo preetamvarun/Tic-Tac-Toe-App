@@ -11,7 +11,11 @@ class WrappingContainer extends StatelessWidget{
   Widget build(BuildContext context) {
 
     UI.containerWidth = MediaQuery.of(context).size.width - 40;
+
     UI.bw = UI.containerWidth / 3;
+
+    UI.wpWidth = UI.bw - 16;
+    UI.wpHeight = UI.bw - 16;
 
     return GestureDetector(
       onTap: onTap,
@@ -29,18 +33,18 @@ class WrappingContainer extends StatelessWidget{
               UI.chars[containerNo] == "" ? letter : UI.chars[containerNo],
               style: UI.finalResult != "Win" ? TextStyle(
                 fontFamily: UI.chars[containerNo] == "X" ? 'Carter' : "Paytone",
-                fontSize: 65.0,
+                fontSize: UI.wpHeight / 1.5,
                 color: UI.chars[containerNo] == "X" ? kLetterXColor : kLetterOColor,
               ) : TextStyle(
                 fontFamily: UI.chars[containerNo] == "X" ? 'Carter' : "Paytone",
-                fontSize: 65.0,
+                fontSize: UI.wpHeight / 1.5,
                 color: UI.colorMap[containerNo] == kG ? Colors.white :
                 UI.chars[containerNo] == "X" ? kLetterXColor : kLetterOColor
               ),
               textAlign : TextAlign.center,
             ),
-            height: UI.bw - 16,
-            width: UI.bw - 16,
+            height: UI.wpHeight,
+            width: UI.wpWidth,
           ),
         ),
     );

@@ -11,14 +11,14 @@ class ReusableButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: MaterialButton(
-        padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+        padding: EdgeInsets.symmetric(vertical: 15.0),
         textColor: Colors.white,
         color: kProfileContainerColor,
         minWidth : double.infinity,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Text(
           text,
-          style: TextStyle(fontFamily: 'Paytone', fontSize : 30.0, fontWeight: FontWeight.w500),
+          style: TextStyle(fontFamily: 'Paytone', fontSize : 25.0, fontWeight: FontWeight.w500),
         ),
         onPressed: onTap,
       ),

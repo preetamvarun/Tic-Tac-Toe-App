@@ -7,13 +7,18 @@ import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 
+// 90 * 0.6
+
+
 class WinningScreen extends StatelessWidget {
 
   final winningLetter;
+
   WinningScreen({this.winningLetter});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(
@@ -27,58 +32,54 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: Flexible(child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O")),
+                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O"),
                   ),
-                  Flexible(child: ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" ,)),
+                  ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" ,),
                 ],
               ),
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(right: 20.0,left: 20.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: kGameScreenContainerColor,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: DelayedDisplay(
-                            delay: Duration(milliseconds: 500),
-                            child: Image(
-                              image: AssetImage('images/${UI.finalResult}.png'),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: kGameScreenContainerColor,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: LayoutBuilder(
+                      builder: (context,constraints) => Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            DelayedDisplay(
+                              delay: Duration(milliseconds: 500),
+                              child: Image(
+                                height: constraints.maxHeight * 0.75,
+                                image: AssetImage('images/${UI.finalResult}.png'),
+                              ),
                             ),
-                          ),
+                            UI.finalResult == "Win" ?
+                            Center(
+                              child: Text(
+                                "${UI.playerMap[UI.character]} Wins",
+                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 9),
+                              ),
+                            ): Center(
+                              child: Text(
+                                "Drawn",
+                                style: kResultText,
+                              ),
+                            ),
+                          ],
                         ),
-                        UI.finalResult == "Win" ?
-                        Expanded(
-                          child: Center(
-                            child: Text(
-                              "${UI.playerMap[UI.character]} Wins",
-                              style: kResultText,
-                            ),
-                          ),
-                        ): Expanded(
-                          child: Center(
-                            child: Text(
-                              "Drawn",
-                              style: kResultText,
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
             Padding(
-              padding: EdgeInsets.only(top: 30.0),
+              padding: EdgeInsets.only(top: 20.0),
               child: Column(
                 children: [
                   ReusableButton(text: 'Play Again', onTap: (){

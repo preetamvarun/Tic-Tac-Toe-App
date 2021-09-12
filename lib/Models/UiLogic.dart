@@ -16,7 +16,7 @@ class UI{
   static late String side,a,b,finalResult,ans,ansLetter,winningDirection;
   static late List<bool>isSelected; static var colorMap = {},playerMap = {};
   static late bool letterX,letterO; static late double deviceW;
-  static var containerWidth,bw,mat;
+  static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth;
 
   void remainingVars(){
     finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
