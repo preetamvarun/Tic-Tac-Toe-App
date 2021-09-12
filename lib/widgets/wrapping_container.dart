@@ -29,11 +29,11 @@ class WrappingContainer extends StatelessWidget{
               UI.chars[containerNo] == "" ? letter : UI.chars[containerNo],
               style: UI.finalResult != "Win" ? TextStyle(
                 fontFamily: UI.chars[containerNo] == "X" ? 'Carter' : "Paytone",
-                fontSize: 80.0,
+                fontSize: 65.0,
                 color: UI.chars[containerNo] == "X" ? kLetterXColor : kLetterOColor,
               ) : TextStyle(
                 fontFamily: UI.chars[containerNo] == "X" ? 'Carter' : "Paytone",
-                fontSize: 80.0,
+                fontSize: 65.0,
                 color: UI.colorMap[containerNo] == kG ? Colors.white :
                 UI.chars[containerNo] == "X" ? kLetterXColor : kLetterOColor
               ),

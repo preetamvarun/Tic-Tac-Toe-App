@@ -21,7 +21,7 @@ class WinningScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 60.0, horizontal: 0.0),
+              padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 0.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -35,36 +35,44 @@ class WinningScreen extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(left: 10.0,right: 10.0),
+                padding: EdgeInsets.only(right: 20.0,left: 20.0),
                 child: Container(
                   decoration: BoxDecoration(
                     color: kGameScreenContainerColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      DelayedDisplay(
-                        delay: Duration(milliseconds: 500),
-                        child: Image(
-                          height: 200.0,
-                          width: 200.0,
-                          image: AssetImage('images/${UI.finalResult}.png'),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: DelayedDisplay(
+                            delay: Duration(milliseconds: 500),
+                            child: Image(
+                              image: AssetImage('images/${UI.finalResult}.png'),
+                            ),
+                          ),
                         ),
-                      ),
-                      UI.finalResult == "Win" ?
-                      Center(
-                        child: Text(
-                          "${UI.playerMap[UI.character]} Wins",
-                          style: kResultText,
+                        UI.finalResult == "Win" ?
+                        Expanded(
+                          child: Center(
+                            child: Text(
+                              "${UI.playerMap[UI.character]} Wins",
+                              style: kResultText,
+                            ),
+                          ),
+                        ): Expanded(
+                          child: Center(
+                            child: Text(
+                              "Drawn",
+                              style: kResultText,
+                            ),
+                          ),
                         ),
-                      ): Center(
-                        child: Text(
-                          "Drawn",
-                          style: kResultText,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
