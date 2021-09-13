@@ -7,18 +7,13 @@ import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 
-// 90 * 0.6
-
-
 class WinningScreen extends StatelessWidget {
 
   final winningLetter;
-
   WinningScreen({this.winningLetter});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(
@@ -63,12 +58,12 @@ class WinningScreen extends StatelessWidget {
                             Center(
                               child: Text(
                                 "${UI.playerMap[UI.character]} Wins",
-                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 9),
+                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 10),
                               ),
                             ): Center(
                               child: Text(
                                 "Drawn",
-                                style: kResultText,
+                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 10),
                               ),
                             ),
                           ],

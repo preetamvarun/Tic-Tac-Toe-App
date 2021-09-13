@@ -24,8 +24,15 @@ class WelcomeScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("X", style: TextStyle(color: kLetterXColor,fontSize: 200.0,fontFamily: 'Carter'),),
-                Text("O", style: TextStyle(color: kLetterOColor, fontSize: 200.0,fontFamily: 'Carter'),),
+                LayoutBuilder(
+                  builder : (context,constraints) => Text(
+                    "X", style: TextStyle(color: kLetterXColor,fontSize: constraints.maxHeight / 2.36,fontFamily: 'Carter'),
+                  ),
+                ),LayoutBuilder(
+                  builder : (context,constraints) => Text(
+                    "O", style: TextStyle(color: kLetterOColor,fontSize: constraints.maxHeight / 2.36,fontFamily: 'Carter'),
+                  ),
+                ),
               ],
             ),
           ),
