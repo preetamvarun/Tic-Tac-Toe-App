@@ -11,35 +11,48 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
-              child: Center(child: TextWidget(text: "TIC TAC TOE",fontSize: 40.0,)),
-            ),
-          ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                LayoutBuilder(
-                  builder : (context,constraints) => Text(
-                    "X", style: TextStyle(color: kLetterXColor,fontSize: constraints.maxHeight / 2.36,fontFamily: 'Carter'),
-                  ),
-                ),LayoutBuilder(
-                  builder : (context,constraints) => Text(
-                    "O", style: TextStyle(color: kLetterOColor,fontSize: constraints.maxHeight / 2.36,fontFamily: 'Carter'),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0,right: 10.0),
+                  child: GestureDetector(
+                    onTap: (){print("Settings icon is pressed");},
+                    child: Icon(
+                      Icons.settings,
+                      size: 40.0,
+                      color: Color(0xFF9b70e5),
+                    ),
                   ),
                 ),
               ],
             ),
-          ),
-          ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PickUpScreen()));},
-          text: "Pick A Side",
-          ),
-        ],
+            Center(child: TextWidget(text: "Tic Tac Toe", fontSize: 40.0, fontWeight: FontWeight.w500,)),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LayoutBuilder(
+                    builder : (context,constraints) => Text(
+                      "X", style: TextStyle(color: kLetterXColor,fontSize: constraints.maxHeight / 2.36,fontFamily: 'Carter'),
+                    ),
+                  ),LayoutBuilder(
+                    builder : (context,constraints) => Text(
+                      "O", style: TextStyle(color: kLetterOColor,fontSize: constraints.maxHeight / 2.36,fontFamily: 'Carter'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ReusableButton(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PickUpScreen()));},
+            text: "Pick A Side",
+            ),
+          ],
+        ),
       ),
     );
   }
