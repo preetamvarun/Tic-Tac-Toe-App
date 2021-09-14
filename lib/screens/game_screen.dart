@@ -9,6 +9,7 @@ import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 UI ui = UI();
+
 TicTacToe game = TicTacToe();
 
 class GameScreen extends StatefulWidget{
