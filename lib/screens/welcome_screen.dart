@@ -4,6 +4,7 @@ import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
@@ -21,7 +22,9 @@ class WelcomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0,right: 10.0),
                   child: GestureDetector(
-                    onTap: (){print("Settings icon is pressed");},
+                    onTap: (){
+
+                    },
                     child: Icon(
                       Icons.settings,
                       size: 40.0,
