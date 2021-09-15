@@ -16,44 +16,18 @@ class WelcomeScreen extends StatelessWidget {
       backgroundColor: kGameScreenBackgroundColor,
       appBar: AppBar(
         backgroundColor: kGameScreenBackgroundColor,
-        leading: GestureDetector(
-          onTap: (){
+        leading: IconButton(
+          onPressed: (){
             Alert(
               style: AlertStyle(
                 backgroundColor: Colors.white,
+                alertPadding: EdgeInsets.symmetric(horizontal: 30.0),
               ),
               context: context,
-              content: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Sound"),
-                        Text("Music"),
-                      ],
-                    ),
-                  ),
-                  NameTextFieldWidget(),
-                  Row(
-                    children: [
-                      Text("Avatar"),
-                      ImageAvatarWidget(),
-                    ],
-                  ),
-                  NameTextFieldWidget(),
-                  Row(
-                    children: [
-                      Text("Avatar"),
-                      ImageAvatarWidget(),
-                    ],
-                  ),
-                ],
-              ),
+              content: COLUMNWIDGET(),
             ).show();
           },
-          child: Icon(
+          icon : Icon(
             Icons.view_headline,
             size: 30.0,
           ),
@@ -85,6 +59,44 @@ class WelcomeScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class COLUMNWIDGET extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text("Sound"),
+                Text("Music"),
+              ],
+            ),
+          ),
+          NameTextFieldWidget(),
+          Row(
+            children: [
+              Text("Avatar"),
+              ImageAvatarWidget(),
+            ],
+          ),
+          NameTextFieldWidget(),
+          Row(
+            children: [
+              Text("Avatar"),
+              ImageAvatarWidget(),
+            ],
+          ),
+        ],
       ),
     );
   }

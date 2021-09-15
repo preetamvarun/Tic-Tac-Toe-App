@@ -11,6 +11,9 @@ class ImageAvatarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           CircleAvatarWidget(),
+          CircleAvatarWidget(),
+          CircleAvatarWidget(),
+          CircleAvatarWidget(),
         ],
       ),
     );
