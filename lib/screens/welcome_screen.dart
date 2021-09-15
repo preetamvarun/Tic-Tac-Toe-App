@@ -6,6 +6,7 @@ import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:tic_tac_toe/widgets/image_avatar_widget.dart';
+import 'package:tic_tac_toe/widgets/name_text_field_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
