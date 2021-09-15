@@ -5,6 +5,7 @@ import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:tic_tac_toe/widgets/image_avatar_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
@@ -17,7 +18,6 @@ class WelcomeScreen extends StatelessWidget {
         leading: GestureDetector(
           onTap: (){
             Alert(
-              padding: EdgeInsets.symmetric(horizontal: 60.0),
               style: AlertStyle(
                 backgroundColor: Colors.white,
               ),
@@ -44,40 +44,17 @@ class WelcomeScreen extends StatelessWidget {
                           width: 100.0,
                           height: 30.0,
                           child: TextField(
-                            decoration: InputDecoration(
-                              fillColor: Color(0xFF9b70e5),
-                              filled: true,
-                            ),
+                            decoration: kTextFieldDecoration,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Avatar"),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            CircleAvatar(
-                              child: Image(
-                                image: AssetImage("images/Draw.png"),
-                                height: 30.0,
-                              ),
-                            ),
-                            CircleAvatar(
-                              child: Image(
-                                image: AssetImage("images/Draw.png"),
-                                height: 30.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Text("Avatar"),
+                      ImageAvatarWidget(),
+                    ],
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -89,44 +66,17 @@ class WelcomeScreen extends StatelessWidget {
                           width: 100.0,
                           height: 30.0,
                           child: TextField(
-                            decoration: InputDecoration(
-                              fillColor: Color(0xFF9b70e5),
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(5.0),),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
+                            decoration: kTextFieldDecoration,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Avatar"),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            CircleAvatar(
-                              child: Image(
-                                image: AssetImage("images/Draw.png"),
-                                height: 30.0,
-                              ),
-                            ),
-                            CircleAvatar(
-                              child: Image(
-                                image: AssetImage("images/Draw.png"),
-                                height: 30.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Text("Avatar"),
+                      ImageAvatarWidget(),
+                    ],
                   ),
                 ],
               ),
@@ -168,4 +118,7 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
 

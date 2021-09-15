@@ -11,3 +11,11 @@ const kYourTurnText = TextStyle(color: Colors.white, fontSize: 18.0, fontWeight:
 const kResultText = TextStyle(color: Colors.white,fontFamily: 'Carter');
 const kReusableButton = "";
 const kG = "";
+const kTextFieldDecoration = InputDecoration(
+  fillColor: Color(0xFF9b70e5),
+  filled: true,
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(5.0),),
+    borderSide: BorderSide.none,
+  ),
+);
