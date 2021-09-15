@@ -16,25 +16,6 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0,right: 10.0),
-                  child: GestureDetector(
-                    onTap: (){
-
-                    },
-                    child: Icon(
-                      Icons.settings,
-                      size: 40.0,
-                      color: Color(0xFF9b70e5),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Center(child: TextWidget(text: "Tic Tac Toe", fontSize: 40.0, fontWeight: FontWeight.w500,)),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
