@@ -34,44 +34,14 @@ class WelcomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Your Name"),
-                        Container(
-                          width: 100.0,
-                          height: 30.0,
-                          child: TextField(
-                            decoration: kTextFieldDecoration,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  NameTextFieldWidget(),
                   Row(
                     children: [
                       Text("Avatar"),
                       ImageAvatarWidget(),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Your Name"),
-                        Container(
-                          width: 100.0,
-                          height: 30.0,
-                          child: TextField(
-                            decoration: kTextFieldDecoration,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  NameTextFieldWidget(),
                   Row(
                     children: [
                       Text("Avatar"),
@@ -118,7 +88,6 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 }
-
 
 
 
