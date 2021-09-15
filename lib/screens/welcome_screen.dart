@@ -12,6 +12,133 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: kGameScreenBackgroundColor,
+        leading: GestureDetector(
+          onTap: (){
+            Alert(
+              padding: EdgeInsets.symmetric(horizontal: 60.0),
+              style: AlertStyle(
+                backgroundColor: Colors.white,
+              ),
+              context: context,
+              content: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Sound"),
+                        Text("Music"),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Your Name"),
+                        Container(
+                          width: 100.0,
+                          height: 30.0,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              fillColor: Color(0xFF9b70e5),
+                              filled: true,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Avatar"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            CircleAvatar(
+                              child: Image(
+                                image: AssetImage("images/Draw.png"),
+                                height: 30.0,
+                              ),
+                            ),
+                            CircleAvatar(
+                              child: Image(
+                                image: AssetImage("images/Draw.png"),
+                                height: 30.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Your Name"),
+                        Container(
+                          width: 100.0,
+                          height: 30.0,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              fillColor: Color(0xFF9b70e5),
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(5.0),),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Avatar"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            CircleAvatar(
+                              child: Image(
+                                image: AssetImage("images/Draw.png"),
+                                height: 30.0,
+                              ),
+                            ),
+                            CircleAvatar(
+                              child: Image(
+                                image: AssetImage("images/Draw.png"),
+                                height: 30.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ).show();
+          },
+          child: Icon(
+            Icons.view_headline,
+            size: 30.0,
+          ),
+        ),
+        title: Center(child: TextWidget(text: "TIC TAC TOE", fontSize: 35.0,)),
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
