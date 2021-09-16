@@ -12,7 +12,7 @@ const kResultText = TextStyle(color: Colors.white,fontFamily: 'Carter');
 const kReusableButton = "";
 const kG = "";
 const kTextFieldDecoration = InputDecoration(
-  fillColor: Color(0xFF9b70e5),
+  fillColor: kGameScreenContainerColor,
   filled: true,
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(5.0),),

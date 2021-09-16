@@ -10,11 +10,11 @@ class NameTextFieldWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text("Your Name is preetam"),
+          Text("Your Name"),
           SizedBox(width: 10.0,),
           Container(
             height: 40.0,
-            width: 100.0,
+            width: 150.0,
             child: TextField(
               decoration: kTextFieldDecoration,
             ),

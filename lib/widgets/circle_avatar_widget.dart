@@ -6,7 +6,7 @@ class CircleAvatarWidget extends StatelessWidget {
     return CircleAvatar(
       child: Image(
         image: AssetImage("images/Draw.png"),
-        height: 30.0,
+        height: 40.0,
       ),
     );
   }

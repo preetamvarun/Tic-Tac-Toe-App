@@ -5,8 +5,8 @@ import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:tic_tac_toe/widgets/image_avatar_widget.dart';
 import 'package:tic_tac_toe/widgets/name_text_field_widget.dart';
+import 'package:tic_tac_toe/widgets/circle_avatar_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
@@ -20,7 +20,7 @@ class WelcomeScreen extends StatelessWidget {
           onPressed: (){
             Alert(
               style: AlertStyle(
-                backgroundColor: Colors.white,
+                backgroundColor: Color(0xFF9b70e5),
                 alertPadding: EdgeInsets.symmetric(horizontal: 30.0),
               ),
               context: context,
@@ -84,16 +84,24 @@ class COLUMNWIDGET extends StatelessWidget {
           ),
           NameTextFieldWidget(),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text("Avatar"),
-              ImageAvatarWidget(),
+              CircleAvatarWidget(),
+              CircleAvatarWidget(),
+              CircleAvatarWidget(),
+              CircleAvatarWidget(),
             ],
           ),
           NameTextFieldWidget(),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text("Avatar"),
-              ImageAvatarWidget(),
+              CircleAvatarWidget(),
+              CircleAvatarWidget(),
+              CircleAvatarWidget(),
+              CircleAvatarWidget(),
             ],
           ),
         ],
