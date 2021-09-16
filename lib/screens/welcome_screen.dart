@@ -5,8 +5,7 @@ import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:tic_tac_toe/widgets/name_text_field_widget.dart';
-import 'package:tic_tac_toe/widgets/circle_avatar_widget.dart';
+import 'package:tic_tac_toe/widgets/parent_column_in_settings_box_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
@@ -64,51 +63,7 @@ class WelcomeScreen extends StatelessWidget {
   }
 }
 
-class COLUMNWIDGET extends StatelessWidget {
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text("Sound"),
-                Text("Music"),
-              ],
-            ),
-          ),
-          NameTextFieldWidget(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text("Avatar"),
-              CircleAvatarWidget(),
-              CircleAvatarWidget(),
-              CircleAvatarWidget(),
-              CircleAvatarWidget(),
-            ],
-          ),
-          NameTextFieldWidget(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text("Avatar"),
-              CircleAvatarWidget(),
-              CircleAvatarWidget(),
-              CircleAvatarWidget(),
-              CircleAvatarWidget(),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 
 
