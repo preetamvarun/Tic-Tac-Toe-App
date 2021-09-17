@@ -46,8 +46,8 @@ class UI{
     }
   }
 
-  void startLetterX() {letterO = false; letterX = true;playerMap['X'] = UI.player1Name; playerMap['O'] = UI.player2Name; print(playerMap);}
-  void startLetterO() {letterX = false; letterO = true;playerMap['O'] = UI.player1Name; playerMap['X'] = UI.player2Name; print(playerMap);}
+  void startLetterX() {letterO = false; letterX = true;playerMap['X'] = UI.player1Name; playerMap['O'] = UI.player2Name;}
+  void startLetterO() {letterX = false; letterO = true;playerMap['O'] = UI.player1Name; playerMap['X'] = UI.player2Name;}
 
   void colorsAndSide(){
 
@@ -74,8 +74,6 @@ class UI{
         playerMap['O'] = player1Name; playerMap['X'] = player2Name;
       }
     }
-
-    print(playerMap);
 
   }
 
