@@ -5,7 +5,6 @@ import 'package:tic_tac_toe/constants.dart';
 class NameTextFieldWidget extends StatelessWidget {
 
   final name;
-
   NameTextFieldWidget({this.name});
 
   @override
@@ -22,7 +21,7 @@ class NameTextFieldWidget extends StatelessWidget {
               height: 45.0,
               width: 180.0,
               child: TextField(
-                inputFormatters: [LengthLimitingTextInputFormatter(50)],
+                inputFormatters: [LengthLimitingTextInputFormatter(20)],
                 style: TextStyle(
                   color: Colors.white,
                 ),
