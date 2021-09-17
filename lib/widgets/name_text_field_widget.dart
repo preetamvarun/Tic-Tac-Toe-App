@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tic_tac_toe/constants.dart';
 
 class NameTextFieldWidget extends StatelessWidget {
+
+  final name;
+
+  NameTextFieldWidget({this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +19,17 @@ class NameTextFieldWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 10.0),
             child: Container(
-              height: 50.0,
-              width: 160.0,
+              height: 45.0,
+              width: 180.0,
               child: TextField(
-                decoration: kTextFieldDecoration,
+                inputFormatters: [LengthLimitingTextInputFormatter(50)],
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+                decoration: kTextFieldDecoration.copyWith(hintText: name),
+                onChanged: (value){
+                  print(value);
+                },
               ),
             ),
           ),

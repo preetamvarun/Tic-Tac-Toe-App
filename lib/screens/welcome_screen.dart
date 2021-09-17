@@ -5,7 +5,7 @@ import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:tic_tac_toe/widgets/parent_column_in_settings_box_widget.dart';
+import 'package:tic_tac_toe/widgets/parent_column.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
