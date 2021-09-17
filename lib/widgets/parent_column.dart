@@ -4,8 +4,6 @@ import 'package:tic_tac_toe/widgets/name_text_field_widget.dart';
 import 'package:tic_tac_toe/widgets/row_contains_avatar_and_images.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 
-String? dropDownValue;
-
 class COLUMNWIDGET extends StatefulWidget {
 
   @override
@@ -13,8 +11,6 @@ class COLUMNWIDGET extends StatefulWidget {
 }
 
 class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
-
-  List<String> gridSize = ["3 * 3 Grid","4 * 4 Grid","5 * 5 Grid"];
 
   @override
   Widget build(BuildContext context) {
@@ -40,40 +36,6 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
                   ),
                 ),
               ],
-            ),
-          ),
-          Text("Select Grid Size", style: kSettingsBoxLetterStyle,),
-          Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: kProfileContainerColor,
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(top: 10.0),
-              child: Container(
-                padding: EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: kProfileContainerColor,
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    value: dropDownValue,
-                    icon: Icon(Icons.arrow_downward,color: Colors.white,),
-                    iconSize: 24.0,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.black, fontSize: 20.0),
-                    onChanged: (String? newValue){
-                      setState(() {
-                        dropDownValue = newValue;
-                      });
-                    },
-                    items : gridSize.map<DropdownMenuItem<String>>((String value){
-                      return DropdownMenuItem(value: value, child: Text(value, style: TextStyle(color: Colors.white),),);
-                    }).toList(),
-                  ),
-                ),
-              ),
             ),
           ),
           NameTextFieldWidget(name: "Player 1",),

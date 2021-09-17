@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
-import 'package:tic_tac_toe/widgets/parent_column.dart';
 
 class WrappingContainer extends StatelessWidget{
 
@@ -17,15 +16,6 @@ class WrappingContainer extends StatelessWidget{
 
     UI.wpWidth = UI.bw - 16;
     UI.wpHeight = UI.bw - 16;
-
-    if(dropDownValue == "4 * 4 Grid"){
-      UI.wpWidth = UI.wpWidth / 1.4;
-      UI.wpHeight = UI.wpHeight / 1.4;
-    }
-    else if(dropDownValue == "5 * 5 Grid"){
-      UI.wpWidth = UI.wpWidth / 1.7;
-      UI.wpHeight = UI.wpHeight / 1.7;
-    }
 
     return GestureDetector(
       onTap: onTap,

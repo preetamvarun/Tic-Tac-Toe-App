@@ -1,7 +1,6 @@
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/widgets/parent_column.dart';
 
 enum letter { cardX, cardO }
 
@@ -11,11 +10,11 @@ class UI{
 
   static late Color xCardColor; static late Color oCardColor;
   static late Color xTextColor; static late Color oTextColor;
-  static late String character; static late List<String>chars,chars4;
+  static late String character; static late List<String>chars;
   static late String side,a,b,finalResult,ans,ansLetter,winningDirection;
-  static late List<bool>isSelected; static var colorMap = {},playerMap = {},colorMap4 = {};
+  static late List<bool>isSelected; static var colorMap = {},playerMap = {};
   static late bool letterX,letterO; static late double deviceW;
-  static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth,mat4;
+  static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth;
   static bool muteSound = false; static bool isPlayAgain = false;
   static String player1Name = "Player 1", player2Name = "Player 2";
 
@@ -23,13 +22,11 @@ class UI{
     finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
     isSelected = [false,false,false,false,false,false,false,false,false];
     chars = ["","","","","","","","",""]; mat = [["","",""],["","",""],["","",""]];
-    chars4 = ["","","","","","","","","","","","","","","",""]; mat4 = [["","","",""],["","","",""],["","","",""]];
     colorMap={};
   }
 
   void initializeColorMap() {for(int i = 0; i < 9; i++){colorMap[i] = "kProfileContainerColor";}}
 
-  void initializeColorMap4() {for(int i = 0; i < 16; i++){colorMap4[i] = "kProfileContainerColor";}}
 
   void updateMatrix(int row, int col, String val) {game.insertIntoCell(row, col, val);}
 
@@ -88,17 +85,10 @@ class UI{
   void setRow2() {colorMap[1] = colorMap[4] = colorMap[7] = kG;}
   void setRow3() {colorMap[2] = colorMap[5] = colorMap[8] = kG;}
 
-  void set4Row1() {colorMap[0] = colorMap[3] = colorMap[6] = kG;}
-  void set4Row2() {colorMap[1] = colorMap[4] = colorMap[7] = kG;}
-  void set4Row3() {colorMap[2] = colorMap[5] = colorMap[8] = kG;}
-  void set4Row4() {colorMap[2] = colorMap[5] = colorMap[8] = kG;}
-
-
   void setCol1() {colorMap[0] = colorMap[1] = colorMap[2] = kG;}
   void setCol2() {colorMap[3] = colorMap[4] = colorMap[5] = kG;}
   void setCol3() {colorMap[6] = colorMap[7] = colorMap[8] = kG;}
 
-  
 
   void setLeftDiagnol() {colorMap[0] = colorMap[4] = colorMap[8] = kG;}
 
