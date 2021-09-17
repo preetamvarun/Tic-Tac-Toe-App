@@ -90,6 +90,7 @@ class WinningScreen extends StatelessWidget {
                     Navigator.pop(context);
                     Navigator.pop(context);
                     Navigator.pop(context);
+                    UI.muteSound = false;
                   },
                   ),
                 ],

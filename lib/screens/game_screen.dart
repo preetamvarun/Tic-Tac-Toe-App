@@ -56,16 +56,16 @@ class _GameScreenState extends State<GameScreen> {
         UI.chars[containerNo] = UI.character;
         ui.updateMatrix(r, c, UI.character);
         if (game.checkWinningCondition() == "Win") {
-          AudioCache().play('winner.wav');
+          if(UI.muteSound == false) {AudioCache().play('winner.wav');}
           UI.finalResult = "Win";
           changeWinningLetterColors(UI.ansLetter);
         }
         else if (game.checkDrawCondition() == "Draw") {
-          AudioCache().play('draw.mpeg');
+          if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
           Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
         }
-        AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
+        if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
       }
     }
 
