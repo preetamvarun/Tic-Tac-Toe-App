@@ -27,9 +27,9 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O"),
+                    child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O"),
                   ),
-                  ProfileContainer(profileName: "Player 2",  letter : UI.side == "X" ? "O" : "X" ,),
+                  ProfileContainer(profileName: UI.player2Name,  letter : UI.side == "X" ? "O" : "X" ,),
                 ],
               ),
             ),
@@ -57,7 +57,7 @@ class WinningScreen extends StatelessWidget {
                             UI.finalResult == "Win" ?
                             Center(
                               child: Text(
-                                "${UI.playerMap[UI.character]} Wins",
+                                "${UI.playerMap[winningLetter]} Wins",
                                 style: kResultText.copyWith(fontSize: constraints.maxHeight / 10),
                               ),
                             ): Center(
@@ -78,9 +78,9 @@ class WinningScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ReusableButton(text: 'Play Again', onTap: (){
+                    UI.isPlayAgain = true;
                     ui.colorsAndSide();
                     ui.remainingVars();
-                    isGameRestarted = true;
                     Navigator.pop(context);
                     },
                   ),

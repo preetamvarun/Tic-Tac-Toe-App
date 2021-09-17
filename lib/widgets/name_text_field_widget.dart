@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tic_tac_toe/constants.dart';
+import 'package:tic_tac_toe/Models/UiLogic.dart';
 
 class NameTextFieldWidget extends StatelessWidget {
 
@@ -27,7 +28,7 @@ class NameTextFieldWidget extends StatelessWidget {
                 ),
                 decoration: kTextFieldDecoration.copyWith(hintText: name),
                 onChanged: (value){
-                  print(value);
+                  name == "Player 1" ? UI.player1Name = value :  UI.player2Name = value;
                 },
               ),
             ),

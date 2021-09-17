@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 enum letter { cardX, cardO }
 
-bool isGameRestarted = false;
-
 TicTacToe game = TicTacToe();
 
 class UI{
@@ -17,7 +15,8 @@ class UI{
   static late List<bool>isSelected; static var colorMap = {},playerMap = {};
   static late bool letterX,letterO; static late double deviceW;
   static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth;
-  static bool muteSound = false;
+  static bool muteSound = false; static bool isPlayAgain = false;
+  static String player1Name = "Player 1", player2Name = "Player 2";
 
   void remainingVars(){
     finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
@@ -47,14 +46,37 @@ class UI{
     }
   }
 
-  void startLetterX() {letterO = true; letterX = false;playerMap['O'] = 'player 1'; playerMap['X'] = 'player 2';}
-  void startLetterO() {letterX = true; letterO = false;playerMap['X'] = 'player 1'; playerMap['O'] = 'player 2'; }
+  void startLetterX() {letterO = false; letterX = true;playerMap['X'] = UI.player1Name; playerMap['O'] = UI.player2Name; print(playerMap);}
+  void startLetterO() {letterX = false; letterO = true;playerMap['O'] = UI.player1Name; playerMap['X'] = UI.player2Name; print(playerMap);}
 
   void colorsAndSide(){
+
+    String temp = "";
+
     xCardColor = kProfileContainerColor;oTextColor = kLetterOColor;
     oCardColor = kGameScreenBackgroundColor;xTextColor = kLetterXColor;
-    isGameRestarted == false ? side = "X" : side = side == "X" ? "O" : "X";
-    if(isGameRestarted){ side == "X" ? startLetterO() : startLetterX(); }
+    if (isPlayAgain == false) side = "X";
+
+    else if(isPlayAgain == true){
+
+      temp = player1Name;
+      player1Name = player2Name;
+      player2Name = temp;
+
+      if(letterX == true){
+        side = "X";
+        letterX = true; letterO = false;
+        playerMap['X'] = player1Name; playerMap['O'] = player2Name;
+      }
+      else if(letterO == true){
+        side = "O";
+        letterX = false; letterO = true;
+        playerMap['O'] = player1Name; playerMap['X'] = player2Name;
+      }
+    }
+
+    print(playerMap);
+
   }
 
   void letterXTurn() {character = "X"; letterX = false; letterO = true;}

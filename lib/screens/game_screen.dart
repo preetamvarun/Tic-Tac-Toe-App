@@ -25,7 +25,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
-    if(widget.chosenLetter != null){ widget.chosenLetter == "O"? ui.startLetterX() : ui.startLetterO(); }
+    if(widget.chosenLetter != null){ widget.chosenLetter == "O"? ui.startLetterO() : ui.startLetterX(); print(UI.playerMap);}
     ui.initializeColorMap();
     super.initState();
   }
@@ -42,14 +42,13 @@ class _GameScreenState extends State<GameScreen> {
       UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection == "checkColumns" ? checkColumns()
       : UI.winningDirection == "checkLeftDiagnol" ? checkLeftDiagnol() : checkRightDiagnol();
       Future.delayed(Duration(milliseconds: 1000), (){
-        Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
+        Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)), ).then((value) => setState(() {}));
       });
     }
 
     void fun(int r,int c, int containerNo){
 
       if(UI.finalResult != "Win") {
-
         UI.isSelected[containerNo] = true;
         if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
         else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
@@ -86,9 +85,9 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: "Player 1", letter : UI.side == "X" ? "X" : "O" ),
+                    child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ),
                   ),
-                  ProfileContainer(profileName: "Player 2", letter : UI.side == "X" ? "O" : "X"),
+                  ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X"),
                 ],
               ),
             ),
