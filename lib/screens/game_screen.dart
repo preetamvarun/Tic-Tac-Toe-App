@@ -7,6 +7,7 @@ import 'package:tic_tac_toe/constants.dart';
 import 'dart:async';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:tic_tac_toe/widgets/parent_column.dart';
 
 UI ui = UI();
 
@@ -47,6 +48,8 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     void fun(int r,int c, int containerNo){
+
+      print("entered into fun function");
 
       if(UI.finalResult != "Win") {
         UI.isSelected[containerNo] = true;
@@ -105,15 +108,31 @@ class _GameScreenState extends State<GameScreen> {
                   alignment: WrapAlignment.center,
                   runAlignment: WrapAlignment.center,
                   children: [
-                    WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
-                    WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),
-                    WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,),
-                    WrappingContainer(onTap: (){fun(0,1,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,),
-                    WrappingContainer(onTap: (){fun(1,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,),
-                    WrappingContainer(onTap: (){fun(2,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,),
-                    WrappingContainer(onTap: (){fun(0,2,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,),
-                    WrappingContainer(onTap: (){fun(1,2,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,),
-                    WrappingContainer(onTap: (){fun(2,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(0,1,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(1,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(2,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(0,2,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(1,2,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,) : SizedBox.shrink(),
+                    dropDownValue == "3 * 3 Grid" ? WrappingContainer(onTap: (){fun(2,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(3,0,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(0,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(1,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(2,1,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(3,1,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(0,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(1,2,9);}, letter: UI.isSelected[9] ?  UI.character: "",containerNo: 9,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(2,2,10);}, letter: UI.isSelected[10] ?  UI.character: "",containerNo: 10,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(3,2,11);}, letter: UI.isSelected[11] ?  UI.character: "",containerNo: 11,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(0,3,12);}, letter: UI.isSelected[12] ?  UI.character: "",containerNo: 12,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(1,3,13);}, letter: UI.isSelected[13] ?  UI.character: "",containerNo: 13,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(2,3,14);}, letter: UI.isSelected[14] ?  UI.character: "",containerNo: 14,) : SizedBox.shrink(),
+                    dropDownValue == "4 * 4 Grid" ? WrappingContainer(onTap: (){fun(3,3,15);}, letter: UI.isSelected[15] ?  UI.character: "",containerNo: 15,) : SizedBox.shrink(),
                   ],
                 ),
               ),
@@ -124,3 +143,13 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 }
+
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,16);}, letter: UI.isSelected[16] ?  UI.character: "",containerNo: 16,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,17);}, letter: UI.isSelected[17] ?  UI.character: "",containerNo: 17,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,18);}, letter: UI.isSelected[18] ?  UI.character: "",containerNo: 18,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,19);}, letter: UI.isSelected[19] ?  UI.character: "",containerNo: 19,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,20);}, letter: UI.isSelected[20] ?  UI.character: "",containerNo: 20,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,21);}, letter: UI.isSelected[21] ?  UI.character: "",containerNo: 21,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,22);}, letter: UI.isSelected[22] ?  UI.character: "",containerNo: 22,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,23);}, letter: UI.isSelected[23] ?  UI.character: "",containerNo: 23,) : SizedBox.shrink(),
+// dropDownValue == "5 * 5 Grid" ? WrappingContainer(onTap: (){fun(2,2,24);}, letter: UI.isSelected[24] ?  UI.character: "",containerNo: 24,) : SizedBox.shrink(),
