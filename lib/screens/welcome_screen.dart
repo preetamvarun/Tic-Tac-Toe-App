@@ -24,7 +24,15 @@ class WelcomeScreen extends StatelessWidget {
               ),
               context: context,
               content: COLUMNWIDGET(),
-            ).show();
+            buttons: [
+              DialogButton(
+                onPressed: (){Navigator.pop(context);},
+                child: Text(
+                  "SUBMIT",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ]).show();
           },
           icon : Icon(
             Icons.view_headline,
