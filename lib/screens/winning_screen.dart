@@ -50,7 +50,7 @@ class WinningScreen extends StatelessWidget {
                             DelayedDisplay(
                               delay: Duration(milliseconds: 500),
                               child: Image(
-                                height: constraints.maxHeight * 0.75,
+                                height: constraints.maxHeight * 0.70,
                                 image: AssetImage('images/${UI.finalResult}.png'),
                               ),
                             ),
@@ -58,12 +58,12 @@ class WinningScreen extends StatelessWidget {
                             Center(
                               child: Text(
                                 "${UI.playerMap[winningLetter]} Wins",
-                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 10),
+                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 10.5),
                               ),
                             ): Center(
                               child: Text(
                                 "Drawn",
-                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 10),
+                                style: kResultText.copyWith(fontSize: constraints.maxHeight / 10.5),
                               ),
                             ),
                           ],

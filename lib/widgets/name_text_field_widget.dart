@@ -19,8 +19,6 @@ class NameTextFieldWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 10.0),
             child: Container(
-              height: 45.0,
-              width: 180.0,
               child: TextField(
                 inputFormatters: [LengthLimitingTextInputFormatter(20)],
                 style: TextStyle(
@@ -31,6 +29,8 @@ class NameTextFieldWidget extends StatelessWidget {
                   name == "Player 1" ? UI.player1Name = value :  UI.player2Name = value;
                 },
               ),
+              height: 45.0,
+              width: 160.0,
             ),
           ),
         ],

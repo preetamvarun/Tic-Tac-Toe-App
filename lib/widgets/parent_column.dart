@@ -22,7 +22,7 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
         children: [
           Padding(
             padding: EdgeInsets.only(bottom: 15.0),
-            child: Text("Settings", style: TextStyle(color: Colors.white,fontSize: 30.0)),
+            child: Text("Settings", style: TextStyle(color: Colors.white,fontSize: 25.0)),
           ),
           kDivider,
           Row(

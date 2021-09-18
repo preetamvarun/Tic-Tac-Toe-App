@@ -48,8 +48,6 @@ class _GameScreenState extends State<GameScreen> {
 
     void fun(int r,int c, int containerNo){
 
-      print("entered into fun function");
-
       if(UI.finalResult != "Win") {
         UI.isSelected[containerNo] = true;
         if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
@@ -64,7 +62,8 @@ class _GameScreenState extends State<GameScreen> {
         else if (game.checkDrawCondition() == "Draw") {
           if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
-          Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
+          Future.delayed(Duration(milliseconds: 1000),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
+          });
         }
         if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
       }
@@ -94,7 +93,7 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
               child: Container(
                 width: UI.deviceW - 40,
                 height: UI.deviceW - 40,
