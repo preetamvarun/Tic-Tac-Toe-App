@@ -27,9 +27,9 @@ class WinningScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 25.0),
-                    child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O"),
+                    child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O",imageName: UI.player1ImageName,),
                   ),
-                  ProfileContainer(profileName: UI.player2Name,  letter : UI.side == "X" ? "O" : "X" ,),
+                  ProfileContainer(profileName: UI.player2Name,  letter : UI.side == "X" ? "O" : "X" ,imageName: UI.player2ImageName,),
                 ],
               ),
             ),

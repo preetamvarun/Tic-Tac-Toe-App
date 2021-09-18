@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/widgets/name_text_field_widget.dart';
-import 'package:tic_tac_toe/widgets/row_contains_avatar_and_images.dart';
+import 'package:tic_tac_toe/widgets/row_contains_avatar_and_images1.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
+import 'package:tic_tac_toe/widgets/row_contains_avatar_and_images2.dart';
 
 class COLUMNWIDGET extends StatefulWidget {
 
@@ -18,30 +19,33 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Sound", style: kSettingsBoxLetterStyle,),
-                SizedBox(width: 20.0,),
-                IconButton(
-                  onPressed: (){setState(() { UI.muteSound = !UI.muteSound;}); },
-                  icon: Icon(
-                    UI.muteSound ?  Icons.volume_off : Icons.volume_up,
-                    color: Colors.white,
-                    size: 35.0,
-                  ),
-                ),
-              ],
-            ),
+            padding: EdgeInsets.only(bottom: 15.0),
+            child: Text("Settings", style: TextStyle(color: Colors.white,fontSize: 30.0)),
           ),
+          kDivider,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Sound", style: kSettingsBoxLetterStyle,),
+              SizedBox(width: 20.0,),
+              IconButton(
+                onPressed: (){setState(() { UI.muteSound = !UI.muteSound;}); },
+                icon: Icon(
+                  UI.muteSound ?  Icons.volume_off : Icons.volume_up,
+                  color: Colors.white,
+                  size: 35.0,
+                ),
+              ),
+            ],
+          ),
+          kDivider,
           NameTextFieldWidget(name: "Player 1",),
-          RowAvatarImages(),
+          RowAvatarImages1(),
+          kDivider,
           NameTextFieldWidget(name: "Player 2",),
-          RowAvatarImages(),
+          RowAvatarImages2(),
         ],
       ),
     );

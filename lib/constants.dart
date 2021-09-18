@@ -23,5 +23,10 @@ const kTextFieldDecoration = InputDecoration(
   hintStyle: TextStyle(color: Colors.white),
 
 );
-const kSettingsBoxLetterStyle = TextStyle(color: Colors.white, fontFamily: 'Carter',
+const kSettingsBoxLetterStyle = TextStyle(color: Colors.white, fontFamily: 'Carter',);
+
+const kDivider = Divider(
+  height: 6.0,
+  color: Colors.white,
+  thickness: 0.5,
 );

@@ -5,9 +5,9 @@ import 'package:tic_tac_toe/constants.dart';
 // ignore: must_be_immutable
 class ProfileContainer extends StatelessWidget {
 
-  final profileName,letter,bckColor;
+  final profileName,letter,bckColor,imageName;
 
-  ProfileContainer({this.profileName,this.letter,this.bckColor});
+  ProfileContainer({this.profileName,this.letter,this.bckColor,this.imageName});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,15 @@ class ProfileContainer extends StatelessWidget {
         color: UI.letterX == false ? letter == "X" ? Colors.green : kProfileContainerColor
             : letter == "O" ? Colors.green : kProfileContainerColor,
       ),
-      height: 140.0,
-      width: 120.0,
+      height: 170.0,
+      width: 125.0,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          Image(
+            image: AssetImage("images/$imageName.png"),
+            height: 55.0,
+          ),
           Text(
             profileName,
             style: TextStyle(
@@ -42,7 +46,7 @@ class ProfileContainer extends StatelessWidget {
           Text(
             letter,
             style: TextStyle(
-              fontSize: 35.0,
+              fontSize: 30.0,
               fontFamily: 'Carter',
               color: letter == "X" ? kLetterXColor : kLetterOColor,
             ),

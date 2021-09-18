@@ -17,6 +17,21 @@ class UI{
   static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth;
   static bool muteSound = false; static bool isPlayAgain = false;
   static String player1Name = "Player 1", player2Name = "Player 2";
+  static String player1ImageName = "avatar-1", player2ImageName = "avatar-2";
+
+  static var avatar1Map = {
+    'avatar-1' : kSettingsBoxColor,
+    'avatar-2' : kSettingsBoxColor,
+    'avatar-3' : kSettingsBoxColor,
+    'avatar-4' : kSettingsBoxColor
+  };
+
+  static var avatar2Map = {
+    'avatar-1' : kSettingsBoxColor,
+    'avatar-2' : kSettingsBoxColor,
+    'avatar-3' : kSettingsBoxColor,
+    'avatar-4' : kSettingsBoxColor
+  };
 
   void remainingVars(){
     finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
@@ -52,7 +67,7 @@ class UI{
 
   void colorsAndSide(){
 
-    String temp = "";
+    String temp = "", tempImage = "";
 
     xCardColor = kProfileContainerColor;oTextColor = kLetterOColor;
     oCardColor = kGameScreenBackgroundColor;xTextColor = kLetterXColor;
@@ -60,9 +75,14 @@ class UI{
 
     else if(isPlayAgain == true){
 
+
       temp = player1Name;
       player1Name = player2Name;
       player2Name = temp;
+
+      tempImage = player1ImageName;
+      player1ImageName = player2ImageName;
+      player2ImageName = tempImage;
 
       if(letterX == true){
         side = "X";
