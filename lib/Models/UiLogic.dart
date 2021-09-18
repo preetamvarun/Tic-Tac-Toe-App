@@ -19,25 +19,19 @@ class UI{
   static String player1Name = "Player 1", player2Name = "Player 2";
   static String player1ImageName = "avatar-1", player2ImageName = "avatar-2";
 
-  static var avatar1Map = {
-    'avatar-1' : kSettingsBoxColor,
-    'avatar-2' : kSettingsBoxColor,
-    'avatar-3' : kSettingsBoxColor,
-    'avatar-4' : kSettingsBoxColor
-  };
-
-  static var avatar2Map = {
-    'avatar-1' : kSettingsBoxColor,
-    'avatar-2' : kSettingsBoxColor,
-    'avatar-3' : kSettingsBoxColor,
-    'avatar-4' : kSettingsBoxColor
-  };
+  static var avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
+  static var avatar2Map = {'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
 
   void remainingVars(){
     finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
     isSelected = [false,false,false,false,false,false,false,false,false];
     chars = ["","","","","","","","",""]; mat = [["","",""],["","",""],["","",""]];
     colorMap={};
+  }
+
+  void resetAvatarMaps(){
+    avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
+    avatar2Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
   }
 
   void initializeColorMap() {for(int i = 0; i < 9; i++){colorMap[i] = "kProfileContainerColor";}}

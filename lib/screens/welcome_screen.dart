@@ -6,6 +6,7 @@ import 'package:tic_tac_toe/widgets/reusable_button.dart';
 import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:tic_tac_toe/widgets/parent_column.dart';
+import 'package:tic_tac_toe/Models/UiLogic.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
@@ -17,6 +18,7 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: kGameScreenBackgroundColor,
         leading: IconButton(
           onPressed: (){
+            UI().resetAvatarMaps();
             Alert(
               style: AlertStyle(
                 backgroundColor: Color(0xFF9b70e5),

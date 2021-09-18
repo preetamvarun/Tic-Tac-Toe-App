@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/widgets/circle_avatar_widget1.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/widgets/circle_avatar_widget2.dart';
