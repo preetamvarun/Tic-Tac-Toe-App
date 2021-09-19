@@ -3,10 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 
+
 class NameTextFieldWidget extends StatelessWidget {
 
-  final name;
-  NameTextFieldWidget({this.name});
+  final setP1, setP2;
+
+  NameTextFieldWidget({this.setP1,this.setP2});
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +22,17 @@ class NameTextFieldWidget extends StatelessWidget {
             padding: EdgeInsets.only(left: 10.0),
             child: Container(
               child: TextField(
-                inputFormatters: [LengthLimitingTextInputFormatter(20)],
+                inputFormatters: [LengthLimitingTextInputFormatter(15)],
                 style: TextStyle(
                   color: Colors.white,
                 ),
-                decoration: kTextFieldDecoration.copyWith(hintText: name),
+                decoration: kTextFieldDecoration.copyWith(hintText: setP1 ? UI.player1Name : UI.player2Name),
                 onChanged: (value){
-                  name == "Player 1" ? UI.player1Name = value :  UI.player2Name = value;
+                  setP1 ? UI.player1Name = value : UI.player2Name = value;
                 },
               ),
               height: 45.0,
-              width: 160.0,
+              width: 140.0,
             ),
           ),
         ],

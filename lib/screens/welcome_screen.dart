@@ -28,9 +28,9 @@ class WelcomeScreen extends StatelessWidget {
               content: COLUMNWIDGET(),
             buttons: [
               DialogButton(
-                onPressed: (){Navigator.pop(context);},
+                onPressed: (){print("player 1 name is : ${UI.player1Name} player 2 name is : ${UI.player2Name}"); print("player 1 image name is ${UI.player1ImageName} and player 2 image name is ${UI.player2ImageName}");Navigator.pop(context);},
                 child: Text(
-                  "SUBMIT",
+                  "Done",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),

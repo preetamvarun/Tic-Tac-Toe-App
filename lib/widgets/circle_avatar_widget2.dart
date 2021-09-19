@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 
-
 class CircleAvatarWidget2 extends StatelessWidget {
 
   final imageName,color,onTap;
