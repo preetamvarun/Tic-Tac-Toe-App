@@ -18,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: kGameScreenBackgroundColor,
         leading: IconButton(
           onPressed: (){
-            UI().resetAvatarMaps();
+            // UI().resetAvatarMaps();
             Alert(
               style: AlertStyle(
                 backgroundColor: Color(0xFF9b70e5),
@@ -28,7 +28,7 @@ class WelcomeScreen extends StatelessWidget {
               content: COLUMNWIDGET(),
             buttons: [
               DialogButton(
-                onPressed: (){print("player 1 name is : ${UI.player1Name} player 2 name is : ${UI.player2Name}"); print("player 1 image name is ${UI.player1ImageName} and player 2 image name is ${UI.player2ImageName}");Navigator.pop(context);},
+                onPressed: (){Navigator.pop(context);},
                 child: Text(
                   "Done",
                   style: TextStyle(color: Colors.white, fontSize: 20),
