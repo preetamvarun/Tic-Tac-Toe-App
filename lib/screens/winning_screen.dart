@@ -21,7 +21,7 @@ class WinningScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 0.0),
+              padding: EdgeInsets.symmetric(vertical: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -74,7 +74,7 @@ class WinningScreen extends StatelessWidget {
                 ),
               ),
             Padding(
-              padding: EdgeInsets.only(top: 20.0),
+              padding: EdgeInsets.only(top: 10.0),
               child: Column(
                 children: [
                   ReusableButton(text: 'Play Again', onTap: (){

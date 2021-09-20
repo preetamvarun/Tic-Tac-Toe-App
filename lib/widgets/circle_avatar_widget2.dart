@@ -13,9 +13,12 @@ class CircleAvatarWidget2 extends StatelessWidget {
       child: CircleAvatar(
         radius: 25.0,
         backgroundColor: UI.avatar2Map[imageName],
-        child: Image(
-          image: AssetImage("images/$imageName.png"),
-          height: 40.0,
+        child: LayoutBuilder(
+          builder: (context,constraints) => Image(
+            image: AssetImage("images/$imageName.png"),
+            height: constraints.maxHeight * 0.85,
+            width: constraints.maxWidth * 0.85,
+          ),
         ),
       ),
     );

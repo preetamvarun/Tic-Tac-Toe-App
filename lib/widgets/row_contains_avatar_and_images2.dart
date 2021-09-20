@@ -25,13 +25,13 @@ class _RowAvatarImages2State extends State<RowAvatarImages2> {
     }
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text("Avatar",style: kSettingsBoxLetterStyle,),
-        CircleAvatarWidget2(imageName: 'avatar-1',onTap: (){toggleColor('avatar-1');},),
-        CircleAvatarWidget2(imageName: 'avatar-2',onTap: (){toggleColor('avatar-2');},),
-        CircleAvatarWidget2(imageName: 'avatar-3',onTap: (){toggleColor('avatar-3');},),
-        CircleAvatarWidget2(imageName: 'avatar-4',onTap: (){toggleColor('avatar-4');},),
+        SizedBox(width: 5.0,),
+        Expanded(child: CircleAvatarWidget2(imageName: 'avatar-1',onTap: (){toggleColor('avatar-1');},)),
+        Expanded(child: CircleAvatarWidget2(imageName: 'avatar-2',onTap: (){toggleColor('avatar-2');},)),
+        Expanded(child: CircleAvatarWidget2(imageName: 'avatar-3',onTap: (){toggleColor('avatar-3');},)),
+        Expanded(child: CircleAvatarWidget2(imageName: 'avatar-4',onTap: (){toggleColor('avatar-4');},)),
       ],
     );
   }
