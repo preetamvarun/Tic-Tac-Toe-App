@@ -21,6 +21,9 @@ class ProfileContainer extends StatelessWidget {
         color: UI.letterO ? letter == "O" ? Colors.green : kProfileContainerColor
         :  letter == "X" ? Colors.green : kProfileContainerColor ,
         borderRadius: BorderRadius.circular(20.0),
+        border: UI.letterO ?
+        letter == "O" ? Border.all(color: Colors.white,width: 1.7) : Border.all(color: kGameScreenBackgroundColor,width : 1.5) :
+        letter == "X" ? Border.all(color: Colors.white,width: 1.7) : Border.all(color: kGameScreenBackgroundColor,width : 1.5)
       ) : UI.finalResult != "Win" ? BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         color: kProfileContainerColor,
@@ -28,6 +31,9 @@ class ProfileContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
         color: UI.letterX == false ? letter == "X" ? Colors.green : kProfileContainerColor
             : letter == "O" ? Colors.green : kProfileContainerColor,
+          border: UI.letterX == false ?
+          letter == "X" ? Border.all(color: Colors.white,width: 1.7) : Border.all(color: kGameScreenBackgroundColor,width : 1.5) :
+          letter == "O" ? Border.all(color: Colors.white,width: 1.7) : Border.all(color: kGameScreenBackgroundColor,width : 1.5)
       ),
       width: 130.0,
       height: 160.0,
