@@ -76,7 +76,6 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
