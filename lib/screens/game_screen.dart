@@ -13,8 +13,8 @@ TicTacToe game = TicTacToe();
 
 class GameScreen extends StatefulWidget{
 
-  final chosenLetter;
-  GameScreen({this.chosenLetter});
+  String chosenLetter;
+  GameScreen({required this.chosenLetter});
 
   @override
   _GameScreenState createState() => _GameScreenState();
@@ -24,7 +24,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
-    if(widget.chosenLetter != null){ widget.chosenLetter == "O"? ui.startLetterO() : ui.startLetterX();}
+    widget.chosenLetter == "O"? ui.startLetterO() : ui.startLetterX();
     ui.initializeColorMap();
     super.initState();
   }
@@ -37,34 +37,65 @@ class _GameScreenState extends State<GameScreen> {
     void checkLeftDiagnol()  {setState(() {if(ui.checkLeftDiagnol()) ui.setLeftDiagnol();});}
     void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
 
-    void changeWinningLetterColors(String ansLetter){
-      UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection == "checkColumns" ? checkColumns()
-      : UI.winningDirection == "checkLeftDiagnol" ? checkLeftDiagnol() : checkRightDiagnol();
+    void changeWinningLetterColors(String ansLetter) {
+      UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection ==
+          "checkColumns" ? checkColumns()
+          : UI.winningDirection == "checkLeftDiagnol"
+          ? checkLeftDiagnol()  : checkRightDiagnol();
 
-      /*
-      Future.delayed(Duration(milliseconds: 1000), (){
-        Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)), ).then((value) => setState(() {}));
-      });
-      */
-
-      if(ansLetter == "X"){
-        if(UI.xWins != UI.noOfWins){
-          setState(() {
-            UI.xWins++;
+      Future.delayed(Duration(milliseconds: 1000), () {
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),)
+                .then((value) => setState(() {}));
           });
-        }
-      }
+
+      // if( UI.xWins == 3 || UI.oWins == 3 ){
+      //   Future.delayed(Duration(milliseconds: 1000), () {
+      //     Navigator.push(context, MaterialPageRoute(
+      //         builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),)
+      //         .then((value) => setState(() {}));
+      //   });
+      // }
+      //
+      // else if(ansLetter == "X"){
+      //   UI.xWins++;
+      //   ui.remainingVars();
+      //   ui.initializeColorMap();
+      //   Future.delayed(Duration(milliseconds: 1000),(){
+      //     setState(() {
+      //       UI.letterO = true;
+      //     });
+      //   });
+      // }
+      //
+      // else if(ansLetter == "O"){
+      //   UI.oWins++;
+      //   ui.remainingVars();
+      //   ui.initializeColorMap();
+      //   Future.delayed(Duration(milliseconds: 1000), (){
+      //     setState(() {
+      //       UI.letterX = true;
+      //     });
+      //   });
+      // }
+
 
     }
 
     void fun(int r,int c, int containerNo){
 
       if(UI.finalResult != "Win") {
+
+
         UI.isSelected[containerNo] = true;
         if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
         else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
         UI.chars[containerNo] = UI.character;
         ui.updateMatrix(r, c, UI.character);
+        print('current character is ${UI.character}');
+        print('player1 name is ${UI.player1Name} and player2 name is ${UI.player2Name}');
+        print('player map is ${UI.playerMap}');
+        print("letter x turn : ${UI.letterX} and letter o turn : ${UI.letterO}");
         if (game.checkWinningCondition() == "Win") {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
           UI.finalResult = "Win";
