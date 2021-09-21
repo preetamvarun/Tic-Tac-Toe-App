@@ -58,7 +58,6 @@ class _GameScreenState extends State<GameScreen> {
           }
         });
       }
-
       else if(ansLetter == "O"){
         UI.oWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
@@ -73,9 +72,7 @@ class _GameScreenState extends State<GameScreen> {
             });
           }
         });
-
       }
-
     }
 
     void fun(int r,int c, int containerNo){
@@ -160,8 +157,8 @@ class _GameScreenState extends State<GameScreen> {
                 ),
                 child: Wrap(
                   direction: Axis.vertical,
-                  alignment: WrapAlignment.center,
-                  runAlignment: WrapAlignment.center,
+                  // alignment: WrapAlignment.center,
+                  // runAlignment: WrapAlignment.center,
                   children: [
                     WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
                     WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),

@@ -22,7 +22,7 @@ class WelcomeScreen extends StatelessWidget {
             Alert(
               style: AlertStyle(
                 backgroundColor: Color(0xFF9b70e5),
-                alertPadding: EdgeInsets.symmetric(horizontal: 30.0),
+                alertPadding: EdgeInsets.symmetric(horizontal: 25.0),
               ),
               context: context,
               content: COLUMNWIDGET(),

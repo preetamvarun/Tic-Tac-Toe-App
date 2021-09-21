@@ -12,7 +12,7 @@ class CircleAvatarWidget1 extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: CircleAvatar(
-            radius: 25.0,
+            radius: 23.0,
             backgroundColor: UI.avatar1Map[imageName],
             child: LayoutBuilder(
               builder: (context,constraints) => Image(

@@ -32,7 +32,7 @@ class NameTextFieldWidget extends StatelessWidget {
                 },
               ),
               height: 45.0,
-              width: 140.0,
+              width: 120.0,
             ),
           ),
         ],

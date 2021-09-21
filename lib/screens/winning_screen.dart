@@ -12,6 +12,7 @@ class WinningScreen extends StatelessWidget {
   final winningLetter;
   WinningScreen({this.winningLetter});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,15 +84,12 @@ class WinningScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     ReusableButton(text: 'Play Again', onTap: (){
-                      UI.isPlayAgain = true;
                       ui.remainingVars();
-                      ui.colorsAndSide();
                       ui.setWinningVariables();
                       Navigator.pop(context);
                     },
                     ),
                     ReusableButton(text: 'Home', onTap: (){
-                      ui.colorsAndSide();
                       ui.remainingVars();
                       Navigator.pop(context);
                       Navigator.pop(context);

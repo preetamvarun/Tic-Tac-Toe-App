@@ -15,10 +15,10 @@ class UI{
   static late List<bool>isSelected; static var colorMap = {},playerMap = {};
   static late bool letterX,letterO; static late double deviceW;
   static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth;
-  static bool muteSound = true; static bool isPlayAgain = false;
+  static bool muteSound = true; 
   static String player1Name = "Player 1", player2Name = "Player 2";
   static String player1ImageName = "avatar-1", player2ImageName = "avatar-2";
-  static int xWins = 0, oWins = 0, noOfWins = 5, noOfDraws = 5, draws = 0;
+  static int xWins = 0, oWins = 0, noOfWins = 3, noOfDraws = 3, draws = 0;
 
   static var avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
   static var avatar2Map = {'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
@@ -33,8 +33,8 @@ class UI{
   void setWinningVariables(){
     UI.xWins = 0;
     UI.oWins = 0;
-    UI.noOfWins = 5;
-    UI.noOfDraws = 5;
+    UI.noOfWins = 3;
+    UI.noOfDraws = 3;
     UI.draws = 0;
   }
 
@@ -70,12 +70,9 @@ class UI{
 
 
   void colorsAndSide(){
-
     xCardColor = kProfileContainerColor;oTextColor = kLetterOColor;
     oCardColor = kGameScreenBackgroundColor;xTextColor = kLetterXColor;
-
-    if (isPlayAgain == false) side = "X";
-
+    side = "X";
   }
 
   void letterXTurn() {character = "X"; letterX = false; letterO = true;}

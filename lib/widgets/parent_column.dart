@@ -46,6 +46,7 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
           kDivider,
           NameTextFieldWidget(setP1: false, setP2: true,),
           RowAvatarImages2(),
+          kDivider,
         ],
       ),
     );
