@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:tic_tac_toe/constants.dart';
 
-double sch = 0.0;
 
 
 // ignore: must_be_immutable

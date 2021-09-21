@@ -65,11 +65,8 @@ class UI{
     }
   }
 
-  void startLetterX() {letterO = false; letterX = true;playerMap['X'] = UI.player1Name; playerMap['O'] = UI.player2Name;}
-  void startLetterO() {letterX = false; letterO = true;playerMap['O'] = UI.player1Name; playerMap['X'] = UI.player2Name;}
-
-  void swapNames (){String temp = "";temp = player1Name;player1Name = player2Name;player2Name = temp;}
-  void swapImages(){String tempImage = "";tempImage = player1ImageName;player1ImageName = player2ImageName;player2ImageName = tempImage;}
+  void startLetterX() {letterO = false; letterX = true;playerMap['X'] = player1Name; playerMap['O'] = player2Name;}
+  void startLetterO() {letterX = false; letterO = true;playerMap['O'] = player1Name; playerMap['X'] = player2Name;}
 
 
   void colorsAndSide(){
@@ -78,22 +75,6 @@ class UI{
     oCardColor = kGameScreenBackgroundColor;xTextColor = kLetterXColor;
 
     if (isPlayAgain == false) side = "X";
-
-    else if(isPlayAgain == true){
-
-      swapNames(); swapImages();
-
-      if(letterX == true){
-        side = "X";
-        letterX = true; letterO = false;
-        playerMap['X'] = player1Name; playerMap['O'] = player2Name;
-      }
-      else if(letterO == true){
-        side = "O";
-        letterX = false; letterO = true;
-        playerMap['O'] = player1Name; playerMap['X'] = player2Name;
-      }
-    }
 
   }
 

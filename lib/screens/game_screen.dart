@@ -46,7 +46,7 @@ class _GameScreenState extends State<GameScreen> {
       if(ansLetter == "X"){
         UI.xWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
-          if(UI.xWins == 3){
+          if(UI.xWins == UI.noOfWins){
             Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
           }
           else{
@@ -62,7 +62,7 @@ class _GameScreenState extends State<GameScreen> {
       else if(ansLetter == "O"){
         UI.oWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
-          if(UI.oWins == 3){
+          if(UI.oWins == UI.noOfWins){
             Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
           }
           else{
@@ -92,10 +92,30 @@ class _GameScreenState extends State<GameScreen> {
           changeWinningLetterColors(UI.ansLetter);
         }
         else if (game.checkDrawCondition() == "Draw") {
+          UI.draws++;
           if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
-          Future.delayed(Duration(milliseconds: 1000),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));
-          });
+          if(UI.draws == UI.noOfDraws){
+            Future.delayed(Duration(milliseconds: 1000),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));});
+          }
+          else{
+            Future.delayed(Duration(milliseconds: 1000),(){
+              if(UI.ansLetter == "X"){
+                ui.remainingVars();
+                ui.initializeColorMap();
+                setState(() {
+                  UI.letterO = true;
+                });
+              }
+              if(UI.ansLetter == "O"){
+                ui.remainingVars();
+                ui.initializeColorMap();
+                setState(() {
+                  UI.letterX = true;
+                });
+              }
+            });
+          }
         }
         if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
       }
@@ -113,17 +133,19 @@ class _GameScreenState extends State<GameScreen> {
             Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Container(
-                child: LayoutBuilder(
-                  builder: (context,constraints) => Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 25.0),
-                        child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
-                      ),
-                      ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
-                    ],
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
+                    Column(
+                      children: [
+                        Text("D", style: kScoreTextStyle,),
+                        Text(":", style: kScoreTextStyle,),
+                        Text(UI.draws.toString(), style: kScoreTextStyle,),
+                      ],
+                    ),
+                    ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
+                  ],
                 ),
               ),
             ),
