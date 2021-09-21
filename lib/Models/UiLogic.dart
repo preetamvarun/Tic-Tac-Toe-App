@@ -18,6 +18,7 @@ class UI{
   static bool muteSound = false; static bool isPlayAgain = false;
   static String player1Name = "Player 1", player2Name = "Player 2";
   static String player1ImageName = "avatar-1", player2ImageName = "avatar-2";
+  static int xWins = 0, oWins = 0, noOfWins = 5, noOfDraws = 5, draws = 0;
 
   static var avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
   static var avatar2Map = {'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
@@ -59,24 +60,20 @@ class UI{
   void startLetterX() {letterO = false; letterX = true;playerMap['X'] = UI.player1Name; playerMap['O'] = UI.player2Name;}
   void startLetterO() {letterX = false; letterO = true;playerMap['O'] = UI.player1Name; playerMap['X'] = UI.player2Name;}
 
-  void colorsAndSide(){
+  void swapNames (){String temp = "";temp = player1Name;player1Name = player2Name;player2Name = temp;}
+  void swapImages(){String tempImage = "";tempImage = player1ImageName;player1ImageName = player2ImageName;player2ImageName = tempImage;}
 
-    String temp = "", tempImage = "";
+
+  void colorsAndSide(){
 
     xCardColor = kProfileContainerColor;oTextColor = kLetterOColor;
     oCardColor = kGameScreenBackgroundColor;xTextColor = kLetterXColor;
+
     if (isPlayAgain == false) side = "X";
 
     else if(isPlayAgain == true){
 
-
-      temp = player1Name;
-      player1Name = player2Name;
-      player2Name = temp;
-
-      tempImage = player1ImageName;
-      player1ImageName = player2ImageName;
-      player2ImageName = tempImage;
+      swapNames(); swapImages();
 
       if(letterX == true){
         side = "X";

@@ -9,7 +9,6 @@ import 'package:tic_tac_toe/Models/UiLogic.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 UI ui = UI();
-
 TicTacToe game = TicTacToe();
 
 class GameScreen extends StatefulWidget{
@@ -41,9 +40,21 @@ class _GameScreenState extends State<GameScreen> {
     void changeWinningLetterColors(String ansLetter){
       UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection == "checkColumns" ? checkColumns()
       : UI.winningDirection == "checkLeftDiagnol" ? checkLeftDiagnol() : checkRightDiagnol();
+
+      /*
       Future.delayed(Duration(milliseconds: 1000), (){
         Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)), ).then((value) => setState(() {}));
       });
+      */
+
+      if(ansLetter == "X"){
+        if(UI.xWins != UI.noOfWins){
+          setState(() {
+            UI.xWins++;
+          });
+        }
+      }
+
     }
 
     void fun(int r,int c, int containerNo){
@@ -76,20 +87,29 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: 25.0),
-                  child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName,),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(top: 10.0),
+                child: Container(
+                  child: LayoutBuilder(
+                    builder: (context,constraints) => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 25.0),
+                          child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName,boxHeight: constraints.maxHeight,),
+                        ),
+                        ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName,boxHeight: constraints.maxHeight,),
+                      ],
+                    ),
+                  ),
                 ),
-                ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName,),
-              ],
+              ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+              padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
               child: Container(
                 width: UI.deviceW - 40,
                 height: UI.deviceW - 40,

@@ -11,6 +11,8 @@ const kProfileContainerColor = Color(0XFF27175D);
 const kActiveCardColor = Colors.teal;
 const kYourTurnText = TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
 const kResultText = TextStyle(color: Colors.white,fontFamily: 'Carter');
+const kScoreTextStyle = TextStyle(fontSize: 25.0,color: Colors.white60, fontFamily: 'Paytone');
+const kSpace = Divider(height: 10.0,);
 const kReusableButton = "";
 const kG = "";
 const kTextFieldDecoration = InputDecoration(
@@ -22,12 +24,6 @@ const kTextFieldDecoration = InputDecoration(
     borderSide: BorderSide.none,
   ),
   hintStyle: TextStyle(color: Colors.white),
-
 );
 const kSettingsBoxLetterStyle = TextStyle(color: Colors.white, fontFamily: 'Carter',);
-
-const kDivider = Divider(
-  height: 6.0,
-  color: Colors.white,
-  thickness: 0.5,
-);
+const kDivider = Divider(height: 6.0, color: Colors.white, thickness: 0.5,);
