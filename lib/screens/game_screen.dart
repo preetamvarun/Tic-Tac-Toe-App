@@ -43,59 +43,49 @@ class _GameScreenState extends State<GameScreen> {
           : UI.winningDirection == "checkLeftDiagnol"
           ? checkLeftDiagnol()  : checkRightDiagnol();
 
-      Future.delayed(Duration(milliseconds: 1000), () {
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),)
-                .then((value) => setState(() {}));
-          });
+      if(ansLetter == "X"){
+        UI.xWins++;
+        Future.delayed(Duration(milliseconds: 1000),(){
+          if(UI.xWins == 3){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
+          }
+          else{
+            ui.remainingVars();
+            ui.initializeColorMap();
+            setState(() {
+              UI.letterO = true;
+            });
+          }
+        });
+      }
 
-      // if( UI.xWins == 3 || UI.oWins == 3 ){
-      //   Future.delayed(Duration(milliseconds: 1000), () {
-      //     Navigator.push(context, MaterialPageRoute(
-      //         builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),)
-      //         .then((value) => setState(() {}));
-      //   });
-      // }
-      //
-      // else if(ansLetter == "X"){
-      //   UI.xWins++;
-      //   ui.remainingVars();
-      //   ui.initializeColorMap();
-      //   Future.delayed(Duration(milliseconds: 1000),(){
-      //     setState(() {
-      //       UI.letterO = true;
-      //     });
-      //   });
-      // }
-      //
-      // else if(ansLetter == "O"){
-      //   UI.oWins++;
-      //   ui.remainingVars();
-      //   ui.initializeColorMap();
-      //   Future.delayed(Duration(milliseconds: 1000), (){
-      //     setState(() {
-      //       UI.letterX = true;
-      //     });
-      //   });
-      // }
+      else if(ansLetter == "O"){
+        UI.oWins++;
+        Future.delayed(Duration(milliseconds: 1000),(){
+          if(UI.oWins == 3){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
+          }
+          else{
+            ui.remainingVars();
+            ui.initializeColorMap();
+            setState(() {
+              UI.letterX = true;
+            });
+          }
+        });
 
+      }
 
     }
 
     void fun(int r,int c, int containerNo){
 
       if(UI.finalResult != "Win") {
-
-
         UI.isSelected[containerNo] = true;
         if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
         else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
         UI.chars[containerNo] = UI.character;
         ui.updateMatrix(r, c, UI.character);
-        print('current character is ${UI.character}');
-        print('player1 name is ${UI.player1Name} and player2 name is ${UI.player2Name}');
-        print('player map is ${UI.playerMap}');
-        print("letter x turn : ${UI.letterX} and letter o turn : ${UI.letterO}");
         if (game.checkWinningCondition() == "Win") {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
           UI.finalResult = "Win";
@@ -118,23 +108,21 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: kGameScreenBackgroundColor,
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: Container(
-                  child: LayoutBuilder(
-                    builder: (context,constraints) => Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 25.0),
-                          child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName,boxHeight: constraints.maxHeight,),
-                        ),
-                        ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName,boxHeight: constraints.maxHeight,),
-                      ],
-                    ),
+            Padding(
+              padding: EdgeInsets.only(top: 10.0),
+              child: Container(
+                child: LayoutBuilder(
+                  builder: (context,constraints) => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 25.0),
+                        child: ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
+                      ),
+                      ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
+                    ],
                   ),
                 ),
               ),

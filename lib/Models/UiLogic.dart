@@ -15,7 +15,7 @@ class UI{
   static late List<bool>isSelected; static var colorMap = {},playerMap = {};
   static late bool letterX,letterO; static late double deviceW;
   static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth;
-  static bool muteSound = false; static bool isPlayAgain = false;
+  static bool muteSound = true; static bool isPlayAgain = false;
   static String player1Name = "Player 1", player2Name = "Player 2";
   static String player1ImageName = "avatar-1", player2ImageName = "avatar-2";
   static int xWins = 0, oWins = 0, noOfWins = 5, noOfDraws = 5, draws = 0;
@@ -28,6 +28,14 @@ class UI{
     isSelected = [false,false,false,false,false,false,false,false,false];
     chars = ["","","","","","","","",""]; mat = [["","",""],["","",""],["","",""]];
     colorMap={};
+  }
+
+  void setWinningVariables(){
+    UI.xWins = 0;
+    UI.oWins = 0;
+    UI.noOfWins = 5;
+    UI.noOfDraws = 5;
+    UI.draws = 0;
   }
 
   void resetAvatarMaps(){

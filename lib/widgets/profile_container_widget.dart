@@ -8,9 +8,9 @@ double sch = 0.0;
 // ignore: must_be_immutable
 class ProfileContainer extends StatelessWidget {
 
-  final profileName,letter,imageName,boxHeight;
+  final profileName,letter,imageName;
 
-  ProfileContainer({this.profileName,this.letter,this.imageName,this.boxHeight});
+  ProfileContainer({this.profileName,this.letter,this.imageName});
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ class ProfileContainer extends StatelessWidget {
           letter == "X" ? Border.all(color: Colors.white,width: 1.0) : Border.all(color: kGameScreenBackgroundColor,width : 1.5) :
           letter == "O" ? Border.all(color: Colors.white,width: 1.0) : Border.all(color: kGameScreenBackgroundColor,width : 1.5)
       ),
-      width: 150.0,
-      height: boxHeight,
+      width: 140.0,
+      height: 170.0,
       child: LayoutBuilder(
         builder: (context,constraints) => Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
