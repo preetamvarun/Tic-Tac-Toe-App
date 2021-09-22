@@ -18,7 +18,7 @@ class UI{
   static bool muteSound = true; 
   static String player1Name = "Player 1", player2Name = "Player 2";
   static String player1ImageName = "avatar-1", player2ImageName = "avatar-2";
-  static int xWins = 0, oWins = 0, noOfWins = 0, noOfDraws = 0, draws = 0;
+  static int xWins = 0, oWins = 0, noOfWins = 1, noOfDraws = 1, draws = 0;
 
   static var avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
   static var avatar2Map = {'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
@@ -44,7 +44,13 @@ class UI{
   void initializeColorMap() {for(int i = 0; i < 9; i++){colorMap[i] = "kProfileContainerColor";}}
 
 
-  void updateMatrix(int row, int col, String val) {game.insertIntoCell(row, col, val);}
+  // void updateMatrix(int row, int col, String val) {game.insertIntoCell(row, col, val);}
+
+  void updateMatrix(int row,int col, String val){
+    if(mat[row][col] == ""){
+      game.insertIntoCell(row, col, val);
+    }
+  }
 
 
   void updateColor(letter selectedLetter){

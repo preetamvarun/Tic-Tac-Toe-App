@@ -26,8 +26,6 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     widget.chosenLetter == "O"? ui.startLetterO() : ui.startLetterX();
     ui.initializeColorMap();
-    print("Total no of wins : ${UI.noOfWins}");
-    print("Total no of draws : ${UI.noOfDraws}");
     super.initState();
   }
 
@@ -47,7 +45,6 @@ class _GameScreenState extends State<GameScreen> {
 
       if(ansLetter == "X"){
         UI.xWins++;
-        print("current x wins are ${UI.xWins} and current o wins are ${UI.oWins}");
         Future.delayed(Duration(milliseconds: 1000),(){
           if(UI.xWins == UI.noOfWins){
             Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
@@ -63,7 +60,6 @@ class _GameScreenState extends State<GameScreen> {
       }
       else if(ansLetter == "O"){
         UI.oWins++;
-        print("current x wins are ${UI.xWins} and current o wins are ${UI.oWins}");
         Future.delayed(Duration(milliseconds: 1000),(){
           if(UI.oWins == UI.noOfWins){
             Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
@@ -82,10 +78,11 @@ class _GameScreenState extends State<GameScreen> {
     void fun(int r,int c, int containerNo){
 
       if(UI.finalResult != "Win") {
+
         UI.isSelected[containerNo] = true;
-        if (UI.letterX && UI.mat[r][c] == "") { setState(() { ui.letterXTurn(); }); }
-        else if (UI.letterO && UI.mat[r][c] == "") { setState(() {ui.letterOTurn(); }); }
-        UI.chars[containerNo] = UI.character;
+        if (UI.letterX && UI.mat[r][c] == "") { ui.letterXTurn(); }
+        else if (UI.letterO && UI.mat[r][c] == "") { ui.letterOTurn(); }
+        if(UI.chars[containerNo] == "") setState(() {UI.chars[containerNo] = UI.character;});
         ui.updateMatrix(r, c, UI.character);
         if (game.checkWinningCondition() == "Win") {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
@@ -94,11 +91,9 @@ class _GameScreenState extends State<GameScreen> {
         }
         else if (game.checkDrawCondition() == "Draw") {
           UI.draws++;
-          print("current draws are ${UI.draws} and total no of draws are ${UI.noOfDraws}");
           if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
           if(UI.draws == UI.noOfDraws){
-            print('Game Has been drawn');
             Future.delayed(Duration(milliseconds: 1000),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));});
           }
           else{
@@ -121,7 +116,10 @@ class _GameScreenState extends State<GameScreen> {
           }
         }
         if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
+
       }
+
+
     }
 
     

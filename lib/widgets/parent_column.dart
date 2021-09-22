@@ -100,7 +100,6 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
               UI.noOfWins--;
             });}
           }
-          print(UI.noOfWins);
         }
         else if(wins == false && draws == true){
           if(iconSymbol == Icons.arrow_upward){
@@ -113,7 +112,6 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
               UI.noOfDraws--;
             });}
           }
-          print(UI.noOfDraws);
         }
       },
       icon: CircleAvatar(
