@@ -129,21 +129,19 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 10.0),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
-                    Column(
-                      children: [
-                        Text("D", style: kScoreTextStyle,),
-                        Text(":", style: kScoreTextStyle,),
-                        Text(UI.draws.toString(), style: kScoreTextStyle,),
-                      ],
-                    ),
-                    ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
+                  Column(
+                    children: [
+                      Text("D", style: kScoreTextStyle,),
+                      Text(":", style: kScoreTextStyle,),
+                      Text(UI.draws.toString(), style: kScoreTextStyle,),
+                    ],
+                  ),
+                  ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
+                ],
               ),
             ),
             Padding(

@@ -33,7 +33,7 @@ class ProfileContainer extends StatelessWidget {
           letter == "X" ? Border.all(color: Colors.white,width: 1.0) : Border.all(color: kGameScreenBackgroundColor,width : 1.5) :
           letter == "O" ? Border.all(color: Colors.white,width: 1.0) : Border.all(color: kGameScreenBackgroundColor,width : 1.5)
       ),
-      width: 140.0,
+      width: 135.0,
       height: 170.0,
       child: LayoutBuilder(
         builder: (context,constraints) => Column(
@@ -75,7 +75,7 @@ class ProfileContainer extends StatelessWidget {
                   letter == "X" ? UI.xWins.toString() : UI.oWins.toString(),
                   style: TextStyle(fontSize: constraints.maxHeight * 0.20,
                     fontFamily: 'Paytone',
-                    color: letter == "X" ? kLetterXColor : kLetterOColor,
+                    color: Colors.white,
                   ),
                 ),
               ],
