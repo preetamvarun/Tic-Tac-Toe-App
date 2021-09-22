@@ -14,6 +14,7 @@ const kResultText = TextStyle(color: Colors.white,fontFamily: 'Carter');
 const kScoreTextStyle = TextStyle(fontSize: 28.0,color: Colors.white, fontFamily: 'Paytone');
 const kSpace = Divider(height: 10.0,);
 const kReusableButton = "";
+const kMaxSeconds = 15;
 const kG = "";
 const kTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.fromLTRB(5.0, 1.0, 5.0, 1.0),

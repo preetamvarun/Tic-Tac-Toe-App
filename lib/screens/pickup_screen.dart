@@ -65,7 +65,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
               ),
             ),
             // Button Code
-            ReusableButton(onTap: () {ui.remainingVars(); ui.setWinningVariables(); Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: UI.side,)));}, text: "Start",),
+            ReusableButton(onTap: () {ui.remainingVars(); Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: UI.side,)));}, text: "Start",),
           ],
         ),
       ),

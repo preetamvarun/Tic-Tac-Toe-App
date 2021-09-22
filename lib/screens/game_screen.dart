@@ -11,6 +11,7 @@ import 'package:audioplayers/audioplayers.dart';
 UI ui = UI();
 TicTacToe game = TicTacToe();
 
+
 class GameScreen extends StatefulWidget{
 
   String chosenLetter;
@@ -22,20 +23,55 @@ class GameScreen extends StatefulWidget{
 
 class _GameScreenState extends State<GameScreen> {
 
+
   @override
   void initState() {
     widget.chosenLetter == "O"? ui.startLetterO() : ui.startLetterX();
     ui.initializeColorMap();
+    startTimer();
     super.initState();
+  }
+
+
+  static const maxSeconds = 15;
+  int seconds = maxSeconds;
+  Timer? timer;
+
+  void startTimer(){
+    timer = Timer.periodic(Duration(seconds: 1), (_) {
+      if(seconds > 0){
+        setState(() => seconds--);
+      }else{
+        setState(() {
+          UI.letterO = !UI.letterO;
+          UI.letterX = !UI.letterX;
+        });
+        stopTimer();
+      }
+    });
+  }
+
+  void resetTimer() => setState(() => seconds = maxSeconds);
+
+  void stopTimer({bool reset = true}){
+    if(reset){
+      resetTimer();
+    }
+    timer?.cancel();
+    startTimer();
   }
 
   @override
   Widget build(BuildContext context) {
 
+
     void checkRows() {setState(() {if(ui.checkR1()) ui.setRow1(); if(ui.checkR2()) ui.setRow2(); if(ui.checkR3()) ui.setRow3();});}
     void checkColumns() {setState(() {if(ui.checkC1()) ui.setCol1(); if(ui.checkC2()) ui.setCol2(); if(ui.checkC3()) ui.setCol3();});}
     void checkLeftDiagnol()  {setState(() {if(ui.checkLeftDiagnol()) ui.setLeftDiagnol();});}
     void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
+
+
+
 
     void changeWinningLetterColors(String ansLetter) {
       UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection ==
@@ -78,11 +114,10 @@ class _GameScreenState extends State<GameScreen> {
     void fun(int r,int c, int containerNo){
 
       if(UI.finalResult != "Win") {
-
         UI.isSelected[containerNo] = true;
-        if (UI.letterX && UI.mat[r][c] == "") { ui.letterXTurn(); }
-        else if (UI.letterO && UI.mat[r][c] == "") { ui.letterOTurn(); }
-        if(UI.chars[containerNo] == "") setState(() {UI.chars[containerNo] = UI.character;});
+        if (UI.letterX && UI.mat[r][c] == "" && UI.seconds > 0) ui.letterXTurn();
+        else if (UI.letterO && UI.mat[r][c] == "" && UI.seconds > 0) ui.letterOTurn();
+        if(UI.chars[containerNo] == "") setState(() {UI.chars[containerNo] = UI.character;stopTimer();});
         ui.updateMatrix(r, c, UI.character);
         if (game.checkWinningCondition() == "Win") {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
@@ -116,65 +151,63 @@ class _GameScreenState extends State<GameScreen> {
           }
         }
         if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
-
       }
-
-
     }
 
-    
     UI.deviceW = MediaQuery.of(context).size.width;
     
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: Text(
+              '$seconds',
+              style: kYourTurnText.copyWith(fontSize: 30),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
+              Column(
                 children: [
-                  ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
-                  Column(
-                    children: [
-                      Text("D", style: kScoreTextStyle,),
-                      Text(":", style: kScoreTextStyle,),
-                      Text(UI.draws.toString(), style: kScoreTextStyle,),
-                    ],
-                  ),
-                  ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
+                  Text("D", style: kScoreTextStyle,),
+                  Text(":", style: kScoreTextStyle,),
+                  Text(UI.draws.toString(), style: kScoreTextStyle,),
                 ],
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              child: Container(
-                width: UI.deviceW - 40,
-                height: UI.deviceW - 40,
-                decoration: BoxDecoration(
-                  color: kGameScreenContainerColor,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Wrap(
-                  direction: Axis.vertical,
-                  children: [
-                    WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
-                    WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),
-                    WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,),
-                    WrappingContainer(onTap: (){fun(0,1,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,),
-                    WrappingContainer(onTap: (){fun(1,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,),
-                    WrappingContainer(onTap: (){fun(2,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,),
-                    WrappingContainer(onTap: (){fun(0,2,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,),
-                    WrappingContainer(onTap: (){fun(1,2,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,),
-                    WrappingContainer(onTap: (){fun(2,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,),
-                  ],
-                ),
+              ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            child: Container(
+              width: UI.deviceW - 40,
+              height: UI.deviceW - 40,
+              decoration: BoxDecoration(
+                color: kGameScreenContainerColor,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Wrap(
+                direction: Axis.vertical,
+                children: [
+                  WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
+                  WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),
+                  WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,),
+                  WrappingContainer(onTap: (){fun(0,1,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,),
+                  WrappingContainer(onTap: (){fun(1,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,),
+                  WrappingContainer(onTap: (){fun(2,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,),
+                  WrappingContainer(onTap: (){fun(0,2,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,),
+                  WrappingContainer(onTap: (){fun(1,2,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,),
+                  WrappingContainer(onTap: (){fun(2,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,),
+                ]
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
