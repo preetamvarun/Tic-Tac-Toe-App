@@ -18,7 +18,7 @@ class UI{
   static bool muteSound = true; 
   static String player1Name = "Player 1", player2Name = "Player 2";
   static String player1ImageName = "avatar-1", player2ImageName = "avatar-2";
-  static int xWins = 0, oWins = 0, noOfWins = 3, noOfDraws = 3, draws = 0;
+  static int xWins = 0, oWins = 0, noOfWins = 0, noOfDraws = 0, draws = 0;
 
   static var avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
   static var avatar2Map = {'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
@@ -33,8 +33,6 @@ class UI{
   void setWinningVariables(){
     UI.xWins = 0;
     UI.oWins = 0;
-    UI.noOfWins = 3;
-    UI.noOfDraws = 3;
     UI.draws = 0;
   }
 

@@ -47,7 +47,81 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
           NameTextFieldWidget(setP1: false, setP2: true,),
           RowAvatarImages2(),
           kDivider,
+          Column(
+            children: [
+              Row(
+                children: [
+                  Text("Win Score", style: kYourTurnText,),
+                  SizedBox(width: 18.0,),
+                  Container(
+                    child: Row(
+                      children: [
+                        buildIconButton(true,false,Icons.arrow_upward),
+                        Text(UI.noOfWins.toString(), style: kYourTurnText,),
+                        buildIconButton(true, false, Icons.arrow_downward),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text('Draw Score', style: kYourTurnText,),
+                  SizedBox(width: 10.0,),
+                  Container(
+                    child: Row(
+                      children: [
+                        buildIconButton(false, true, Icons.arrow_upward),
+                        Text(UI.noOfDraws.toString(), style: kYourTurnText,),
+                        buildIconButton(false, true, Icons.arrow_downward),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          )
         ],
+      ),
+    );
+  }
+
+  IconButton buildIconButton(bool wins, bool draws ,IconData iconSymbol) {
+    return IconButton(
+      onPressed: (){
+        if(wins == true && draws == false){
+          if(iconSymbol == Icons.arrow_upward){
+            if(UI.noOfWins < 5) {setState(() {
+              UI.noOfWins++;
+            });}
+          }
+          else if(iconSymbol == Icons.arrow_downward){
+            if(UI.noOfWins > 1) {setState(() {
+              UI.noOfWins--;
+            });}
+          }
+          print(UI.noOfWins);
+        }
+        else if(wins == false && draws == true){
+          if(iconSymbol == Icons.arrow_upward){
+            if(UI.noOfDraws < 5) {setState(() {
+              UI.noOfDraws++;
+            });}
+          }
+          else if(iconSymbol == Icons.arrow_downward){
+            if(UI.noOfDraws > 1) {setState(() {
+              UI.noOfDraws--;
+            });}
+          }
+          print(UI.noOfDraws);
+        }
+      },
+      icon: CircleAvatar(
+        backgroundColor: kGameScreenBackgroundColor,
+        child: Icon(
+          iconSymbol,
+          color: Colors.white,
+        ),
       ),
     );
   }

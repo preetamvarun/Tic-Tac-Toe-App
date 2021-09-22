@@ -26,6 +26,8 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     widget.chosenLetter == "O"? ui.startLetterO() : ui.startLetterX();
     ui.initializeColorMap();
+    print("Total no of wins : ${UI.noOfWins}");
+    print("Total no of draws : ${UI.noOfDraws}");
     super.initState();
   }
 
@@ -45,6 +47,7 @@ class _GameScreenState extends State<GameScreen> {
 
       if(ansLetter == "X"){
         UI.xWins++;
+        print("current x wins are ${UI.xWins} and current o wins are ${UI.oWins}");
         Future.delayed(Duration(milliseconds: 1000),(){
           if(UI.xWins == UI.noOfWins){
             Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
@@ -60,6 +63,7 @@ class _GameScreenState extends State<GameScreen> {
       }
       else if(ansLetter == "O"){
         UI.oWins++;
+        print("current x wins are ${UI.xWins} and current o wins are ${UI.oWins}");
         Future.delayed(Duration(milliseconds: 1000),(){
           if(UI.oWins == UI.noOfWins){
             Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
@@ -90,9 +94,11 @@ class _GameScreenState extends State<GameScreen> {
         }
         else if (game.checkDrawCondition() == "Draw") {
           UI.draws++;
+          print("current draws are ${UI.draws} and total no of draws are ${UI.noOfDraws}");
           if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
           if(UI.draws == UI.noOfDraws){
+            print('Game Has been drawn');
             Future.delayed(Duration(milliseconds: 1000),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));});
           }
           else{
@@ -155,8 +161,6 @@ class _GameScreenState extends State<GameScreen> {
                 ),
                 child: Wrap(
                   direction: Axis.vertical,
-                  // alignment: WrapAlignment.center,
-                  // runAlignment: WrapAlignment.center,
                   children: [
                     WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
                     WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),
