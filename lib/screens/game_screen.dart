@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/screens/winning_screen.dart';
@@ -71,8 +72,6 @@ class _GameScreenState extends State<GameScreen> {
     void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
 
 
-
-
     void changeWinningLetterColors(String ansLetter) {
       UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection ==
           "checkColumns" ? checkColumns()
@@ -123,6 +122,7 @@ class _GameScreenState extends State<GameScreen> {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
           UI.finalResult = "Win";
           changeWinningLetterColors(UI.ansLetter);
+          stopTimer(reset: false);
         }
         else if (game.checkDrawCondition() == "Draw") {
           UI.draws++;
@@ -149,6 +149,7 @@ class _GameScreenState extends State<GameScreen> {
               }
             });
           }
+          stopTimer(reset: false);
         }
         if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
       }
@@ -161,11 +162,27 @@ class _GameScreenState extends State<GameScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Text(
-              '$seconds',
-              style: kYourTurnText.copyWith(fontSize: 30),
+          Container(
+            height: MediaQuery.of(context).size.height / 9,
+            width: MediaQuery.of(context).size.height / 9,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Center(
+                  child: CircularProgressIndicator(
+                    value: seconds/maxSeconds,
+                    strokeWidth: 6,
+                    valueColor: AlwaysStoppedAnimation(Colors.white),
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    '$seconds',
+                    style: kYourTurnText.copyWith(fontSize: 25.0),
+                  ),
+                ),
+              ],
             ),
           ),
           Row(
