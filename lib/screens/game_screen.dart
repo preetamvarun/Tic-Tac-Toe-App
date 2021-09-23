@@ -107,8 +107,8 @@ class _GameScreenState extends State<GameScreen> {
 
         UI.isSelected[containerNo] = true;
 
-        if (UI.letterX && UI.mat[r][c] == "" && UI.seconds > 0) ui.letterXTurn();
-        else if (UI.letterO && UI.mat[r][c] == "" && UI.seconds > 0) ui.letterOTurn();
+        if (UI.letterX && UI.mat[r][c] == "" && seconds> 0) ui.letterXTurn();
+        else if (UI.letterO && UI.mat[r][c] == "" && seconds> 0) ui.letterOTurn();
 
         if(UI.chars[containerNo] == "") setState(() {UI.chars[containerNo] = UI.character;stopTimer();});
 
