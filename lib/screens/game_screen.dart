@@ -122,14 +122,14 @@ class _GameScreenState extends State<GameScreen> {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
           UI.finalResult = "Win";
           changeWinningLetterColors(UI.ansLetter);
-          stopTimer(reset: false);
         }
         else if (game.checkDrawCondition() == "Draw") {
           UI.draws++;
           if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
+          timer?.cancel();
           if(UI.draws == UI.noOfDraws){
-            Future.delayed(Duration(milliseconds: 1000),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));});
+            Future.delayed(Duration(milliseconds: 500),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));});
           }
           else{
             Future.delayed(Duration(milliseconds: 1000),(){
@@ -149,7 +149,6 @@ class _GameScreenState extends State<GameScreen> {
               }
             });
           }
-          stopTimer(reset: false);
         }
         if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
       }
@@ -159,72 +158,77 @@ class _GameScreenState extends State<GameScreen> {
     
     return Scaffold(
       backgroundColor: kGameScreenBackgroundColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 9,
-            width: MediaQuery.of(context).size.height / 9,
-            child: Stack(
-              fit: StackFit.expand,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 10, 10, 25),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: SizedBox(
+                  height: 40.0,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                        value: seconds/maxSeconds,
+                        valueColor: AlwaysStoppedAnimation(kProfileContainerColor),
+                        backgroundColor: Colors.white,
+                      ),
+                      Text(
+                        '$seconds',
+                        style: kYourTurnText.copyWith(fontSize: 20.0),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Center(
-                  child: CircularProgressIndicator(
-                    value: seconds/maxSeconds,
-                    strokeWidth: 6,
-                    valueColor: AlwaysStoppedAnimation(Colors.white),
-                    backgroundColor: Colors.green,
-                  ),
+                ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
+                Column(
+                  children: [
+                    Text("D", style: kScoreTextStyle,),
+                    Text(":", style: kScoreTextStyle,),
+                    Text(UI.draws.toString(), style: kScoreTextStyle,),
+                  ],
                 ),
-                Center(
-                  child: Text(
-                    '$seconds',
-                    style: kYourTurnText.copyWith(fontSize: 25.0),
-                  ),
-                ),
+                ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
               ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
-              Column(
-                children: [
-                  Text("D", style: kScoreTextStyle,),
-                  Text(":", style: kScoreTextStyle,),
-                  Text(UI.draws.toString(), style: kScoreTextStyle,),
-                ],
-              ),
-              ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-            child: Container(
-              width: UI.deviceW - 40,
-              height: UI.deviceW - 40,
-              decoration: BoxDecoration(
-                color: kGameScreenContainerColor,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Wrap(
-                direction: Axis.vertical,
-                children: [
-                  WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
-                  WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),
-                  WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,),
-                  WrappingContainer(onTap: (){fun(0,1,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,),
-                  WrappingContainer(onTap: (){fun(1,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,),
-                  WrappingContainer(onTap: (){fun(2,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,),
-                  WrappingContainer(onTap: (){fun(0,2,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,),
-                  WrappingContainer(onTap: (){fun(1,2,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,),
-                  WrappingContainer(onTap: (){fun(2,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,),
-                ]
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  child: Container(
+                    width: UI.deviceW - 40,
+                    height: UI.deviceW - 40,
+                    decoration: BoxDecoration(
+                      color: kGameScreenContainerColor,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Wrap(
+                      direction: Axis.vertical,
+                      children: [
+                        WrappingContainer(onTap: (){fun(0,0,0);}, letter: UI.isSelected[0] ?  UI.character: "",containerNo: 0,),
+                        WrappingContainer(onTap: (){fun(1,0,1);}, letter: UI.isSelected[1] ?  UI.character: "",containerNo: 1,),
+                        WrappingContainer(onTap: (){fun(2,0,2);}, letter: UI.isSelected[2] ?  UI.character: "",containerNo: 2,),
+                        WrappingContainer(onTap: (){fun(0,1,3);}, letter: UI.isSelected[3] ?  UI.character: "",containerNo: 3,),
+                        WrappingContainer(onTap: (){fun(1,1,4);}, letter: UI.isSelected[4] ?  UI.character: "",containerNo: 4,),
+                        WrappingContainer(onTap: (){fun(2,1,5);}, letter: UI.isSelected[5] ?  UI.character: "",containerNo: 5,),
+                        WrappingContainer(onTap: (){fun(0,2,6);}, letter: UI.isSelected[6] ?  UI.character: "",containerNo: 6,),
+                        WrappingContainer(onTap: (){fun(1,2,7);}, letter: UI.isSelected[7] ?  UI.character: "",containerNo: 7,),
+                        WrappingContainer(onTap: (){fun(2,2,8);}, letter: UI.isSelected[8] ?  UI.character: "",containerNo: 8,),
+                      ]
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

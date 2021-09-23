@@ -34,7 +34,7 @@ class ProfileContainer extends StatelessWidget {
           letter == "O" ? Border.all(color: Colors.white,width: 1.0) : Border.all(color: kGameScreenBackgroundColor,width : 1.5)
       ),
       width: 135.0,
-      height: 160.0,
+      height: 150.0,
       child: LayoutBuilder(
         builder: (context,constraints) => Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
