@@ -82,7 +82,10 @@ class _GameScreenState extends State<GameScreen> {
         UI.xWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
           if(UI.xWins == UI.noOfWins){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();
+            ui.setWinningVariables();
+            stopTimer();
+            Navigator.pop(context);},)),).then((value) => setState(() {}));
           }
           else{
             ui.remainingVars();
@@ -97,7 +100,10 @@ class _GameScreenState extends State<GameScreen> {
         UI.oWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
           if(UI.oWins == UI.noOfWins){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter,)),).then((value) => setState(() {}));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();
+            ui.setWinningVariables();
+            stopTimer();
+            Navigator.pop(context);},)),).then((value) => setState(() {}));
           }
           else{
             ui.remainingVars();
@@ -127,9 +133,11 @@ class _GameScreenState extends State<GameScreen> {
           UI.draws++;
           if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
-          timer?.cancel();
           if(UI.draws == UI.noOfDraws){
-            Future.delayed(Duration(milliseconds: 500),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen()), ).then((value) => setState(() {}));});
+            Future.delayed(Duration(milliseconds: 500),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen(onTap: (){ui.remainingVars();
+            ui.setWinningVariables();
+            stopTimer();
+            Navigator.pop(context);},)), ).then((value) => setState(() {}));});
           }
           else{
             Future.delayed(Duration(milliseconds: 1000),(){

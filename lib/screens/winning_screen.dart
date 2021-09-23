@@ -11,8 +11,8 @@ import 'package:tic_tac_toe/widgets/reusable_button.dart';
 
 class WinningScreen extends StatelessWidget {
 
-  final winningLetter, startTimer, stopTimer;
-  WinningScreen({this.winningLetter, this.startTimer,this.stopTimer});
+  final winningLetter, onTap;
+  WinningScreen({@required this.winningLetter, this.onTap});
 
 
   @override
@@ -89,13 +89,7 @@ class WinningScreen extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0),
                 child: Column(
                   children: [
-                    ReusableButton(text: 'Play Again', onTap: (){
-                      ui.remainingVars();
-                      ui.setWinningVariables();
-                      Navigator.pop(context);
-                    },
-
-                    ),
+                    ReusableButton(text: 'Play Again', onTap: onTap),
                     ReusableButton(text: 'Home', onTap: (){
                       ui.remainingVars();
                       Navigator.pop(context);
