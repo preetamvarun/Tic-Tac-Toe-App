@@ -43,11 +43,13 @@ class UI{
   void initializeColorMap() {for(int i = 0; i < 9; i++){colorMap[i] = "kProfileContainerColor";}}
 
   void updateMatrix(int row,int col, String val){
-    if(mat[row][col] == ""){
-      game.insertIntoCell(row, col, val);
-    }
+    if(mat[row][col] == "") game.insertIntoCell(row, col, val);
   }
 
+  void setRemainingVarsColorMap(){
+    initializeColorMap();
+    remainingVars();
+  }
 
   void updateColor(letter selectedLetter){
 

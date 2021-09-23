@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/Models/TicTacToeLogic.dart';
 import 'package:tic_tac_toe/screens/winning_screen.dart';
-import 'package:tic_tac_toe/widgets/profile_container_widget.dart';
+import 'package:tic_tac_toe/widgets/profileContainerRow.dart';
 import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'dart:async';
@@ -81,36 +81,21 @@ class _GameScreenState extends State<GameScreen> {
       if(ansLetter == "X"){
         UI.xWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
-          if(UI.xWins == UI.noOfWins){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();
-            ui.setWinningVariables();
-            stopTimer();
-            Navigator.pop(context);},)),).then((value) => setState(() {}));
-          }
+          if(UI.xWins == UI.noOfWins) Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();ui.setWinningVariables();stopTimer();Navigator.pop(context);},)),).then((value) => setState(() {}));
           else{
-            ui.remainingVars();
-            ui.initializeColorMap();
-            setState(() {
-              UI.letterO = true;
-            });
+            ui.setRemainingVarsColorMap();
+            setState(() => UI.letterO = true);
           }
         });
       }
+
       else if(ansLetter == "O"){
         UI.oWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
-          if(UI.oWins == UI.noOfWins){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();
-            ui.setWinningVariables();
-            stopTimer();
-            Navigator.pop(context);},)),).then((value) => setState(() {}));
-          }
+          if(UI.oWins == UI.noOfWins)Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();ui.setWinningVariables();stopTimer();Navigator.pop(context);},)),).then((value) => setState(() {}));
           else{
-            ui.remainingVars();
-            ui.initializeColorMap();
-            setState(() {
-              UI.letterX = true;
-            });
+            ui.setRemainingVarsColorMap();
+            setState(() => UI.letterX = true);
           }
         });
       }
@@ -119,41 +104,36 @@ class _GameScreenState extends State<GameScreen> {
     void fun(int r,int c, int containerNo){
 
       if(UI.finalResult != "Win") {
+
         UI.isSelected[containerNo] = true;
+
         if (UI.letterX && UI.mat[r][c] == "" && UI.seconds > 0) ui.letterXTurn();
         else if (UI.letterO && UI.mat[r][c] == "" && UI.seconds > 0) ui.letterOTurn();
+
         if(UI.chars[containerNo] == "") setState(() {UI.chars[containerNo] = UI.character;stopTimer();});
+
         ui.updateMatrix(r, c, UI.character);
+
         if (game.checkWinningCondition() == "Win") {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
           UI.finalResult = "Win";
           changeWinningLetterColors(UI.ansLetter);
         }
+
         else if (game.checkDrawCondition() == "Draw") {
           UI.draws++;
           if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
           UI.finalResult = "Draw";
-          if(UI.draws == UI.noOfDraws){
-            Future.delayed(Duration(milliseconds: 500),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen(onTap: (){ui.remainingVars();
-            ui.setWinningVariables();
-            stopTimer();
-            Navigator.pop(context);},)), ).then((value) => setState(() {}));});
-          }
+          if(UI.draws == UI.noOfDraws){Future.delayed(Duration(milliseconds: 500),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen(onTap: (){ui.remainingVars();ui.setWinningVariables();stopTimer();Navigator.pop(context);},)), ).then((value) => setState(() {}));});}
           else{
             Future.delayed(Duration(milliseconds: 1000),(){
               if(UI.ansLetter == "X"){
-                ui.remainingVars();
-                ui.initializeColorMap();
-                setState(() {
-                  UI.letterO = true;
-                });
+                ui.setRemainingVarsColorMap();
+                setState(() => UI.letterO = true);
               }
               if(UI.ansLetter == "O"){
-                ui.remainingVars();
-                ui.initializeColorMap();
-                setState(() {
-                  UI.letterX = true;
-                });
+                ui.setRemainingVarsColorMap();
+                setState(() => UI.letterX = true);
               }
             });
           }
@@ -192,20 +172,7 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ProfileContainer(profileName: UI.player1Name, letter : UI.side == "X" ? "X" : "O" ,imageName: UI.player1ImageName),
-                Column(
-                  children: [
-                    Text("D", style: kScoreTextStyle,),
-                    Text(":", style: kScoreTextStyle,),
-                    Text(UI.draws.toString(), style: kScoreTextStyle,),
-                  ],
-                ),
-                ProfileContainer(profileName: UI.player2Name, letter : UI.side == "X" ? "O" : "X",imageName: UI.player2ImageName),
-              ],
-            ),
+            EntireRowInGameScreen(),
             Expanded(
               child: Center(
                 child: Padding(
@@ -241,4 +208,5 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 }
+
 
