@@ -3,4 +3,5 @@ A cross platform app that is built with **Flutter** [![TicTacToe](https://img.sh
 
 Note : The project is still under development :desktop_computer: . Extra features will be added further.
 
+Consider giving a :star: if you like the project. :black_heart:
 
