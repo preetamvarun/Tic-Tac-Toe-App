@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:showcaseview/showcaseview.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/screens/pickup_screen.dart';
 import 'package:tic_tac_toe/widgets/reusable_button.dart';
@@ -7,7 +8,24 @@ import 'package:tic_tac_toe/widgets/wp_screen_text_widget.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:tic_tac_toe/widgets/parent_column.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
+
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  final keyOne = GlobalKey();
+
+  @override
+  void initState() {
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) =>
+    ShowCaseWidget.of(context)!.startShowCase([keyOne]),
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,29 +33,41 @@ class WelcomeScreen extends StatelessWidget {
       backgroundColor: kGameScreenBackgroundColor,
       appBar: AppBar(
         backgroundColor: kGameScreenBackgroundColor,
-        leading: IconButton(
-          onPressed: (){
-            // UI().resetAvatarMaps();
-            Alert(
-              style: AlertStyle(
-                backgroundColor: Color(0xFF9b70e5),
-                alertPadding: EdgeInsets.symmetric(horizontal: 25.0),
-              ),
-              context: context,
-              content: COLUMNWIDGET(),
-            buttons: [
-              DialogButton(
-                onPressed: (){Navigator.pop(context);},
-                child: Text(
-                  "Done",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+        leading: Showcase(
+          key: keyOne,
+          description: 'Set up your profile',
+          showcaseBackgroundColor: kProfileContainerColor,
+          contentPadding: EdgeInsets.all(8),
+          overlayOpacity: 0.75,
+          showArrow: true,
+          shapeBorder: CircleBorder(),
+          descTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+          ),
+          child: IconButton(
+            onPressed: (){
+              Alert(
+                style: AlertStyle(
+                  backgroundColor: Color(0xFF9b70e5),
+                  alertPadding: EdgeInsets.symmetric(horizontal: 25.0),
                 ),
-              ),
-            ]).show();
-          },
-          icon : Icon(
-            Icons.view_headline,
-            size: 30.0,
+                context: context,
+                content: COLUMNWIDGET(),
+              buttons: [
+                DialogButton(
+                  onPressed: (){Navigator.pop(context);},
+                  child: Text(
+                    "Done",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
+              ]).show();
+            },
+            icon : Icon(
+              Icons.view_headline,
+              size: 30.0,
+            ),
           ),
         ),
         title: Center(child: TextWidget(text: "TIC TAC TOE", fontSize: 35.0,)),
