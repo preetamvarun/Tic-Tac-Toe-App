@@ -27,7 +27,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
-    widget.chosenLetter == "O"? ui.startLetterO() : ui.startLetterX();
+    widget.chosenLetter == "O"? ui.startLetter("O") : ui.startLetter("X");
     ui.initializeColorMap();
     startTimer();
     super.initState();
@@ -71,6 +71,11 @@ class _GameScreenState extends State<GameScreen> {
     void checkLeftDiagnol()  {setState(() {if(ui.checkLeftDiagnol()) ui.setLeftDiagnol();});}
     void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
 
+    void func(){
+      ui.remainingVars();
+      ui.setWinningVariables();
+      stopTimer();
+    }
 
     void changeWinningLetterColors(String ansLetter) {
       UI.winningDirection == "checkRows" ? checkRows() : UI.winningDirection ==
@@ -81,7 +86,12 @@ class _GameScreenState extends State<GameScreen> {
       if(ansLetter == "X"){
         UI.xWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
-          if(UI.xWins == UI.noOfWins) Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();ui.setWinningVariables();stopTimer();Navigator.pop(context);},)),).then((value) => setState(() {}));
+          if(UI.xWins == UI.noOfWins) Navigator.push(context,
+              MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: () {
+                func();
+                Navigator.pop(context);
+              }
+              ))).then((value) => setState(() {}));
           else{
             ui.setRemainingVarsColorMap();
             setState(() => UI.letterO = true);
@@ -92,7 +102,12 @@ class _GameScreenState extends State<GameScreen> {
       else if(ansLetter == "O"){
         UI.oWins++;
         Future.delayed(Duration(milliseconds: 1000),(){
-          if(UI.oWins == UI.noOfWins)Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){ui.remainingVars();ui.setWinningVariables();stopTimer();Navigator.pop(context);},)),).then((value) => setState(() {}));
+          if(UI.oWins == UI.noOfWins) Navigator.push(context,
+            MaterialPageRoute(builder: (context) => WinningScreen(winningLetter: UI.ansLetter, onTap: (){
+              func();
+              Navigator.pop(context);
+              },
+            )),).then((value) => setState(() {}));
           else{
             ui.setRemainingVarsColorMap();
             setState(() => UI.letterX = true);
@@ -102,39 +117,31 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     void fun(int r,int c, int containerNo){
-
       if(UI.finalResult != "Win") {
-
         UI.isSelected[containerNo] = true;
-
+        
         if (UI.letterX && UI.mat[r][c] == "" && seconds> 0) ui.letterXTurn();
         else if (UI.letterO && UI.mat[r][c] == "" && seconds> 0) ui.letterOTurn();
-
         if(UI.chars[containerNo] == "") setState(() {UI.chars[containerNo] = UI.character;stopTimer();});
-
         ui.updateMatrix(r, c, UI.character);
-
         if (game.checkWinningCondition() == "Win") {
           if(UI.muteSound == false) {AudioCache().play('winner.wav');}
           UI.finalResult = "Win";
           changeWinningLetterColors(UI.ansLetter);
         }
-
         else if (game.checkDrawCondition() == "Draw") {
           UI.draws++;
-          if(UI.muteSound == false) {AudioCache().play('draw.mpeg');}
+          if(UI.muteSound == false) AudioCache().play('draw.mpeg');
           UI.finalResult = "Draw";
-          if(UI.draws == UI.noOfDraws){Future.delayed(Duration(milliseconds: 500),(){Navigator.push( context, MaterialPageRoute( builder: (context) => WinningScreen(onTap: (){ui.remainingVars();ui.setWinningVariables();stopTimer();Navigator.pop(context);},)), ).then((value) => setState(() {}));});}
+          if(UI.draws == UI.noOfDraws){Future.delayed(Duration(milliseconds: 500),(){Navigator.push(context,
+            MaterialPageRoute( builder: (context) => WinningScreen(onTap: (){
+              ui.remainingVars();
+              ui.setWinningVariables();
+              stopTimer();Navigator.pop(context);},)), ).then((value) => setState(() {}));});}
           else{
             Future.delayed(Duration(milliseconds: 1000),(){
-              if(UI.ansLetter == "X"){
-                ui.setRemainingVarsColorMap();
-                setState(() => UI.letterO = true);
-              }
-              if(UI.ansLetter == "O"){
-                ui.setRemainingVarsColorMap();
-                setState(() => UI.letterX = true);
-              }
+              UI.ansLetter == "X" ?  setState(() => UI.letterO = true) : setState(() => UI.letterX = true);
+              ui.setRemainingVarsColorMap();
             });
           }
         }
