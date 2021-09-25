@@ -1,5 +1,5 @@
 **Tic-Tac-Toe** : 🎃
-A cross platform app that is built with **Flutter**  <br> [![TicTacToe](https://img.shields.io/badge/TicTacToe-🎮-1EAEDB.svg)](https://github.com/preetamvarun/Tic-Tac-Toe-App) <br>
+A cross platform app that is built with **Flutter**  <br><br> [![TicTacToe](https://img.shields.io/badge/TicTacToe-🎮-1EAEDB.svg)](https://github.com/preetamvarun/Tic-Tac-Toe-App) <br>
 
 > Note : The project is still under development :desktop_computer: . Extra features will be added further :smile_cat:.
 
@@ -13,8 +13,8 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 - [Technologies](#technologies-)
 - [Dependencies](#dependencies-)
 
+<a href = "#general-info-">
 ## 1. General Info 📝
-
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
 ## 2. Screenshots
