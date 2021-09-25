@@ -21,7 +21,7 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 15.0),
+            padding: EdgeInsets.only(bottom: 10.0),
             child: Text("Settings", style: TextStyle(color: Colors.white,fontSize: 25.0)),
           ),
           kDivider,
@@ -29,13 +29,17 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Sound", style: kSettingsBoxLetterStyle,),
-              SizedBox(width: 20.0,),
+              SizedBox(width: 18.0,),
               IconButton(
-                onPressed: (){setState(() { UI.muteSound = !UI.muteSound;}); },
+                onPressed: () {
+                  setState(() {
+                    UI.muteSound = !UI.muteSound;
+                  });
+                },
                 icon: Icon(
                   UI.muteSound ?  Icons.volume_off : Icons.volume_up,
                   color: Colors.white,
-                  size: 35.0,
+                  size: 30.0,
                 ),
               ),
             ],
@@ -87,35 +91,54 @@ class _COLUMNWIDGETState extends State<COLUMNWIDGET> {
   }
 
   IconButton buildIconButton(bool wins, bool draws ,IconData iconSymbol) {
+
     return IconButton(
       onPressed: (){
         if(wins == true && draws == false){
           if(iconSymbol == Icons.arrow_upward){
-            if(UI.noOfWins < 5) {setState(() {
-              UI.noOfWins++;
-            });}
+            if(UI.noOfWins < UI.maxWins){
+              setState(() {
+                UI.noOfWins++;
+              });
+            }
           }
           else if(iconSymbol == Icons.arrow_downward){
-            if(UI.noOfWins > 1) {setState(() {
-              UI.noOfWins--;
-            });}
+            if(UI.noOfWins > UI.minWins){
+              setState(() {
+                UI.noOfWins--;
+              });
+            }
           }
         }
         else if(wins == false && draws == true){
           if(iconSymbol == Icons.arrow_upward){
-            if(UI.noOfDraws < 5) {setState(() {
-              UI.noOfDraws++;
-            });}
+            if(UI.noOfDraws < UI.maxWins) {
+              setState(() {
+                UI.noOfDraws++;
+              });
+            }
           }
           else if(iconSymbol == Icons.arrow_downward){
-            if(UI.noOfDraws > 1) {setState(() {
-              UI.noOfDraws--;
-            });}
+            if(UI.noOfDraws > UI.minWins) {
+              setState(() {
+                UI.noOfDraws--;
+              });
+            }
           }
         }
       },
       icon: CircleAvatar(
-        backgroundColor: kGameScreenBackgroundColor,
+        backgroundColor: wins == true && draws == false ?
+
+            iconSymbol == Icons.arrow_upward ?
+                UI.noOfWins < UI.maxWins ? kGameScreenBackgroundColor : Colors.blueGrey[400]
+            : UI.noOfWins > UI.minWins ? kGameScreenBackgroundColor : Colors.blueGrey[400]
+
+        :
+            iconSymbol == Icons.arrow_upward ?
+                UI.noOfDraws < UI.maxWins ? kGameScreenBackgroundColor : Colors.blueGrey[400] :
+                UI.noOfDraws > UI.minWins ? kGameScreenBackgroundColor : Colors.blueGrey[400],
+
         child: Icon(
           iconSymbol,
           color: Colors.white,

@@ -29,11 +29,10 @@ class _RowAvatarImages1State extends State<RowAvatarImages1> {
     return Row(
         children: [
           Text("Avatar",style: kSettingsBoxLetterStyle),
-          SizedBox(width: 5.0,),
-          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-1',onTap: (){toggleColor('avatar-1');},)),
-          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-2',onTap: (){toggleColor('avatar-2');},)),
-          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-3',onTap: (){toggleColor('avatar-3');},)),
-          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-4',onTap: (){toggleColor('avatar-4');},)),
+          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-1',onTap: () => toggleColor('avatar-1'))),
+          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-2',onTap: () => toggleColor('avatar-2'))),
+          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-3',onTap: () => toggleColor('avatar-3'))),
+          Expanded(child: CircleAvatarWidget1(imageName: 'avatar-4',onTap: () => toggleColor('avatar-4'))),
         ],
       );
   }

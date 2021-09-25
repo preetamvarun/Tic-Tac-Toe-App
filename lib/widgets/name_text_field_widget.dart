@@ -7,7 +7,6 @@ import 'package:tic_tac_toe/Models/UiLogic.dart';
 class NameTextFieldWidget extends StatelessWidget {
 
   final setP1, setP2;
-
   NameTextFieldWidget({this.setP1,this.setP2});
 
   @override
@@ -32,7 +31,7 @@ class NameTextFieldWidget extends StatelessWidget {
                 },
               ),
               height: 45.0,
-              width: 120.0,
+              width: 115.0,
             ),
           ),
         ],

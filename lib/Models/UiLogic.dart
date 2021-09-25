@@ -17,7 +17,8 @@ class UI{
   static var containerWidth,bw,mat,deviceHeight,wpHeight,wpWidth,colorMap = {},playerMap = {};
   static bool muteSound = true; 
   static String player1Name = "Player 1", player2Name = "Player 2",player1ImageName = "avatar-1", player2ImageName = "avatar-2";
-  static int xWins = 0, oWins = 0, noOfWins = 1, noOfDraws = 1, draws = 0;
+  static int xWins = 0, oWins = 0, noOfWins = 2, noOfDraws = 2, draws = 0, maxWins = 25, maxDraws = 25;
+  static int minWins = 1,minDraws = 1;
 
   static var avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
   static var avatar2Map = {'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
