@@ -18,18 +18,10 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
 ## 2. Screenshots
-<img src = "/ProjectImages/DrawGame.png" alt = "draw game" height = 300>
-<img src = "/ProjectImages/DrawGameBoard.png" alt = "" height = 300>
-<img src = "/ProjectImages/GameBoard.png" alt = "" height = 300>
-<img src = "/ProjectImages/PickUpO.png" alt = "" height = 300>
-<img src = "/ProjectImages/PickUpX.png" alt = "" height = 300>
-<img src = "/ProjectImages/PlayAgainXTurn.png" alt = "" height = 300>
-<img src = "/ProjectImages/SettingsScreen.png" alt = "" height = 300>
-<img src = "/ProjectImages/Screenshot_1632415912.png" alt = "" height = 300>
-<img src = "/ProjectImages/show_case.png" alt = "" height = 300>
-<img src = "/ProjectImages/WelcomeScreen.png" alt = "" height = 300>
-<img src = "/ProjectImages/Xwins.png" alt = "" height = 300>
-<img src = "/ProjectImages/WinningScreen.png" alt = "" height = 300>
+<img src = "/ProjectImages/DrawGame.png" alt = "draw game" height = 300>" "<img src = "/ProjectImages/DrawGameBoard.png" alt = "" height = 300>" "<img src = "/ProjectImages/GameBoard.png" alt = "" height = 300><br>
+<img src = "/ProjectImages/PickUpO.png" alt = "" height = 300>" "<img src = "/ProjectImages/PickUpX.png" alt = "" height = 300>" "<img src = "/ProjectImages/PlayAgainXTurn.png" alt = "" height = 300><br>
+<img src = "/ProjectImages/SettingsScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/Screenshot_1632415912.png" alt = "" height = 300>" "<img src = "/ProjectImages/show_case.png" alt = "" height = 300><br>
+<img src = "/ProjectImages/WelcomeScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/Xwins.png" alt = "" height = 300>" "<img src = "/ProjectImages/WinningScreen.png" alt = "" height = 300>
 
 ## 4. Getting Started 🚀
 
