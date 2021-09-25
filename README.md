@@ -13,27 +13,31 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 - [Technologies](#technologies-)
 - [Dependencies](#dependencies-)
 
-## General Info 📝
+## 1. General Info 📝
 
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
-## Getting Started 🚀
+## 2. Screenshots
+<img src = "/ProjectImages/DrawGame.png" alt = "draw game" height = 300>
+<img src = "/ProjectImages/Owins.png" alt = "Owins" height = 300>
 
-#### 1. [ Setup Flutter](https://flutter.io/setup/)
+## 4. Getting Started 🚀
 
-#### 2. Clone the repo
+#### [ Setup Flutter](https://flutter.io/setup/)
+
+#### Clone the repo
 
 ```sh
 $ git clone https://github.com/preetamvarun/Tic-Tac-Toe-App.git
 $ cd Tic-Tac-Toe-App/
 ```
 
-#### 3. Install dependencies 
+#### Install dependencies 
 ```sh
 $ flutter pub get
 ```
 
-#### 3. Run app
+#### Run app
 ```sh
 $ flutter run
 ```
