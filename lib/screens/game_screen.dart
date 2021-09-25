@@ -23,7 +23,6 @@ class GameScreen extends StatefulWidget{
 
 class _GameScreenState extends State<GameScreen> {
 
-
   @override
   void initState() {
     widget.chosenLetter == "O"? ui.startLetter("O") : ui.startLetter("X");
@@ -31,7 +30,6 @@ class _GameScreenState extends State<GameScreen> {
     startTimer();
     super.initState();
   }
-
 
   static const maxSeconds = 15;
   int seconds = maxSeconds;
@@ -59,6 +57,12 @@ class _GameScreenState extends State<GameScreen> {
     }
     timer?.cancel();
     if(start) startTimer();
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override

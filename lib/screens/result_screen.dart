@@ -21,12 +21,9 @@ class WinningScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            DelayedDisplay(
-              delay: Duration(milliseconds: 250),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.0),
-                child: EntireRowInGameScreen(),
-              ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 15.0),
+              child: EntireRowInGameScreen(),
             ),
             Expanded(
               child: DelayedDisplay(
@@ -76,7 +73,7 @@ class WinningScreen extends StatelessWidget {
                   children: [
                     ReusableButton(text: 'Play Again', onTap: onTap),
                     ReusableButton(text: 'Home', onTap: (){
-                      ui.remainingVars();
+                      ui.setAllVars();
                       Navigator.pop(context);
                       Navigator.pop(context);
                       Navigator.pop(context);
