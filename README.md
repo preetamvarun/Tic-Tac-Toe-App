@@ -13,7 +13,6 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 - [Technologies](#technologies-)
 - [Dependencies](#dependencies-)
 
-<a href = "#general-info-">
 ## 1. General Info 📝
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
