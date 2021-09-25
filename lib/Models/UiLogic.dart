@@ -3,7 +3,6 @@ import 'package:tic_tac_toe/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-
 enum letter { cardX, cardO }
 
 TicTacToe game = TicTacToe();
@@ -12,9 +11,8 @@ class UI{
 
   static late Color xCardColor,oCardColor,oTextColor,xTextColor;
   static late List<String>chars;
-  // static late String side,a,b,ans,ansLetter,winningDirection,character;
   static String finalResult = "", character = "", ans = "", ansLetter = "", winningDirection = "";
-  static late String side,a,b;
+  static late String side;
   static late List<bool>isSelected;
   static late bool letterX,letterO;
   static late double deviceW;
@@ -23,11 +21,14 @@ class UI{
   static String player1Name = "Player 1", player2Name = "Player 2",player1ImageName = "avatar-1", player2ImageName = "avatar-2";
   static int xWins = 0, oWins = 0, noOfWins = 2, noOfDraws = 2, draws = 0, maxWins = 25, maxDraws = 25;
   static int minWins = 1,minDraws = 1;
-
   static var avatar1Map = { 'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
   static var avatar2Map = {'avatar-1' : kSettingsBoxColor, 'avatar-2' : kSettingsBoxColor, 'avatar-3' : kSettingsBoxColor, 'avatar-4' : kSettingsBoxColor};
 
-  void initializeColorMap() {for(int i = 0; i < 9; i++) colorMap[i] = "kProfileContainerColor";}
+  void initializeColorMap(){
+    for(int i = 0; i < 9 ; i++){
+      colorMap[i] = "kProfileContainerColor";
+    }
+  }
 
   void remainingVars(){
     finalResult = "";character = ""; ans = ""; ansLetter = ""; winningDirection = "";
@@ -41,16 +42,15 @@ class UI{
   }
 
   void setRemainingVarsColorMap(){
-    initializeColorMap();
     remainingVars();
+    initializeColorMap();
   }
 
-  void setRemainingVarsAndWinningVars(){
+  void setAllVars(){
     remainingVars();
     setWinningVariables();
+    initializeColorMap();
   }
-
-
 
   void updateMatrix(int row,int col, String val){
     if(mat[row][col] == "") game.insertIntoCell(row, col, val);
