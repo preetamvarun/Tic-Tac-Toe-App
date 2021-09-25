@@ -7,7 +7,6 @@ import 'package:tic_tac_toe/widgets/wrapping_container.dart';
 import 'package:tic_tac_toe/constants.dart';
 import 'dart:async';
 import 'package:tic_tac_toe/Models/UiLogic.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 UI ui = UI();
 TicTacToe game = TicTacToe();
@@ -72,8 +71,7 @@ class _GameScreenState extends State<GameScreen> {
     void checkRightDiagnol() {setState(() {if(ui.checkRightDiagnol()) ui.setRightDiagnol();});}
 
     void func(){
-      ui.remainingVars();
-      ui.setWinningVariables();
+      ui.setRemainingVarsAndWinningVars();
       stopTimer();
     }
 
@@ -111,7 +109,7 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     void fun(int r,int c, int containerNo){
-      if(UI.finalResult != "Win") {
+      if(UI.finalResult == "") {
         UI.isSelected[containerNo] = true;
         if (UI.letterX && UI.mat[r][c] == "") ui.letterXTurn();
         else if (UI.letterO && UI.mat[r][c] == "") ui.letterOTurn();
@@ -123,13 +121,17 @@ class _GameScreenState extends State<GameScreen> {
         }
         ui.updateMatrix(r, c, UI.character);
         if (game.checkWinningCondition() == "Win") {
-          if(UI.muteSound == false) AudioCache().play('winner.wav');
+          if(UI.muteSound == false) {
+            ui.playWinningSound();
+          }
           UI.finalResult = "Win";
           changeWinningLetterColors(UI.ansLetter);
         }
         else if (game.checkDrawCondition() == "Draw") {
           UI.draws++;
-          if(UI.muteSound == false) AudioCache().play('draw.mpeg');
+          if(UI.muteSound == false) {
+            ui.playDrawSound();
+          }
           UI.finalResult = "Draw";
           if(UI.draws == UI.noOfDraws){Future.delayed(Duration(milliseconds: 500),(){Navigator.push(context, MaterialPageRoute(builder: (context) => WinningScreen(onTap: (){func();Navigator.pop(context);}))).then((value) => setState(() {}));});}
           else{
@@ -139,7 +141,7 @@ class _GameScreenState extends State<GameScreen> {
             });
           }
         }
-        if(UI.muteSound == false)  AudioCache().play(UI.character == "X" ? 'note1.wav' : 'note2.wav');
+        if(UI.muteSound == false) ui.playLetterSound();
       }
     }
 

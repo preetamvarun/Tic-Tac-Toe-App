@@ -20,7 +20,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
     super.initState();
   }
 
-  void updateColor(letter selectedLetter) { ui.updateColor(selectedLetter); }
+  void updateColor(letter selectedLetter) =>  ui.updateColor(selectedLetter);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _PickUpScreenState extends State<PickUpScreen> {
             Center(
               child: Padding(
                 padding: EdgeInsets.all(20.0),
-                child: TextWidget(text: 'Choose a side',fontSize: 35.0,fontWeight: FontWeight.w500,)
+                child: TextWidget(text: 'Choose a side',fontSize: 30.0,fontWeight: FontWeight.w500,)
               ),
             ),
             Expanded(
@@ -65,7 +65,16 @@ class _PickUpScreenState extends State<PickUpScreen> {
               ),
             ),
             // Button Code
-            ReusableButton(onTap: () {ui.remainingVars(); ui.setWinningVariables();Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(chosenLetter: UI.side,)));}, text: "Start",),
+            ReusableButton(
+              onTap: (){
+                ui.remainingVars();
+                ui.setWinningVariables();
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => GameScreen(chosenLetter: UI.side,),
+                ));
+              },
+              text: 'Start',
+            )
           ],
         ),
       ),
