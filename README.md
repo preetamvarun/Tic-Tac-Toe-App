@@ -16,9 +16,6 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 ## 1. General Info 📝
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
-## 2. Preview 
-<img src = "/ProjectImages/XO.gif" height = 340>
-
 ## 2. Screenshots
 <img src = "/ProjectImages/DrawGame.png" alt = "draw game" height = 300>" "<img src = "/ProjectImages/DrawGameBoard.png" alt = "" height = 300>" "<img src = "/ProjectImages/GameBoard.png" alt = "" height = 300><br>
 
@@ -26,6 +23,10 @@ The purpose of this project is to understand and implement the flutter concepts 
 
 <img src = "/ProjectImages/SettingsScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/show_case.png" alt = "" height = 300>" "<img src = "/ProjectImages/settingsFeature.png" alt = "" height = 300><br>
 <img src = "/ProjectImages/WelcomeScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/Xwins.png" alt = "" height = 300>" "<img src = "/ProjectImages/WinningScreen.png" alt = "" height = 300>
+
+## 3. Preview 
+<img src = "/ProjectImages/XO.gif" height = 340>
+
 
 ## 4. Getting Started 🚀
 
