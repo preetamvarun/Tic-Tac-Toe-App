@@ -49,7 +49,7 @@ $ flutter pub get
 $ flutter run
 ```
 
-## Technologies Used :heavy_check_mark:
+## 5.Technologies Used :heavy_check_mark:
 
 [![Flutter](https://img.shields.io/badge/Flutter-v2.2.3-1.svg)](https://flutter.dev/)   
 [![Dart](https://img.shields.io/badge/Dart-v2.13.4-1.svg)](https://dart.dev/)   
