@@ -1,4 +1,4 @@
-**Tic-Tac-Toe** : 🎃
+**Tic-Tac-Toe** : :jack_o_lantern:
 A cross platform app that is built with **Flutter**  <br><br> [![TicTacToe](https://img.shields.io/badge/TicTacToe-🎮-1EAEDB.svg)](https://github.com/preetamvarun/Tic-Tac-Toe-App) <br>
 
 > Note : The project is still under development :desktop_computer: . Extra features will be added further :smile_cat:.
@@ -16,7 +16,7 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 ## 1. General Info 📝
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
-## 2. Screenshots
+## 2. Screenshots :camera_flash:
 <img src = "/ProjectImages/DrawGame.png" alt = "draw game" height = 300>" "<img src = "/ProjectImages/DrawGameBoard.png" alt = "" height = 300>" "<img src = "/ProjectImages/GameBoard.png" alt = "" height = 300><br>
 
 <img src = "/ProjectImages/PickUpO.png" alt = "" height = 300>" "<img src = "/ProjectImages/PickUpX.png" alt = "" height = 300>" "<img src = "/ProjectImages/PlayAgainXTurn.png" alt = "" height = 300><br>
@@ -24,11 +24,11 @@ The purpose of this project is to understand and implement the flutter concepts 
 <img src = "/ProjectImages/SettingsScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/show_case.png" alt = "" height = 300>" "<img src = "/ProjectImages/settingsFeature.png" alt = "" height = 300><br>
 <img src = "/ProjectImages/WelcomeScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/Xwins.png" alt = "" height = 300>" "<img src = "/ProjectImages/WinningScreen.png" alt = "" height = 300>
 
-## 3. Preview 
+## 3. Preview  :movie_camera:
 <img src = "/ProjectImages/XO.gif" height = 340>
 
 
-## 4. Getting Started 🚀
+## 4. Getting Started :airplane:
 
 #### [ Setup Flutter](https://flutter.io/setup/)
 
@@ -49,12 +49,12 @@ $ flutter pub get
 $ flutter run
 ```
 
-## 5.Technologies Used :heavy_check_mark:
+## 5.Technologies Used :atom:
 
 [![Flutter](https://img.shields.io/badge/Flutter-v2.2.3-1.svg)](https://flutter.dev/)   
 [![Dart](https://img.shields.io/badge/Dart-v2.13.4-1.svg)](https://dart.dev/)   
 
-
+## 6. Dependencies  :ballot_box:
 
 
 
