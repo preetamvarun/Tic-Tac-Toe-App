@@ -9,7 +9,7 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 - [General Info](#general-info-)
 - [Screenshots](#screenshots-)
 - [Preview](#preview-)
-- [Getting Started](#getting-started-)
+- [Installation](#getting-started-)
 - [Technologies](#technologies-)
 - [Dependencies](#dependencies-)
 
@@ -28,7 +28,7 @@ The purpose of this project is to understand and implement the flutter concepts 
 <img src = "/ProjectImages/XO.gif" height = 340>
 
 
-## 4. Getting Started :airplane:
+## 4. Installation 📀
 
 #### [ Setup Flutter](https://flutter.io/setup/)
 
