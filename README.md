@@ -54,7 +54,27 @@ $ flutter run
 [![Flutter](https://img.shields.io/badge/Flutter-v2.2.3-1.svg)](https://flutter.dev/)   
 [![Dart](https://img.shields.io/badge/Dart-v2.13.4-1.svg)](https://dart.dev/)   
 
-## 6. Dependencies  :ballot_box:
+## 6. Features ➕
+
+### Current Features 
+
+1) Responsive UI
+2) Two Players Can Play The Game 👫
+3) Appealing UI 
+4) Game Sounds 🔉
+5) User can select his avatar 🧑
+6) User can pick up a name to play 📛
+7) Can choose no of games to play 🥇
+8) Minimal Animations 
+9) Timer when playing the game ⏲️
+10) Show case widget to guide user to the settings screen 
+
+### Up coming features 
+
+1) Integrate Player vs Computer feature using min max algorithm :brain:
+2) Storing data in cache using shared preferences 📱
+
+## 7. Dependencies  :ballot_box:
 
 
 
