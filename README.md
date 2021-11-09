@@ -69,7 +69,7 @@ $ flutter run
 9) Timer when playing the game ⏲️
 10) Show case widget to guide user to the settings screen 
 
-### Up coming features 
+### Up coming features ☄️
 
 1) Integrate Player vs Computer feature using min max algorithm :brain:
 2) Storing data in cache using shared preferences 📱
