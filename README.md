@@ -6,13 +6,14 @@ A cross platform app that is built with **Flutter**  <br><br> [![TicTacToe](http
 Consider giving a :star: if you like the project :black_heart:. <br>
 
 ## Table of contents
-- [General Info](#general-info-)
+- [General Info](#generalInfo)
 - [Screenshots](#screenshots-)
 - [Preview](#preview-)
 - [Installation](#getting-started-)
 - [Technologies](#technologies-)
 - [Dependencies](#dependencies-)
 
+<a name = "generalInfo"> </a>
 ## 1. General Info 📝
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
