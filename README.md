@@ -7,16 +7,19 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 
 ## Table of contents
 - [General Info](#generalInfo)
-- [Screenshots](#screenshots-)
-- [Preview](#preview-)
-- [Installation](#getting-started-)
-- [Technologies](#technologies-)
-- [Dependencies](#dependencies-)
+- [Screenshots](#screenshots)
+- [Preview](#preview)
+- [Installation](#gettingStarted)
+- [Technologies](#tech)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [Contact Me](#contactMe)
 
 <a name = "generalInfo"> </a>
 ## 1. General Info 📝
 The purpose of this project is to understand and implement the flutter concepts that i've learned to make the user interface look appealing besides having fun along the journey :smiley:.
 
+<a name = "screenshots"> </a>
 ## 2. Screenshots :camera_flash:
 <img src = "/ProjectImages/DrawGame.png" alt = "draw game" height = 300>" "<img src = "/ProjectImages/DrawGameBoard.png" alt = "" height = 300>" "<img src = "/ProjectImages/GameBoard.png" alt = "" height = 300><br>
 
@@ -25,10 +28,12 @@ The purpose of this project is to understand and implement the flutter concepts 
 <img src = "/ProjectImages/SettingsScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/show_case.png" alt = "" height = 300>" "<img src = "/ProjectImages/settingsFeature.png" alt = "" height = 300><br>
 <img src = "/ProjectImages/WelcomeScreen.png" alt = "" height = 300>" "<img src = "/ProjectImages/Xwins.png" alt = "" height = 300>" "<img src = "/ProjectImages/WinningScreen.png" alt = "" height = 300>
 
+<a name = "preview"> </a>
 ## 3. Preview  :movie_camera:
 <img src = "/ProjectImages/XO.gif" height = 340>
 
 
+<a name = "gettingStarted"> </a>
 ## 4. Installation 📀
 
 #### [ Setup Flutter](https://flutter.io/setup/)
@@ -50,11 +55,13 @@ $ flutter pub get
 $ flutter run
 ```
 
+<a name = "tech"> </a>
 ## 5.Technologies Used ✳️
 
 [![Flutter](https://img.shields.io/badge/Flutter-v2.2.3-1.svg)](https://flutter.dev/)   
 [![Dart](https://img.shields.io/badge/Dart-v2.13.4-1.svg)](https://dart.dev/)   
 
+<a name = "features"> </a>
 ## 6. Features ➕
 
 ### Current Features 
@@ -75,12 +82,14 @@ $ flutter run
 1) Integrate Player vs Computer feature using min max algorithm :brain:
 2) Storing data in cache using shared preferences 📱
 
+<a name = "dependencies"> </a>
 ## 7. Dependencies  :ballot_box:
 
 [![](https://img.shields.io/badge/Delayed%20Display-v2.0.0-1.svg)](https://pub.dev/packages/delayed_display)  
 [![RFlutter Alert](https://img.shields.io/badge/RFlutter%20Alert-v2.0.4-1.svg)](https://pub.dev/packages/rflutter_alert)  
 [![](https://img.shields.io/badge/Assets%20Audio%20Player-v3.0.3+6-1.svg)](https://pub.dev/packages/assets_audio_player)  
 
+<a name = "contactMe"> </a>
 ## 8. Contact Me 📞
 
 - Gmail: [preetamvarun](mailto:preetamvarun99@gmail.com) 📧
