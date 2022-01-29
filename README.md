@@ -13,6 +13,7 @@ Consider giving a :star: if you like the project :black_heart:. <br>
 - [Technologies](#tech)
 - [Features](#features)
 - [Dependencies](#dependencies)
+- [Design Inspiration](#dinsp)
 - [Contact Me](#contactMe)
 
 <a name = "generalInfo"> </a>
@@ -88,9 +89,12 @@ $ flutter run
 [![](https://img.shields.io/badge/Delayed%20Display-v2.0.0-1.svg)](https://pub.dev/packages/delayed_display)  
 [![RFlutter Alert](https://img.shields.io/badge/RFlutter%20Alert-v2.0.4-1.svg)](https://pub.dev/packages/rflutter_alert)  
 [![](https://img.shields.io/badge/Assets%20Audio%20Player-v3.0.3+6-1.svg)](https://pub.dev/packages/assets_audio_player)  
+<a name = "dinsp"> </a>
+## 8. Design Inspiration
+https://dribbble.com/shots/6187597-Tic-Tac-Toe
 
 <a name = "contactMe"> </a>
-## 8. Contact Me 📞
+## 9. Contact Me 📞
 
 - Gmail: [preetamvarun](mailto:preetamvarun99@gmail.com) 📧
 - Github: [preetamvarun](https://github.com/preetamvarun) 
