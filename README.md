@@ -59,8 +59,8 @@ $ flutter run
 <a name = "tech"> </a>
 ## 5.Technologies Used ✳️
 
-[![Flutter](https://img.shields.io/badge/Flutter-v2.2.3-1.svg)](https://flutter.dev/)   
-[![Dart](https://img.shields.io/badge/Dart-v2.13.4-1.svg)](https://dart.dev/)   
+![Flutter](https://img.shields.io/badge/flutter-%23E34F26.svg?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/dart-%231572B6.svg?style=for-the-badge&logo=dart&logoColor=white)
 
 <a name = "features"> </a>
 ## 6. Features ➕
